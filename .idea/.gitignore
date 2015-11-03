@@ -4,6 +4,7 @@
 !/copyright/*.xml
 !/fileColors.xml
 !/gradle.xml
+!/modules.xml
 
 !/inspectionProfiles/*.xml
 /inspectionProfiles/profiles_settings.xml
