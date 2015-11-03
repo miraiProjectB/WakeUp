@@ -5,7 +5,7 @@
 !/fileColors.xml
 !/gradle.xml
 !/modules.xml
-
+!/runConfigurations.xml
 !/inspectionProfiles/*.xml
 /inspectionProfiles/profiles_settings.xml
 
