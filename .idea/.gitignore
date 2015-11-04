@@ -6,7 +6,8 @@
 !/gradle.xml
 !/modules.xml
 !/runConfigurations.xml
-
+!/compiler.xml
+!/encodings.xml
 !/inspectionProfiles/*.xml
 /inspectionProfiles/profiles_settings.xml
 
