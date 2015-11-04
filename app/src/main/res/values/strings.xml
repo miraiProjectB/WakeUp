@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wake Up</string>
+    <string name="press_button_to_connect">press_button_to_connect</string>
 </resources>

@@ -13,8 +13,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
-import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import com.jawbone.upplatformsdk.datamodel.Datastring;
+import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -35,6 +35,7 @@ public class TopActivity extends Activity implements Runnable{
     public void onCreate(Bundle saveInstance){
         super.onCreate(saveInstance);
         setContentView(R.layout.activity_top);
+
         Intent intent = getIntent();
         if (intent != null) {
             mClientSecret = intent.getStringExtra(UpPlatformSdkConstants.CLIENT_SECRET);
@@ -51,10 +52,19 @@ public class TopActivity extends Activity implements Runnable{
         /*
         ファイルに今日の分がなければ更新
         */
-        int a = 1;
-        if (a == 1) {
+        int a = 0;
+        if (a == 1 && mClientSecret == null) {
+            Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
+            startActivity(intentSync);
+            finish();
+        }else if( a==1 && mClientSecret != null){
+            Log.d(TAG, "sync");
             waitProcess();
+        }else{
+            Log.d(TAG,"file exist & not sync");
         }
+
+
     }
     private void waitProcess() {
         // プログレスダイアログを開く処理を呼び出す。
@@ -130,6 +140,7 @@ public class TopActivity extends Activity implements Runnable{
                                         waitDialog.dismiss();
                                         waitDialog = null;
                                     }
+
                                     @Override
                                     public void failure(RetrofitError retrofitError) {
                                         waitDialog.dismiss();
@@ -185,5 +196,6 @@ public class TopActivity extends Activity implements Runnable{
     @Override
     protected void onDestroy(){
         super.onDestroy();
+        Log.d(TAG, "Destroy");
     }
 }
