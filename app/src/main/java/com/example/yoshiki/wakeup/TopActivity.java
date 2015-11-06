@@ -23,7 +23,7 @@ import retrofit.client.Response;
 /**
  * Created by yoshiki on 2015/10/25.
  */
-public class TopActivity extends Activity implements Runnable{
+public class TopActivity extends Activity{
 
     private static final String TAG = TopActivity.class.getSimpleName();
     private static ProgressDialog waitDialog;
@@ -52,12 +52,12 @@ public class TopActivity extends Activity implements Runnable{
         /*
         ファイルに今日の分がなければ更新
         */
-        int a = 0;
-        if (a == 1 && mClientSecret == null) {
+
+        if (mClientSecret == null) {
             Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
             startActivity(intentSync);
             finish();
-        }else if( a==1 && mClientSecret != null){
+        }else if(mClientSecret != null){
             Log.d(TAG, "sync");
             waitProcess();
         }else{
@@ -81,30 +81,32 @@ public class TopActivity extends Activity implements Runnable{
         // プログレスダイアログを表示
         waitDialog.show();
 
-        Thread thread = new Thread(this);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //ダイアログがしっかり見えるように少しだけスリープ
+                    // （nnn：任意のスリープ時間・ミリ秒単位）
+                    Thread.sleep(1000 * 3);
+                } catch (InterruptedException e) {
+                    //スレッドの割り込み処理を行った場合に発生、catchの実装は割愛
+                    e.printStackTrace();
+
+                }
+                //run内でUIの操作をしてしまうと、例外が発生する為、
+                // Handlerにバトンタッチ
+
+                handler.sendEmptyMessage(0);
+
+
+            }
+        });
         /* show()メソッドでプログレスダイアログを表示しつつ、
         * * 別スレッドを使い、裏で重い処理を行う。
         * */
         thread.start();
     }
 
-    @Override
-    public void run() {
-        try {
-            //ダイアログがしっかり見えるように少しだけスリープ
-            // （nnn：任意のスリープ時間・ミリ秒単位）
-            Thread.sleep(1000 * 3);
-        } catch (InterruptedException e) {
-            //スレッドの割り込み処理を行った場合に発生、catchの実装は割愛
-            e.printStackTrace();
-
-        }
-        //run内でUIの操作をしてしまうと、例外が発生する為、
-        // Handlerにバトンタッチ
-
-        handler.sendEmptyMessage(0);
-
-    }
     private Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
@@ -128,7 +130,6 @@ public class TopActivity extends Activity implements Runnable{
                     @Override
                     public void success(Object o, Response response) {
                         data.setSt(GetInformation.getMoves(o));
-                        Log.d(TAG, data.getSt());
                         //睡眠状態取得
                         ApiManager.getRestApiInterface().getSleepEventsList(
                                 UpPlatformSdkConstants.API_VERSION_STRING,

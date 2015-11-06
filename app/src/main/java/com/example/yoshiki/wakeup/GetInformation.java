@@ -10,7 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -42,49 +45,69 @@ Get Move details
 */
 
     public static String getMoves(Object o) {
-        //ArrayList<String> movesList = new ArrayList<String>();
+
+        LinkedHashMap<String ,String[]> moveLists;
+        moveLists = new LinkedHashMap<>();
         JSONObject jsonMove = jsonConvert(o);
-        String date = null,active_time = null,bg_calories = null,wo_calories = null,
-                steps = null,calories = null,bmr_day = null;
         try {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
             for (int i = 0; i < items.length(); i++) {
+                String moveInfo [] = new String[7];
                 JSONObject item = items.getJSONObject(i);
                 JSONObject details = item.getJSONObject("details");
-                date = item.getString("date");
-                active_time = details.getString("active_time");
-                bg_calories = details.getString("bg_calories");
-                wo_calories = details.getString("wo_calories");
-                steps = details.getString("steps");
-                calories = details.getString("calories");
-                bmr_day = details.getString("bmr_day");
+                Log.d(TAG, String.valueOf(item.getInt("date")));
+
+                moveInfo[0] = details.getString("active_time");
+                moveInfo[1] = details.getString("bg_calories");
+                moveInfo[2] = details.getString("wo_calories");
+                moveInfo[3] = details.getString("steps");
+                moveInfo[4] = details.getString("calories");
+                moveInfo[5] = details.getString("bmr_day");
+                moveLists.put(String.valueOf(item.getInt("date")),moveInfo);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.print("日付 : "  + date + "\n" +  active_time + "\n" +"非活動時消費カロリー" + bg_calories + "\n" +
-                "運動消費カロリー : " +wo_calories + "\n" +"歩数" + steps + "\n" +"総消費カロリー" + calories + "\n" + bmr_day);
-        return "日付 : "  + date + "\n" +  active_time + "\n" +"非活動時消費カロリー" + bg_calories + "\n" +
-                "運動消費カロリー : " +wo_calories + "\n" +"歩数" + steps + "\n" +"総消費カロリー" + calories + "\n" + bmr_day +"\n";
+        return null;
     }
     /*
     Get Sleep details
      */
     public static String  getSleeps(Object o) {
+        LinkedHashMap<String ,String[]> sleepLists = new LinkedHashMap<>();
         JSONObject jsonMove = jsonConvert(o);
-        String date = null,duration = null;
         try {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
+            String sleepInfo [] = new String[9];
             for (int i = 0; i < items.length(); i++) {
                 JSONObject item = items.getJSONObject(i);
                 JSONObject details = item.getJSONObject("details");
-                date = item.getString("date");
-                duration = details.getString("duration");
+                sleepInfo[0] = item.getString("time_completed");
+                sleepInfo[1] = item.getString("time_created");
+                sleepInfo[2] = details.getString("awakenings");
+                sleepInfo[3] = details.getString("light");
+                sleepInfo[4] = details.getString("asleep_time");
+                sleepInfo[5] = details.getString("awake");
+                sleepInfo[6] = details.getString("rem");
+                sleepInfo[7] = details.getString("duration");
+                sleepInfo[8] = details.getString("awake_time");
+
+                String st = String.valueOf(item.getInt("date"));
+              //  int year = Integer.parseInt(st.substring(0,4));
+                GregorianCalendar ct =new GregorianCalendar(Integer.parseInt(st.substring(0,4)),
+                        Integer.parseInt(st.substring(4, 6))-1,
+                        Integer.parseInt(st.substring(6, 8)));
+                ct.add(Calendar.DAY_OF_MONTH,-1);
+
+                sleepLists.put(String.valueOf(ct.get(Calendar.YEAR)) +
+                        String.valueOf(ct.get(Calendar.MONTH)+1) +
+                        String.valueOf(ct.get(Calendar.DAY_OF_MONTH)),
+                        sleepInfo);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return "日付：" + date + "\n" + "睡眠合計時間：" + duration;
+        return "null";
     }
     /*
     Get Sleep Phases
@@ -117,7 +140,6 @@ Get Move details
                     }
             );
         }
-        Log.d(TAG,nextUrl);
     }
 
     public static HashMap<String, Integer> setQueryMap(String query)
