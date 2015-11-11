@@ -16,6 +16,14 @@ import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.datamodel.Datastring;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -31,8 +39,12 @@ public class TopActivity extends Activity{
     private String mAccessToken;
 
     public static Datastring data = new Datastring();
+    public static ArrayList move;
+
+    public long start1;
 
     public void onCreate(Bundle saveInstance){
+        start1 = System.nanoTime();
         super.onCreate(saveInstance);
         setContentView(R.layout.activity_top);
 
@@ -58,12 +70,12 @@ public class TopActivity extends Activity{
             startActivity(intentSync);
             finish();
         }else if(mClientSecret != null){
+
             Log.d(TAG, "sync");
             waitProcess();
         }else{
             Log.d(TAG,"file exist & not sync");
         }
-
 
     }
     private void waitProcess() {
@@ -129,7 +141,7 @@ public class TopActivity extends Activity{
                 new Callback<Object>() {
                     @Override
                     public void success(Object o, Response response) {
-                        data.setSt(GetInformation.getMoves(o));
+                        move = getMoves(o);
                         //睡眠状態取得
                         ApiManager.getRestApiInterface().getSleepEventsList(
                                 UpPlatformSdkConstants.API_VERSION_STRING,
@@ -137,9 +149,12 @@ public class TopActivity extends Activity{
                                 new Callback<Object>() {
                                     @Override
                                     public void success(Object o, Response response) {
-                                        data.setSt(data.getSt() + GetInformation.getSleeps(o));
+                                        createFileString(move, getSleeps(o));
                                         waitDialog.dismiss();
                                         waitDialog = null;
+
+                                        long end = System.nanoTime();
+                                        System.out.println("Time:" + (end - start1) / 1000000f + "ms");
                                     }
 
                                     @Override
@@ -186,6 +201,109 @@ public class TopActivity extends Activity{
                         })
                 .show();
     }
+    public static ArrayList getMoves(Object o) {
+
+        //LinkedHashMap<String ,String[]> moveLists;
+        ArrayList <String[]> moveLists = new ArrayList<>();
+
+        JSONObject jsonMove = GetInformation.jsonConvert(o);
+        try {
+            JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
+            for (int i = 0; i < items.length(); i++) {
+                String moveInfo [] = new String[7];
+                JSONObject item = items.getJSONObject(i);
+                JSONObject details = item.getJSONObject("details");
+                int date = item.getInt("date");
+               /* if(date <= 20151104){
+                    break;
+                }
+                */
+                moveInfo[0] = String.valueOf(date);
+                moveInfo[1] = String.valueOf(details.getInt("active_time"));
+                moveInfo[2] = String.valueOf(details.getInt("bg_calories"));
+                moveInfo[3] = String.valueOf(details.getInt("wo_calories"));
+                moveInfo[4] = String.valueOf(details.getInt("steps"));
+                moveInfo[5] = String.valueOf(details.getInt("calories"));
+                moveInfo[6] = String.valueOf(details.getInt("bmr_day"));
+                moveLists.add(moveInfo);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return moveLists;
+    }
+    /*
+    Get Sleep details
+     */
+    public static ArrayList  getSleeps(Object o) {
+        ArrayList <String[]> sleepLists = new ArrayList<>();
+        JSONObject jsonMove = GetInformation.jsonConvert(o);
+        try {
+            JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
+
+            for (int i = 0; i < items.length(); i++) {
+                String sleepInfo [] = new String[10];
+                JSONObject item = items.getJSONObject(i);
+                int date = item.getInt("date");
+                /*if(date <= 20151104){
+                    break;
+                }
+                */
+                JSONObject details = item.getJSONObject("details");
+                sleepInfo[1] = String.valueOf(item.getInt("time_completed"));
+                sleepInfo[2] = String.valueOf(item.getInt("time_created"));
+                sleepInfo[3] = String.valueOf(details.getInt("awakenings"));
+                sleepInfo[4] = String.valueOf(details.getInt("light"));
+                sleepInfo[5] = String.valueOf(details.getInt("asleep_time"));
+                sleepInfo[6] = String.valueOf(details.getInt("awake"));
+                sleepInfo[7] = String.valueOf(details.getInt("rem"));
+                sleepInfo[8] = String.valueOf(details.getInt("duration"));
+                sleepInfo[9] = String.valueOf(details.getInt("awake_time"));
+
+                //日付をStringに変換
+                String st = String.valueOf(date);
+                //年、月、日に分割
+                GregorianCalendar ct =new GregorianCalendar(Integer.parseInt(st.substring(0,4)),
+                        Integer.parseInt(st.substring(4, 6))-1,
+                        Integer.parseInt(st.substring(6, 8)));
+                //一日戻す
+                ct.add(Calendar.DAY_OF_MONTH, -1);
+
+                sleepInfo [0] = String.valueOf(ct.get(Calendar.YEAR)) +
+                        String.format("%02d",ct.get(Calendar.MONTH)+1) +
+                        String.format("%02d",ct.get(Calendar.DAY_OF_MONTH));
+                sleepLists.add(sleepInfo);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return sleepLists;
+    }
+
+    public static void createFileString(ArrayList<String[]> moveList,ArrayList<String[]> sleepList){
+        StringBuilder saveString = new StringBuilder();
+        for(int i = 0; i < moveList.size(); i++){
+            String[] moveInfo = moveList.get(i);
+            for(int j = 0; j < sleepList.size(); j++) {
+                String[] sleepInfo = sleepList.get(j);
+                if (moveInfo[0].equals(sleepInfo[0])){
+                    for(String str:moveInfo) {
+                        saveString.append(str).append(",");
+                    }
+                    for(int k = 1; k < sleepInfo.length; k++) {
+                        if (k == sleepInfo.length - 1 ) {
+                            saveString.append(sleepInfo[k]).append("\n");
+                        }else{
+                            saveString.append(sleepInfo[k]).append(",");
+                        }
+                    }
+                }
+            }
+
+        }
+        String result = saveString.toString();
+    }
+
     @Override
     protected void  onResume(){
         super.onResume();
