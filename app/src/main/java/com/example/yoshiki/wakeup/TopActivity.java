@@ -7,19 +7,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
-import com.jawbone.upplatformsdk.datamodel.Datastring;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -31,20 +40,20 @@ import retrofit.client.Response;
 /**
  * Created by yoshiki on 2015/10/25.
  */
-public class TopActivity extends Activity{
+public class TopActivity extends Activity implements Runnable{
 
     private static final String TAG = TopActivity.class.getSimpleName();
     private static ProgressDialog waitDialog;
     private String mClientSecret;
     private String mAccessToken;
 
-    public static Datastring data = new Datastring();
     public static ArrayList move;
+    public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
+    public static int latestDay;
 
     public long start1;
 
-    public void onCreate(Bundle saveInstance){
-        start1 = System.nanoTime();
+    public void onCreate(Bundle saveInstance) {
         super.onCreate(saveInstance);
         setContentView(R.layout.activity_top);
 
@@ -58,26 +67,41 @@ public class TopActivity extends Activity{
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
 
+        syncProcess();
+
+
         /*
-        TODO ファイルの読み取り(ファイルは最新か？)
+        TODO Topで表示する物
          */
+
+    }
+
+
+
+
+    private void syncProcess(){
+        Calendar today = Calendar.getInstance();
+        latestDay = readLatestDate();
         /*
         ファイルに今日の分がなければ更新
         */
 
-        if (mClientSecret == null) {
-            Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
-            startActivity(intentSync);
-            finish();
-        }else if(mClientSecret != null){
-
-            Log.d(TAG, "sync");
-            waitProcess();
+        if(GetInformation.netWorkCheck(this.getApplicationContext())) {
+            if (latestDay < Integer.parseInt(dateConvertToString(today)) && mClientSecret == null) {
+                Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
+                startActivity(intentSync);
+                finish();
+            } else if (mClientSecret != null) {
+                start1 = System.nanoTime();
+                Log.d(TAG, "sync");
+                waitProcess();
+            }
         }else{
-            Log.d(TAG,"file exist & not sync");
+            dialog();
         }
 
     }
+
     private void waitProcess() {
         // プログレスダイアログを開く処理を呼び出す。
         setWait();
@@ -93,30 +117,29 @@ public class TopActivity extends Activity{
         // プログレスダイアログを表示
         waitDialog.show();
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //ダイアログがしっかり見えるように少しだけスリープ
-                    // （nnn：任意のスリープ時間・ミリ秒単位）
-                    Thread.sleep(1000 * 3);
-                } catch (InterruptedException e) {
-                    //スレッドの割り込み処理を行った場合に発生、catchの実装は割愛
-                    e.printStackTrace();
-
-                }
-                //run内でUIの操作をしてしまうと、例外が発生する為、
-                // Handlerにバトンタッチ
-
-                handler.sendEmptyMessage(0);
-
-
-            }
-        });
+        Thread thread = new Thread(this);
         /* show()メソッドでプログレスダイアログを表示しつつ、
         * * 別スレッドを使い、裏で重い処理を行う。
         * */
         thread.start();
+    }
+    @Override
+    public void run() {
+        try {
+            //ダイアログがしっかり見えるように少しだけスリープ
+            // （nnn：任意のスリープ時間・ミリ秒単位）
+            Thread.sleep(1000 * 3);
+        } catch (InterruptedException e) {
+            //スレッドの割り込み処理を行った場合に発生、catchの実装は割愛
+            e.printStackTrace();
+
+        }
+        //run内でUIの操作をしてしまうと、例外が発生する為、
+        // Handlerにバトンタッチ
+
+        handler.sendEmptyMessage(0);
+
+
     }
 
     private Handler handler = new Handler() {
@@ -133,7 +156,8 @@ public class TopActivity extends Activity{
         // 処理待ち中に行う処理をここに実装
         apiCall();
     }
-    private void apiCall(){
+
+    private void apiCall() {
         //活動量取得
         ApiManager.getRestApiInterface().getMoveEventsList(
                 UpPlatformSdkConstants.API_VERSION_STRING,
@@ -149,7 +173,7 @@ public class TopActivity extends Activity{
                                 new Callback<Object>() {
                                     @Override
                                     public void success(Object o, Response response) {
-                                        createFileString(move, getSleeps(o));
+                                        fileWrite(createFileString(move, getSleeps(o)));
                                         waitDialog.dismiss();
                                         waitDialog = null;
 
@@ -161,7 +185,7 @@ public class TopActivity extends Activity{
                                     public void failure(RetrofitError retrofitError) {
                                         waitDialog.dismiss();
                                         waitDialog = null;
-                                        dialog();
+
                                     }
                                 }
                         );
@@ -171,53 +195,57 @@ public class TopActivity extends Activity{
                     public void failure(RetrofitError retrofitError) {
                         waitDialog.dismiss();
                         waitDialog = null;
-                        dialog();
-
                     }
                 }
         );
 
 
     }
-    private void dialog(){
+
+    private void dialog() {
         new AlertDialog
                 .Builder(TopActivity.this)
-                .setTitle("同期に失敗しました")
+                .setTitle("ネットワークに接続されてません")
                 .setPositiveButton("リトライ",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                apiCall();
+                                syncProcess();
                             }
                         })
                 .setNegativeButton("スキップ",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int which) {
-                                Intent intent = new Intent(TopActivity.this, TopActivity.class);
-                                startActivity(intent);
-                                finish();
                             }
                         })
                 .show();
     }
+
+    public static String dateConvertToString(Calendar ct) {
+        return String.valueOf(ct.get(Calendar.YEAR)) +
+                String.format("%02d", ct.get(Calendar.MONTH) + 1) +
+                String.format("%02d", ct.get(Calendar.DAY_OF_MONTH));
+    }
+
+
     public static ArrayList getMoves(Object o) {
 
         //LinkedHashMap<String ,String[]> moveLists;
-        ArrayList <String[]> moveLists = new ArrayList<>();
+        ArrayList<String[]> moveLists = new ArrayList<>();
 
         JSONObject jsonMove = GetInformation.jsonConvert(o);
         try {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
             for (int i = 0; i < items.length(); i++) {
-                String moveInfo [] = new String[7];
+                String moveInfo[] = new String[7];
                 JSONObject item = items.getJSONObject(i);
                 JSONObject details = item.getJSONObject("details");
                 int date = item.getInt("date");
-               /* if(date <= 20151104){
+                if (date < latestDay) {
                     break;
                 }
-                */
+
                 moveInfo[0] = String.valueOf(date);
                 moveInfo[1] = String.valueOf(details.getInt("active_time"));
                 moveInfo[2] = String.valueOf(details.getInt("bg_calories"));
@@ -232,24 +260,25 @@ public class TopActivity extends Activity{
         }
         return moveLists;
     }
+
     /*
     Get Sleep details
      */
-    public static ArrayList  getSleeps(Object o) {
-        ArrayList <String[]> sleepLists = new ArrayList<>();
+    public static ArrayList getSleeps(Object o) {
+        ArrayList<String[]> sleepLists = new ArrayList<>();
         JSONObject jsonMove = GetInformation.jsonConvert(o);
         try {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
 
             for (int i = 0; i < items.length(); i++) {
-                String sleepInfo [] = new String[10];
+                String sleepInfo[] = new String[10];
                 JSONObject item = items.getJSONObject(i);
                 int date = item.getInt("date");
-                /*if(date <= 20151104){
+                if (date < latestDay) {
                     break;
                 }
-                */
                 JSONObject details = item.getJSONObject("details");
+
                 sleepInfo[1] = String.valueOf(item.getInt("time_completed"));
                 sleepInfo[2] = String.valueOf(item.getInt("time_created"));
                 sleepInfo[3] = String.valueOf(details.getInt("awakenings"));
@@ -263,15 +292,13 @@ public class TopActivity extends Activity{
                 //日付をStringに変換
                 String st = String.valueOf(date);
                 //年、月、日に分割
-                GregorianCalendar ct =new GregorianCalendar(Integer.parseInt(st.substring(0,4)),
-                        Integer.parseInt(st.substring(4, 6))-1,
+                GregorianCalendar ct = new GregorianCalendar(Integer.parseInt(st.substring(0, 4)),
+                        Integer.parseInt(st.substring(4, 6)) - 1,
                         Integer.parseInt(st.substring(6, 8)));
                 //一日戻す
                 ct.add(Calendar.DAY_OF_MONTH, -1);
 
-                sleepInfo [0] = String.valueOf(ct.get(Calendar.YEAR)) +
-                        String.format("%02d",ct.get(Calendar.MONTH)+1) +
-                        String.format("%02d",ct.get(Calendar.DAY_OF_MONTH));
+                sleepInfo[0] = dateConvertToString(ct);
                 sleepLists.add(sleepInfo);
             }
         } catch (JSONException e) {
@@ -280,7 +307,44 @@ public class TopActivity extends Activity{
         return sleepLists;
     }
 
-    public static void createFileString(ArrayList<String[]> moveList,ArrayList<String[]> sleepList){
+    public int readLatestDate() {
+        int latestDay = 1;
+        String lineBuffer;
+        try {
+            FileInputStream in = new FileInputStream(filePath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+            lineBuffer = reader.readLine();
+            if (lineBuffer != null) {
+                String[] splitData = lineBuffer.split(",", 0);
+                latestDay = Integer.parseInt(splitData[0]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            latestDay = -1;
+            return latestDay;
+        }
+        return latestDay;
+    }
+
+    public static String fileAllDate() {
+        StringBuilder allDataBuilder= new StringBuilder("");
+        try {
+            FileInputStream in = new FileInputStream(filePath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+            String str;
+            while((str = reader.readLine()) != null){
+                allDataBuilder.append(str).append("\n");
+            }
+            in.close();
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        String allData = allDataBuilder.toString();
+        return allData;
+    }
+
+    public static String createFileString(ArrayList<String[]> moveList,ArrayList<String[]> sleepList){
         StringBuilder saveString = new StringBuilder();
         for(int i = 0; i < moveList.size(); i++){
             String[] moveInfo = moveList.get(i);
@@ -302,15 +366,50 @@ public class TopActivity extends Activity{
 
         }
         String result = saveString.toString();
+        return result;
     }
+    public void fileWrite(String result){
+        String s1 = fileAllDate();
+        File file = new File(filePath);
+        OutputStream out;
+        if(!file.exists()){
+            file.getParentFile().mkdirs();
+        }
+        try {
+            //out = openFileOutput("log.csv",  MODE_PRIVATE | MODE_WORLD_READABLE |  MODE_WORLD_WRITEABLE );
+            //PrintWriter writer = new PrintWriter(new OutputStreamWriter(out, "UTF-8"));
+            OutputStreamWriter writer2 =
+                    new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8");
+            //追記する
+            StringBuilder buf = new StringBuilder();
+            buf.append(result);
+            buf.append(s1);
+            String prevData = buf.toString();
+
+            BufferedWriter bw = new BufferedWriter(writer2);
+            bw.write(prevData);
+
+            bw.flush();
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     @Override
     protected void  onResume(){
         super.onResume();
+        Log.d(TAG, "Resume");
+
     }
     @Override
     protected  void onPause(){
         super.onPause();
+        Log.d(TAG, "Pause");
+
     }
     @Override
     protected void onDestroy(){
