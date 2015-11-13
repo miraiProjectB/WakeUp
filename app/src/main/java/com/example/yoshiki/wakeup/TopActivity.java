@@ -187,8 +187,6 @@ public class TopActivity extends Activity implements Runnable{
 
     public static void nextAccessSleep(String url){
         if(!url.equals("")) {
-
-            Log.d(TAG,"nextAccessS");
             ApiManager.getRestApiInterface().getSleepEventsList(
                     UpPlatformSdkConstants.API_VERSION_STRING,
                     GetInformation.setQueryMap(url),
@@ -326,8 +324,6 @@ public class TopActivity extends Activity implements Runnable{
     Get Sleep details
      */
     public static void getSleeps(Object o) {
-
-        Log.d(TAG,"getS");
         JSONObject jsonSleep = GetInformation.jsonConvert(o);
         String nexturl = new String();
         try {
@@ -432,11 +428,35 @@ public class TopActivity extends Activity implements Runnable{
                     }
                 }
             }
-
         }
         String result = saveString.toString();
         return result;
     }
+
+    public static String createFileStringT(ArrayList<String[]> moveList,ArrayList<String[]> sleepList){
+        StringBuilder saveString = new StringBuilder();
+        for(int i = 0; i < moveList.size(); i++){
+            String[] moveInfo = moveList.get(i);
+            for(int j = 0; j < sleepList.size(); j++) {
+                String[] sleepInfo = sleepList.get(j);
+                if (moveInfo[0].equals(sleepInfo[0])){
+                    for(String str:moveInfo) {
+                        saveString.append(str).append(",");
+                    }
+                    for(int k = 1; k < sleepInfo.length; k++) {
+                        if (k == sleepInfo.length - 1 ) {
+                            saveString.append(sleepInfo[k]).append("\n");
+                        }else{
+                            saveString.append(sleepInfo[k]).append(",");
+                        }
+                    }
+                }
+            }
+        }
+        String result = saveString.toString();
+        return result;
+    }
+
     public static void fileWrite(String result){
         String s1 = fileAllDate();
         File file = new File(filePath);
