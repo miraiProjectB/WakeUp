@@ -50,7 +50,8 @@ public class TopActivity extends Activity implements Runnable{
     public static ArrayList move;
     public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
     public static int latestDay;
-
+    public static ArrayList<String[]> moveLists, sleepLists;
+    public static boolean flag_s,flag_m;
     public long start1;
 
     public void onCreate(Bundle saveInstance) {
@@ -66,6 +67,7 @@ public class TopActivity extends Activity implements Runnable{
         if (mAccessToken != null) {
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
+
 
         syncProcess();
 
@@ -93,7 +95,10 @@ public class TopActivity extends Activity implements Runnable{
                 finish();
             } else if (mClientSecret != null) {
                 start1 = System.nanoTime();
-                Log.d(TAG, "sync");
+                flag_m = true;
+                flag_s  = true;
+                moveLists = new ArrayList<>();
+                sleepLists = new ArrayList<>();
                 waitProcess();
             }
         }else{
@@ -157,6 +162,61 @@ public class TopActivity extends Activity implements Runnable{
         apiCall();
     }
 
+    public static void nextAccessMove(String url){
+        if(!url.equals("")) {
+            ApiManager.getRestApiInterface().getMoveEventsList(
+                    UpPlatformSdkConstants.API_VERSION_STRING,
+                    GetInformation.setQueryMap(url),
+                    new Callback<Object>() {
+                        @Override
+                        public void success(Object o, Response response) {
+                            getMoves(o);
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                        }
+                    }
+            );
+        }else{
+            flag_m=false;
+           //finishCheck();
+        }
+    }
+
+
+    public static void nextAccessSleep(String url){
+        if(!url.equals("")) {
+
+            Log.d(TAG,"nextAccessS");
+            ApiManager.getRestApiInterface().getSleepEventsList(
+                    UpPlatformSdkConstants.API_VERSION_STRING,
+                    GetInformation.setQueryMap(url),
+                    new Callback<Object>() {
+                        @Override
+                        public void success(Object o, Response response) {
+                            getSleeps(o);
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                        }
+                    }
+            );
+        }else{
+            flag_s = false;
+            finishCheck();
+        }
+    }
+
+    public static void finishCheck(){
+        if(!flag_m && !flag_s){
+            fileWrite(createFileString(moveLists, sleepLists));
+            waitDialog.dismiss();
+            waitDialog = null;
+        }
+    }
+
     private void apiCall() {
         //活動量取得
         ApiManager.getRestApiInterface().getMoveEventsList(
@@ -165,7 +225,7 @@ public class TopActivity extends Activity implements Runnable{
                 new Callback<Object>() {
                     @Override
                     public void success(Object o, Response response) {
-                        move = getMoves(o);
+                        getMoves(o);
                         //睡眠状態取得
                         ApiManager.getRestApiInterface().getSleepEventsList(
                                 UpPlatformSdkConstants.API_VERSION_STRING,
@@ -173,10 +233,7 @@ public class TopActivity extends Activity implements Runnable{
                                 new Callback<Object>() {
                                     @Override
                                     public void success(Object o, Response response) {
-                                        fileWrite(createFileString(move, getSleeps(o)));
-                                        waitDialog.dismiss();
-                                        waitDialog = null;
-
+                                        getSleeps(o);
                                         long end = System.nanoTime();
                                         System.out.println("Time:" + (end - start1) / 1000000f + "ms");
                                     }
@@ -184,7 +241,6 @@ public class TopActivity extends Activity implements Runnable{
                                     @Override
                                     public void failure(RetrofitError retrofitError) {
                                         waitDialog.dismiss();
-                                        waitDialog = null;
 
                                     }
                                 }
@@ -194,7 +250,6 @@ public class TopActivity extends Activity implements Runnable{
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         waitDialog.dismiss();
-                        waitDialog = null;
                     }
                 }
         );
@@ -229,20 +284,21 @@ public class TopActivity extends Activity implements Runnable{
     }
 
 
-    public static ArrayList getMoves(Object o) {
+    public static void getMoves(Object o) {
 
-        //LinkedHashMap<String ,String[]> moveLists;
-        ArrayList<String[]> moveLists = new ArrayList<>();
+        String nexturl = new String();
 
         JSONObject jsonMove = GetInformation.jsonConvert(o);
         try {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
+            nexturl = jsonMove.getJSONObject("data").getJSONObject("links").getString("next");
             for (int i = 0; i < items.length(); i++) {
                 String moveInfo[] = new String[7];
                 JSONObject item = items.getJSONObject(i);
                 JSONObject details = item.getJSONObject("details");
                 int date = item.getInt("date");
-                if (date < latestDay) {
+                if (date <= latestDay) {
+                    flag_m =false;
                     break;
                 }
 
@@ -258,37 +314,34 @@ public class TopActivity extends Activity implements Runnable{
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return moveLists;
+
+        Log.d(TAG,nexturl);
+        if(flag_m){
+            nextAccessMove(nexturl);
+        }
+        finishCheck();
     }
 
     /*
     Get Sleep details
      */
-    public static ArrayList getSleeps(Object o) {
-        ArrayList<String[]> sleepLists = new ArrayList<>();
-        JSONObject jsonMove = GetInformation.jsonConvert(o);
-        try {
-            JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
+    public static void getSleeps(Object o) {
 
+        Log.d(TAG,"getS");
+        JSONObject jsonSleep = GetInformation.jsonConvert(o);
+        String nexturl = new String();
+        try {
+            JSONArray items = jsonSleep.getJSONObject("data").getJSONArray("items");
+            nexturl = jsonSleep.getJSONObject("data").getJSONObject("links").getString("next");
             for (int i = 0; i < items.length(); i++) {
                 String sleepInfo[] = new String[10];
                 JSONObject item = items.getJSONObject(i);
                 int date = item.getInt("date");
-                if (date < latestDay) {
+                if (date <= latestDay) {
+                    flag_s  = false;
                     break;
                 }
                 JSONObject details = item.getJSONObject("details");
-
-                sleepInfo[1] = String.valueOf(item.getInt("time_completed"));
-                sleepInfo[2] = String.valueOf(item.getInt("time_created"));
-                sleepInfo[3] = String.valueOf(details.getInt("awakenings"));
-                sleepInfo[4] = String.valueOf(details.getInt("light"));
-                sleepInfo[5] = String.valueOf(details.getInt("asleep_time"));
-                sleepInfo[6] = String.valueOf(details.getInt("awake"));
-                sleepInfo[7] = String.valueOf(details.getInt("rem"));
-                sleepInfo[8] = String.valueOf(details.getInt("duration"));
-                sleepInfo[9] = String.valueOf(details.getInt("awake_time"));
-
                 //日付をStringに変換
                 String st = String.valueOf(date);
                 //年、月、日に分割
@@ -299,13 +352,29 @@ public class TopActivity extends Activity implements Runnable{
                 ct.add(Calendar.DAY_OF_MONTH, -1);
 
                 sleepInfo[0] = dateConvertToString(ct);
+                sleepInfo[1] = String.valueOf(item.getInt("time_completed"));
+                sleepInfo[2] = String.valueOf(item.getInt("time_created"));
+                sleepInfo[3] = String.valueOf(details.getInt("awakenings"));
+                sleepInfo[4] = String.valueOf(details.getInt("light"));
+                sleepInfo[5] = String.valueOf(details.getInt("asleep_time"));
+                sleepInfo[6] = String.valueOf(details.getInt("awake"));
+                sleepInfo[7] = String.valueOf(details.getInt("rem"));
+                sleepInfo[8] = String.valueOf(details.getInt("duration"));
+                sleepInfo[9] = String.valueOf(details.getInt("awake_time"));
+
                 sleepLists.add(sleepInfo);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return sleepLists;
+        if (flag_s) {
+            nextAccessSleep(nexturl);
+        }
+        finishCheck();
     }
+
+
+
 
     public int readLatestDate() {
         int latestDay = 1;
@@ -313,16 +382,16 @@ public class TopActivity extends Activity implements Runnable{
         try {
             FileInputStream in = new FileInputStream(filePath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-            lineBuffer = reader.readLine();
-            if (lineBuffer != null) {
-                String[] splitData = lineBuffer.split(",", 0);
-                latestDay = Integer.parseInt(splitData[0]);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            latestDay = -1;
-            return latestDay;
+        lineBuffer = reader.readLine();
+        if (lineBuffer != null) {
+            String[] splitData = lineBuffer.split(",", 0);
+            latestDay = Integer.parseInt(splitData[0]);
         }
+    } catch (IOException e) {
+        e.printStackTrace();
+        latestDay = -1;
+        return latestDay;
+    }
         return latestDay;
     }
 
@@ -368,7 +437,7 @@ public class TopActivity extends Activity implements Runnable{
         String result = saveString.toString();
         return result;
     }
-    public void fileWrite(String result){
+    public static void fileWrite(String result){
         String s1 = fileAllDate();
         File file = new File(filePath);
         OutputStream out;
