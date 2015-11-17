@@ -27,7 +27,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,7 +46,6 @@ public class TopActivity extends Activity implements Runnable{
     private String mClientSecret;
     private String mAccessToken;
 
-    public static ArrayList move;
     public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
     public static int latestDay;
     public static ArrayList<String[]> moveLists, sleepLists;
@@ -70,12 +68,9 @@ public class TopActivity extends Activity implements Runnable{
 
 
         syncProcess();
-
-
         /*
         TODO Topで表示する物
          */
-
     }
 
 
@@ -119,6 +114,8 @@ public class TopActivity extends Activity implements Runnable{
         waitDialog.setMessage("同期中...");
         // 円スタイル（くるくる回るタイプ）に設定します
         waitDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        //外部タッチしても消えない
+        waitDialog.setCanceledOnTouchOutside(false);
         // プログレスダイアログを表示
         waitDialog.show();
 
@@ -137,14 +134,10 @@ public class TopActivity extends Activity implements Runnable{
         } catch (InterruptedException e) {
             //スレッドの割り込み処理を行った場合に発生、catchの実装は割愛
             e.printStackTrace();
-
         }
         //run内でUIの操作をしてしまうと、例外が発生する為、
         // Handlerにバトンタッチ
-
         handler.sendEmptyMessage(0);
-
-
     }
 
     private Handler handler = new Handler() {
@@ -209,7 +202,7 @@ public class TopActivity extends Activity implements Runnable{
 
     public static void finishCheck(){
         if(!flag_m && !flag_s){
-            fileWrite(createFileString(moveLists, sleepLists));
+            fileWrite(createFileStringT(moveLists, sleepLists));
             waitDialog.dismiss();
             waitDialog = null;
         }
@@ -275,12 +268,18 @@ public class TopActivity extends Activity implements Runnable{
                 .show();
     }
 
+    /*
+    Date型→String型
+     */
     public static String dateConvertToString(Calendar ct) {
         return String.valueOf(ct.get(Calendar.YEAR)) +
                 String.format("%02d", ct.get(Calendar.MONTH) + 1) +
                 String.format("%02d", ct.get(Calendar.DAY_OF_MONTH));
     }
 
+    /*
+    Get move data
+     */
 
     public static void getMoves(Object o) {
 
@@ -299,7 +298,6 @@ public class TopActivity extends Activity implements Runnable{
                     flag_m =false;
                     break;
                 }
-
                 moveInfo[0] = String.valueOf(date);
                 moveInfo[1] = String.valueOf(details.getInt("active_time"));
                 moveInfo[2] = String.valueOf(details.getInt("bg_calories"));
@@ -370,8 +368,9 @@ public class TopActivity extends Activity implements Runnable{
     }
 
 
-
-
+    /*
+    同期されているデータの最新日時の取得
+     */
     public int readLatestDate() {
         int latestDay = 1;
         String lineBuffer;
@@ -391,24 +390,10 @@ public class TopActivity extends Activity implements Runnable{
         return latestDay;
     }
 
-    public static String fileAllDate() {
-        StringBuilder allDataBuilder= new StringBuilder("");
-        try {
-            FileInputStream in = new FileInputStream(filePath);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-            String str;
-            while((str = reader.readLine()) != null){
-                allDataBuilder.append(str).append("\n");
-            }
-            in.close();
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
 
-        String allData = allDataBuilder.toString();
-        return allData;
-    }
-
+/*
+活動量と睡眠の日付から対応付け
+ */
     public static String createFileString(ArrayList<String[]> moveList,ArrayList<String[]> sleepList){
         StringBuilder saveString = new StringBuilder();
         for(int i = 0; i < moveList.size(); i++){
@@ -433,20 +418,35 @@ public class TopActivity extends Activity implements Runnable{
         return result;
     }
 
+    /*
+    昼寝などでダブりがある日は除外
+     */
     public static String createFileStringT(ArrayList<String[]> moveList,ArrayList<String[]> sleepList){
         StringBuilder saveString = new StringBuilder();
-        for(int i = 0; i < moveList.size(); i++){
+        String a[]={"null"};
+        for(int i = 0; i < moveList.size(); i++) {
             String[] moveInfo = moveList.get(i);
-            for(int j = 0; j < sleepList.size(); j++) {
+            for (int j = 0; j < sleepList.size(); j++) {
+                ArrayList<String[]> temp = new ArrayList<>();
                 String[] sleepInfo = sleepList.get(j);
-                if (moveInfo[0].equals(sleepInfo[0])){
-                    for(String str:moveInfo) {
+
+                for (int p = 0; p < sleepList.size() - j; p++) {
+                    if (moveInfo[0].equals(sleepList.get(j + p)[0])) {
+                        temp.add((sleepList.get(j + p)));
+                        sleepList.set(j+p,a);
+                    } else {
+                        break;
+                    }
+                }
+
+                if (temp.size() == 1) {
+                    for (String str : moveInfo) {
                         saveString.append(str).append(",");
                     }
-                    for(int k = 1; k < sleepInfo.length; k++) {
-                        if (k == sleepInfo.length - 1 ) {
+                    for (int k = 1; k < sleepInfo.length; k++) {
+                        if (k == sleepInfo.length - 1) {
                             saveString.append(sleepInfo[k]).append("\n");
-                        }else{
+                        } else {
                             saveString.append(sleepInfo[k]).append(",");
                         }
                     }
@@ -456,17 +456,37 @@ public class TopActivity extends Activity implements Runnable{
         String result = saveString.toString();
         return result;
     }
+    /*
+    上書きする際、前回までの同期部分を保持
+     */
+    public static String fileAllDate() {
+        StringBuilder allDataBuilder= new StringBuilder("");
+        try {
+            FileInputStream in = new FileInputStream(filePath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+            String str;
+            while((str = reader.readLine()) != null){
+                allDataBuilder.append(str).append("\n");
+            }
+            in.close();
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
 
+        String allData = allDataBuilder.toString();
+        return allData;
+    }
+
+    /*
+    ファイル書き込み
+     */
     public static void fileWrite(String result){
         String s1 = fileAllDate();
         File file = new File(filePath);
-        OutputStream out;
         if(!file.exists()){
             file.getParentFile().mkdirs();
         }
         try {
-            //out = openFileOutput("log.csv",  MODE_PRIVATE | MODE_WORLD_READABLE |  MODE_WORLD_WRITEABLE );
-            //PrintWriter writer = new PrintWriter(new OutputStreamWriter(out, "UTF-8"));
             OutputStreamWriter writer2 =
                     new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8");
             //追記する
