@@ -290,7 +290,7 @@ public class TopActivity extends Activity implements Runnable{
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
             nexturl = jsonMove.getJSONObject("data").getJSONObject("links").getString("next");
             for (int i = 0; i < items.length(); i++) {
-                String moveInfo[] = new String[7];
+                String moveInfo[] = new String[8];
                 JSONObject item = items.getJSONObject(i);
                 JSONObject details = item.getJSONObject("details");
                 int date = item.getInt("date");
@@ -301,10 +301,11 @@ public class TopActivity extends Activity implements Runnable{
                 moveInfo[0] = String.valueOf(date);
                 moveInfo[1] = String.valueOf(details.getInt("active_time"));
                 moveInfo[2] = String.valueOf(details.getInt("bg_calories"));
-                moveInfo[3] = String.valueOf(details.getInt("wo_calories"));
-                moveInfo[4] = String.valueOf(details.getInt("steps"));
-                moveInfo[5] = String.valueOf(details.getInt("calories"));
-                moveInfo[6] = String.valueOf(details.getInt("bmr_day"));
+                moveInfo[3] = String.valueOf(details.getInt("wo_active_time"));
+                moveInfo[4] = String.valueOf(details.getInt("wo_calories"));
+                moveInfo[5] = String.valueOf(details.getInt("steps"));
+                moveInfo[6] = String.valueOf(details.getInt("calories"));
+                moveInfo[7] = String.valueOf(details.getInt("bmr_day"));
                 moveLists.add(moveInfo);
             }
         } catch (JSONException e) {
