@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
@@ -20,14 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -45,6 +39,7 @@ public class TopActivity extends Activity implements Runnable{
     private static ProgressDialog waitDialog;
     private String mClientSecret;
     private String mAccessToken;
+
 
     public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
     public static int latestDay;
@@ -71,6 +66,16 @@ public class TopActivity extends Activity implements Runnable{
         /*
         TODO Topで表示する物
          */
+        Button btn = (Button)findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                // インテントのインスタンス生成
+                int[] a = {1, 2, 3, 4, 5, 6};
+                Process.writeEvAct(1, a);
+            }
+        });
     }
 
 
@@ -78,7 +83,7 @@ public class TopActivity extends Activity implements Runnable{
 
     private void syncProcess(){
         Calendar today = Calendar.getInstance();
-        latestDay = readLatestDate();
+        latestDay = Process.readLatestDate();
         /*
         ファイルに今日の分がなければ更新
         */
@@ -99,7 +104,6 @@ public class TopActivity extends Activity implements Runnable{
         }else{
             dialog();
         }
-
     }
 
     private void waitProcess() {
@@ -202,7 +206,7 @@ public class TopActivity extends Activity implements Runnable{
 
     public static void finishCheck(){
         if(!flag_m && !flag_s){
-            fileWrite(createFileStringT(moveLists, sleepLists));
+            Process.fileWrite(createFileStringT(moveLists, sleepLists));
             waitDialog.dismiss();
             waitDialog = null;
         }
@@ -317,6 +321,7 @@ public class TopActivity extends Activity implements Runnable{
             nextAccessMove(nexturl);
         }
         finishCheck();
+
     }
 
     /*
@@ -372,24 +377,7 @@ public class TopActivity extends Activity implements Runnable{
     /*
     同期されているデータの最新日時の取得
      */
-    public int readLatestDate() {
-        int latestDay = 1;
-        String lineBuffer;
-        try {
-            FileInputStream in = new FileInputStream(filePath);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-        lineBuffer = reader.readLine();
-        if (lineBuffer != null) {
-            String[] splitData = lineBuffer.split(",", 0);
-            latestDay = Integer.parseInt(splitData[0]);
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-        latestDay = -1;
-        return latestDay;
-    }
-        return latestDay;
-    }
+
 
 
 /*
@@ -460,53 +448,11 @@ public class TopActivity extends Activity implements Runnable{
     /*
     上書きする際、前回までの同期部分を保持
      */
-    public static String fileAllDate() {
-        StringBuilder allDataBuilder= new StringBuilder("");
-        try {
-            FileInputStream in = new FileInputStream(filePath);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-            String str;
-            while((str = reader.readLine()) != null){
-                allDataBuilder.append(str).append("\n");
-            }
-            in.close();
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
 
-        String allData = allDataBuilder.toString();
-        return allData;
-    }
 
     /*
     ファイル書き込み
      */
-    public static void fileWrite(String result){
-        String s1 = fileAllDate();
-        File file = new File(filePath);
-        if(!file.exists()){
-            file.getParentFile().mkdirs();
-        }
-        try {
-            OutputStreamWriter writer2 =
-                    new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8");
-            //追記する
-            StringBuilder buf = new StringBuilder();
-            buf.append(result);
-            buf.append(s1);
-            String prevData = buf.toString();
-
-            BufferedWriter bw = new BufferedWriter(writer2);
-            bw.write(prevData);
-
-            bw.flush();
-            bw.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     @Override
