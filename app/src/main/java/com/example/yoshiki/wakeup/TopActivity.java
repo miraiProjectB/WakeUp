@@ -12,8 +12,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
@@ -66,16 +64,6 @@ public class TopActivity extends Activity implements Runnable{
         /*
         TODO Topで表示する物
          */
-        Button btn = (Button)findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                // インテントのインスタンス生成
-                int[] a = {1, 2, 3, 4, 5, 6};
-                Process.writeEvAct(1, a);
-            }
-        });
     }
 
 
