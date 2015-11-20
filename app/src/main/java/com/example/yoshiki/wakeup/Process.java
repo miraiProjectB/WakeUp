@@ -15,6 +15,9 @@ import java.io.OutputStreamWriter;
 public class Process {
 
 
+    /*
+    評価＆行動のファイル保存
+     */
     public static void writeEvAct(int eva,int[] act) {
 
         StringBuilder eva_act = new StringBuilder();
@@ -71,6 +74,10 @@ public class Process {
 
     }
 
+    /*
+    ファイル最新日取得
+    ファイルなし or 一行目のエラー　＝　戻り値:-1
+     */
     public static int readLatestDate() {
         int latestDay = 1;
         String lineBuffer;
@@ -93,7 +100,9 @@ public class Process {
         return latestDay;
     }
 
-
+    /*
+    上書きする際、前回までの同期部分を保持
+     */
     public static StringBuilder fileAllDate() {
         StringBuilder allDataBuilder = new StringBuilder("");
         String str;
@@ -113,6 +122,9 @@ public class Process {
         //return allData;
     }
 
+    /*
+    ファイル書き込み
+     */
     public static void fileWrite(String result){
         String s1 = fileAllDate().toString();
         File file = new File(TopActivity.filePath);

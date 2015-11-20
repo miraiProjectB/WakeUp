@@ -453,14 +453,6 @@ public class TopActivity extends Activity implements Runnable {
         String result = saveString.toString();
         return result;
     }
-    /*
-    上書きする際、前回までの同期部分を保持
-     */
-
-
-    /*
-    ファイル書き込み
-     */
 
 
     @Override
