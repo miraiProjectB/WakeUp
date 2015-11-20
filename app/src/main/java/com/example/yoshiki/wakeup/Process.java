@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 /**
  * Created by yoshiki on 2015/10/25.
@@ -18,7 +19,7 @@ public class Process {
     /*
     評価＆行動のファイル保存
      */
-    public static void writeEvAct(int eva,int[] act) {
+    public static void writeEvAct(int eva,ArrayList<Integer> act) {
 
         StringBuilder eva_act = new StringBuilder();
         String lineBuffer = null;

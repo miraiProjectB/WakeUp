@@ -2,7 +2,11 @@ package com.example.yoshiki.wakeup;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 /**
  * Created by 1013067 on 2015/11/20.
@@ -15,6 +19,41 @@ public class CheckActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check);
+
+        Button btn = (Button)findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Integer> act = new ArrayList<>();
+                act.add(common.cafein1_count);
+                act.add(common.cafein2_count);
+                act.add(common.cafein3_count);
+                act.add(common.bath1_count);
+                act.add(common.bath2_count);
+                act.add(common.bath3);
+                act.add(common.beer1_count);
+                act.add(common.beer2_count);
+                act.add(common.beer3_count);
+                act.add(common.sport1_count);
+                act.add(common.sport2_count);
+                act.add(common.sport3_count);
+                act.add(common.degital_count);
+                act.add(common.light_count);
+                act.add(common.food_count);
+                act.add(common.smoke_count);
+                for(int i = 0; i < act.size(); i++){
+                    if(act.get(i) == 0){
+                        act.remove(i);
+                    }
+                }
+
+                Process.writeEvAct(common.smile,act);
+                //グラフ描画画面に遷移
+                //Intent intent = new Intent(this, .class);
+                //startActivity(intent);
+            }
+        });
+
 
         setTitle("これでよろしいですか？");
 
@@ -109,7 +148,6 @@ public class CheckActivity extends AppCompatActivity {
             ImageView imageView = (ImageView)findViewById(R.id.imageView8);
             imageView.setImageResource(R.drawable.smoke1);
         }
-
-
     }
+
 }

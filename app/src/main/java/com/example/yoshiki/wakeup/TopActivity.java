@@ -63,7 +63,7 @@ public class TopActivity extends Activity implements Runnable {
         syncProcess();
 
         /*
-        TODO Topで表示する物
+        TODO Topで表示する物 & グラフ描画Activityに遷移
          */
     }
 
@@ -206,12 +206,9 @@ public class TopActivity extends Activity implements Runnable {
             waitDialog = null;
             latestDay = Process.readLatestDate();
             if(latestDay == tomorrow){
-                Intent intent = new Intent(TopActivity.this, ActionActivity.class);
+                Intent intent = new Intent(TopActivity.this, EvaluationActivity.class);
                 startActivity(intent);
                 finish();
-                /*
-                TODO:評価画面に遷移
-                 */
             }
         }
     }
