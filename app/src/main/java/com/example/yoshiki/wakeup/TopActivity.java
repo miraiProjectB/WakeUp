@@ -31,7 +31,7 @@ import retrofit.client.Response;
 /**
  * Created by yoshiki on 2015/10/25.
  */
-public class TopActivity extends Activity implements Runnable{
+public class TopActivity extends Activity implements Runnable {
 
     private static final String TAG = TopActivity.class.getSimpleName();
     private static ProgressDialog waitDialog;
@@ -41,8 +41,9 @@ public class TopActivity extends Activity implements Runnable{
 
     public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
     public static int latestDay;
+    public static int tomorrow;
     public static ArrayList<String[]> moveLists, sleepLists;
-    public static boolean flag_s,flag_m;
+    public static boolean flag_s, flag_m;
     public long start1;
 
     public void onCreate(Bundle saveInstance) {
@@ -59,40 +60,46 @@ public class TopActivity extends Activity implements Runnable{
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
 
-
         syncProcess();
+
         /*
         TODO Topで表示する物
          */
     }
 
+    private void syncProcess() {
+        String today_st = dateConvertToString(Calendar.getInstance());
 
 
-
-    private void syncProcess(){
-        Calendar today = Calendar.getInstance();
+        tomorrow =Integer.parseInt(dateConvertToString(backOneday(today_st)));
         latestDay = Process.readLatestDate();
+
         /*
         ファイルに今日の分がなければ更新
         */
 
-        if(GetInformation.netWorkCheck(this.getApplicationContext())) {
-            if (latestDay < Integer.parseInt(dateConvertToString(today)) && mClientSecret == null) {
+        if (latestDay < tomorrow&& mClientSecret == null) {
+            if (GetInformation.netWorkCheck(this.getApplicationContext())) {
                 Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
                 startActivity(intentSync);
                 finish();
-            } else if (mClientSecret != null) {
+            }  else{
+                dialog();
+            }
+        } else if (mClientSecret != null) {
+            if (GetInformation.netWorkCheck(this.getApplicationContext())) {
                 start1 = System.nanoTime();
                 flag_m = true;
-                flag_s  = true;
+                flag_s = true;
                 moveLists = new ArrayList<>();
                 sleepLists = new ArrayList<>();
                 waitProcess();
+            }  else {
+                dialog();
             }
-        }else{
-            dialog();
         }
     }
+
 
     private void waitProcess() {
         // プログレスダイアログを開く処理を呼び出す。
@@ -165,7 +172,7 @@ public class TopActivity extends Activity implements Runnable{
             );
         }else{
             flag_m=false;
-           //finishCheck();
+           finishCheck();
         }
     }
 
@@ -197,6 +204,12 @@ public class TopActivity extends Activity implements Runnable{
             Process.fileWrite(createFileStringT(moveLists, sleepLists));
             waitDialog.dismiss();
             waitDialog = null;
+            latestDay = Process.readLatestDate();
+            if(latestDay == tomorrow){
+                /*
+                TODO:評価画面に遷移
+                 */
+            }
         }
     }
 
@@ -268,6 +281,18 @@ public class TopActivity extends Activity implements Runnable{
                 String.format("%02d", ct.get(Calendar.MONTH) + 1) +
                 String.format("%02d", ct.get(Calendar.DAY_OF_MONTH));
     }
+    /*
+    String型　→　Date型
+    一日戻す
+     */
+    public static GregorianCalendar backOneday(String st) {
+        GregorianCalendar ct_gregor = new GregorianCalendar(Integer.parseInt(st.substring(0, 4)),
+                Integer.parseInt(st.substring(4, 6)) - 1,
+                Integer.parseInt(st.substring(6, 8)));
+        //一日戻す
+        ct_gregor.add(Calendar.DAY_OF_MONTH, -1);
+        return ct_gregor;
+    }
 
     /*
     Get move data
@@ -332,14 +357,9 @@ public class TopActivity extends Activity implements Runnable{
                 JSONObject details = item.getJSONObject("details");
                 //日付をStringに変換
                 String st = String.valueOf(date);
-                //年、月、日に分割
-                GregorianCalendar ct = new GregorianCalendar(Integer.parseInt(st.substring(0, 4)),
-                        Integer.parseInt(st.substring(4, 6)) - 1,
-                        Integer.parseInt(st.substring(6, 8)));
-                //一日戻す
-                ct.add(Calendar.DAY_OF_MONTH, -1);
+                //年、月、日に分割,カレンダー型に変換
 
-                sleepInfo[0] = dateConvertToString(ct);
+                sleepInfo[0] = dateConvertToString(backOneday(st));
                 sleepInfo[1] = String.valueOf(item.getInt("time_completed"));
                 sleepInfo[2] = String.valueOf(item.getInt("time_created"));
                 sleepInfo[3] = String.valueOf(details.getInt("awakenings"));
