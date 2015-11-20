@@ -154,7 +154,7 @@ public class TopActivity extends Activity implements Runnable {
         apiCall();
     }
 
-    public static void nextAccessMove(String url){
+    public void nextAccessMove(String url){
         if(!url.equals("")) {
             ApiManager.getRestApiInterface().getMoveEventsList(
                     UpPlatformSdkConstants.API_VERSION_STRING,
@@ -177,7 +177,7 @@ public class TopActivity extends Activity implements Runnable {
     }
 
 
-    public static void nextAccessSleep(String url){
+    public void nextAccessSleep(String url){
         if(!url.equals("")) {
             ApiManager.getRestApiInterface().getSleepEventsList(
                     UpPlatformSdkConstants.API_VERSION_STRING,
@@ -199,13 +199,16 @@ public class TopActivity extends Activity implements Runnable {
         }
     }
 
-    public static void finishCheck(){
+    public void finishCheck(){
         if(!flag_m && !flag_s){
             Process.fileWrite(createFileStringT(moveLists, sleepLists));
             waitDialog.dismiss();
             waitDialog = null;
             latestDay = Process.readLatestDate();
             if(latestDay == tomorrow){
+                Intent intent = new Intent(TopActivity.this, ActionActivity.class);
+                startActivity(intent);
+                finish();
                 /*
                 TODO:評価画面に遷移
                  */
@@ -298,7 +301,7 @@ public class TopActivity extends Activity implements Runnable {
     Get move data
      */
 
-    public static void getMoves(Object o) {
+    public void getMoves(Object o) {
 
         String nexturl = new String();
 
@@ -340,7 +343,7 @@ public class TopActivity extends Activity implements Runnable {
     /*
     Get Sleep details
      */
-    public static void getSleeps(Object o) {
+    public void getSleeps(Object o) {
         JSONObject jsonSleep = GetInformation.jsonConvert(o);
         String nexturl = new String();
         try {
