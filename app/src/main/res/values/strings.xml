@@ -2,4 +2,14 @@
     <string name="app_name">Wake Up</string>
     <string name="press_button_to_connect">press_button_to_connect</string>
     <string name="top">TOP</string>
+    <string name="action">etc</string>
+    <string name="Values">値をグラフ上に表示</string>
+    <string name="title">タイトル</string>
+    <string-array name="action_list">
+        <item>入眠までの時間</item>
+        <item>レム睡眠</item>
+        <item>ノンレム睡眠</item>
+        <item>深い眠り</item>
+        <item>浅い眠り</item>
+    </string-array>
 </resources>

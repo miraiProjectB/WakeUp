@@ -34,6 +34,17 @@
         <activity android:name=".KnowledgeActivity"/>
         <activity android:name=".CheckActivity"/>
         <activity android:name=".EvaluationActivity"/>
+        <activity
+            android:configChanges="screenSize"
+            android:name=".ScatterActivity"
+            android:label=""
+            android:screenOrientation="unspecified"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.Scatter" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

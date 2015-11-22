@@ -62,9 +62,12 @@ public class TopActivity extends Activity implements Runnable {
 
         syncProcess();
 
-        /*
-        TODO Topで表示する物 & グラフ描画Activityに遷移
-         */
+        /*        TODO Topで表示する物 & グラフ描画Activityに遷移         */
+
+        //　TODO 散布図画面に遷移
+        Intent intento = new Intent(TopActivity.this, ScatterActivity.class);
+        startActivity(intento);
+
     }
 
     private void syncProcess() {

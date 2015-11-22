@@ -1,1 +1,1 @@
-include ':app', ':UpPlatformSdk'
+include ':app', ':UpPlatformSdk', ':MPChartLib'

@@ -6,6 +6,27 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionMenuTextColor">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionDropDownStyle">@style/myActionDropDownStyle</item>
+        <item name="android:actionBarStyle">@style/myActionBar</item>
+        <item name="android:actionMenuTextColor">#FFFFFF</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="myActionDropDownStyle" parent="android:style/Widget.Holo.Light.Spinner">
+        <item name="android:background">#0000FF</item>
+    </style>
+    <style name="myActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:titleTextStyle">@style/myActionBar.titleTextStyle</item>
+    </style>
+    <style name="myActionBar.titleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title.Inverse">
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
 </resources>
