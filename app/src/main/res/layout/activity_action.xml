@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
@@ -30,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
-                android:text="昨日,就寝前に行った行動を選択してください。"
+                android:text="※ 昨日、就寝前に行った行動を選択してください。"
                 android:id="@+id/textView"
                 android:layout_gravity="center"/>
         </FrameLayout>
@@ -43,7 +44,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -55,12 +56,12 @@
                 android:background="@drawable/cafein"/>
 
             <FrameLayout
-                android:layout_width="275dp"
+                android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right|center_vertical">
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="12dip"
                     android:text="コーヒー"
@@ -70,9 +71,9 @@
                     android:background="@drawable/button_design"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:textSize="11dip"
+                    android:textSize="10dip"
                     android:text="清涼飲料水"
                     android:id="@+id/cafein2"
                     android:layout_gravity="center"
@@ -80,9 +81,9 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:textSize="13dip"
+                    android:textSize="11dip"
                     android:text="エナジードリンク"
                     android:id="@+id/cafein3"
                     android:layout_gravity="right|center_vertical"
@@ -95,7 +96,7 @@
 
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -107,12 +108,12 @@
                 android:background="@drawable/bath"/>
 
             <FrameLayout
-                android:layout_width="275dp"
+                android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right|center_vertical">
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="12dip"
                     android:text="シャワー"
@@ -122,9 +123,9 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:textSize="12dip"
+                    android:textSize="13dip"
                     android:text="熱めの湯船"
                     android:id="@+id/bath2"
                     android:layout_gravity="center"
@@ -132,7 +133,7 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="13dip"
                     android:text="ぬるめの湯船"
@@ -147,7 +148,7 @@
 
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -159,12 +160,12 @@
                 android:background="@drawable/beer"/>
 
             <FrameLayout
-                android:layout_width="275dp"
+                android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right|center_vertical">
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="13dip"
                     android:text="多め"
@@ -174,9 +175,9 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:textSize="13dip"
+                    android:textSize="12dip"
                     android:text="ほどほど"
                     android:id="@+id/beer2"
                     android:layout_gravity="center"
@@ -184,7 +185,7 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="13dip"
                     android:text="少なめ"
@@ -199,7 +200,7 @@
 
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -211,12 +212,12 @@
                 android:background="@drawable/sport"/>
 
             <FrameLayout
-                android:layout_width="275dp"
+                android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right|center_vertical">
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="13dip"
                     android:text="激しめ"
@@ -226,9 +227,9 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:textSize="13dip"
+                    android:textSize="12dip"
                     android:text="まあまあ"
                     android:id="@+id/sport2"
                     android:layout_gravity="center"
@@ -236,7 +237,7 @@
                     android:onClick="onClick"/>
 
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:textSize="13dip"
                     android:text="軽め"
@@ -251,7 +252,7 @@
 
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -263,7 +264,7 @@
                 android:background="@drawable/degital"/>
 
             <Button
-                android:layout_width="270dp"
+                android:layout_width="240dp"
                 android:layout_height="60dp"
                 android:id="@+id/degital1"
                 android:textSize="20dip"
@@ -276,7 +277,7 @@
 
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -288,7 +289,7 @@
                 android:background="@drawable/light"/>
 
             <Button
-                android:layout_width="270dp"
+                android:layout_width="240dp"
                 android:layout_height="60dp"
                 android:id="@+id/light1"
                 android:textSize="20dip"
@@ -300,7 +301,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -312,7 +313,7 @@
                 android:background="@drawable/food"/>
 
             <Button
-                android:layout_width="270dp"
+                android:layout_width="240dp"
                 android:layout_height="60dp"
                 android:id="@+id/food1"
                 android:textSize="20dip"
@@ -324,7 +325,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="350dp"
+            android:layout_width="310dp"
             android:layout_height="65dp"
             android:layout_gravity="center">
 
@@ -336,7 +337,7 @@
                 android:background="@drawable/smoke"/>
 
             <Button
-                android:layout_width="270dp"
+                android:layout_width="240dp"
                 android:layout_height="60dp"
                 android:id="@+id/smoke1"
                 android:textSize="20dip"
@@ -347,20 +348,15 @@
 
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_gravity="center_horizontal">
-        </FrameLayout>
 
         <FrameLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_width="310dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal">
 
             <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/mame"
                 android:layout_gravity="right|center_vertical"
                 android:background="@drawable/mamebutton"

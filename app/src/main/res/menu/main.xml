@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/cafein"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="カフェイン"/>
+    <item
+        android:id="@+id/bath"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="入浴" />
+    <item
+        android:id="@+id/beer"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="飲酒"/>
+    <item
+        android:id="@+id/sport"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="運動" />
+    <item
+        android:id="@+id/degital"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="スマホ・TV等"/>
+    <item
+        android:id="@+id/light"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="明るい環境"/>
+    <item
+        android:id="@+id/food"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="食事"/>
+    <item
+        android:id="@+id/smoke"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="喫煙"/>
+
+</menu>
