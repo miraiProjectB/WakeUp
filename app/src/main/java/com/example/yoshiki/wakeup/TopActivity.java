@@ -41,7 +41,7 @@ public class TopActivity extends Activity implements Runnable {
 
     public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
     public static int latestDay;
-    public static int tomorrow;
+    public static int yesterday;
     public static ArrayList<String[]> moveLists, sleepLists;
     public static boolean flag_s, flag_m;
     public long start1;
@@ -74,14 +74,14 @@ public class TopActivity extends Activity implements Runnable {
         String today_st = dateConvertToString(Calendar.getInstance());
 
 
-        tomorrow =Integer.parseInt(dateConvertToString(backOneday(today_st)));
+        yesterday = Integer.parseInt(dateConvertToString(backOneday(today_st)));
         latestDay = Process.readLatestDate();
 
         /*
         ファイルに今日の分がなければ更新
         */
 
-        if (latestDay < tomorrow&& mClientSecret == null) {
+        if (latestDay < yesterday && mClientSecret == null) {
             if (GetInformation.netWorkCheck(this.getApplicationContext())) {
                 Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
                 startActivity(intentSync);
@@ -208,7 +208,7 @@ public class TopActivity extends Activity implements Runnable {
             waitDialog.dismiss();
             waitDialog = null;
             latestDay = Process.readLatestDate();
-            if(latestDay == tomorrow){
+            if(latestDay == yesterday){
                 Intent intent = new Intent(TopActivity.this, EvaluationActivity.class);
                 startActivity(intent);
                 finish();
