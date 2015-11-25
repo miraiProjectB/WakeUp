@@ -179,26 +179,26 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             while ((str = reader.readLine()) != null) {
                 String[] str_line = str.split(",", -1);
-                calories = Integer.parseInt(str_line[5]);//活動量
+                calories = Integer.parseInt(str_line[8]);//活動量
                 switch (itemPosition) {   //睡眠データ
                     case 0://入眠時間
-                        sleep = (Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[9])) / 60;
+                        sleep = (Integer.parseInt(str_line[13]) - Integer.parseInt(str_line[10])) / 60;
                         break;
                     case 1://レム
-                        sleep = Integer.parseInt(str_line[14]) / 60;
+                        sleep = Integer.parseInt(str_line[15]) / 60;
                         break;
                     case 2://深い眠り
-                        sleep = Integer.parseInt(str_line[11]) / 60;
+                        sleep = Integer.parseInt(str_line[12]) / 60;
                         break;
                     case 3://浅い眠り
-                        sleep = (Integer.parseInt(str_line[15]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
-                                - Integer.parseInt(str_line[13])) / 60;
+                        sleep = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                - Integer.parseInt(str_line[14])) / 60;
                         break;
                     case 4://眠り合算
-                        sleep = Integer.parseInt(str_line[14]) / 60;
-                        sleep2 = Integer.parseInt(str_line[11]) / 60;
-                        sleep3 = (Integer.parseInt(str_line[15]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
-                                - Integer.parseInt(str_line[13])) / 60;
+                        sleep = Integer.parseInt(str_line[15]) / 60;
+                        sleep2 = Integer.parseInt(str_line[12]) / 60;
+                        sleep3 = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
+                                - Integer.parseInt(str_line[14])) / 60;
                         yVals2.add(new Entry(sleep2, calories));
                         yVals3.add(new Entry(sleep3, calories));
                         break;
