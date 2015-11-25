@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartActivity"/>
+
         <activity android:name=".ActionActivity"/>
         <activity android:name=".KnowledgeActivity"/>
         <activity android:name=".CheckActivity"/>

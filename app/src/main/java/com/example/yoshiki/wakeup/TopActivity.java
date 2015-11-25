@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
@@ -62,12 +63,17 @@ public class TopActivity extends Activity implements Runnable {
 
         syncProcess();
 
-        /*        TODO Topで表示する物 & グラフ描画Activityに遷移         */
+    }
 
-        //　TODO 散布図画面に遷移
-        Intent intento = new Intent(TopActivity.this, ScatterActivity.class);
-        startActivity(intento);
+    public boolean onTouchEvent(MotionEvent event) {
 
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Intent intent = new Intent(this, ScatterActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 
     private void syncProcess() {
