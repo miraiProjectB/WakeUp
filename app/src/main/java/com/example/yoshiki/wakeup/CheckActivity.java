@@ -36,10 +36,13 @@ public class CheckActivity extends AppCompatActivity {
                 act.add(common.smoke_count);
                 Process.writeEvAct(common.smile, act);
                 //グラフ描画画面に遷移
-                Intent intent = new Intent(CheckActivity.this, ScatterActivity.class);
+                Intent intent = new Intent(getApplication(), ScatterActivity.class);
+                EvaluationActivity.exitFlag = true;
+                ActionActivity.exitFlag = true;
                 startActivity(intent);
                 finish();
             }
+
         });
 
 
@@ -138,4 +141,18 @@ public class CheckActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void  onResume(){
+        super.onResume();
+
+    }
+    @Override
+    protected  void onPause(){
+        super.onPause();
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+    }
 }

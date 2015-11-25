@@ -12,7 +12,7 @@ import android.widget.Button;
 public class ActionActivity extends AppCompatActivity {
 
     private Common common;
-
+    static boolean exitFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,5 +229,25 @@ public class ActionActivity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+    @Override
+    protected void  onResume(){
+        super.onResume();
+
+    }
+    @Override
+    protected  void onPause(){
+        super.onPause();
+    }
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        if(exitFlag == true){
+            this.finish();
+        }
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
     }
 }
