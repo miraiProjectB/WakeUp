@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:background="#dcdcdc"
+            style="@style/AppTheme"
+            android:transitionGroup="false"
+            android:theme="@style/AppTheme">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  tools:context=".Select">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_gravity="center_horizontal">
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="※ 並び替える項目を選択してください。"
+                android:id="@+id/textView"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_gravity="center_horizontal">
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/cafein"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/cafein"/>
+
+            <FrameLayout
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center_vertical">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="12dip"
+                    android:text="コーヒー"
+                    android:id="@+id/cafein1"
+                    android:layout_gravity="left|center_vertical"
+                    android:onClick="onClick"
+                    android:background="@drawable/button_design"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="10dip"
+                    android:text="清涼飲料水"
+                    android:id="@+id/cafein2"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="11dip"
+                    android:text="エナジードリンク"
+                    android:id="@+id/cafein3"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/bath"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/bath"/>
+
+            <FrameLayout
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center_vertical">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="12dip"
+                    android:text="シャワー"
+                    android:id="@+id/bath1"
+                    android:layout_gravity="left|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="13dip"
+                    android:text="熱めの湯船"
+                    android:id="@+id/bath2"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="13dip"
+                    android:text="ぬるめの湯船"
+                    android:id="@+id/bath3"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/beer"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/beer"/>
+
+            <FrameLayout
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center_vertical">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="13dip"
+                    android:text="多め"
+                    android:id="@+id/beer1"
+                    android:layout_gravity="left|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="12dip"
+                    android:text="ほどほど"
+                    android:id="@+id/beer2"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="13dip"
+                    android:text="少なめ"
+                    android:id="@+id/beer3"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/sport"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/sport"/>
+
+            <FrameLayout
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|center_vertical">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="13dip"
+                    android:text="激しめ"
+                    android:id="@+id/sport1"
+                    android:layout_gravity="left|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="12dip"
+                    android:text="まあまあ"
+                    android:id="@+id/sport2"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="13dip"
+                    android:text="軽め"
+                    android:id="@+id/sport3"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/button_design"
+                    android:onClick="onClick"/>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/degital"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/degital"/>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:id="@+id/degital1"
+                android:textSize="20dip"
+                android:text="スマホ・TV等"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/light"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/light"/>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:id="@+id/light1"
+                android:textSize="20dip"
+                android:text="明るい環境"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/food"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/food"/>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:id="@+id/food1"
+                android:textSize="20dip"
+                android:text="夜食"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/smoke"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/smoke"/>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:id="@+id/smoke1"
+                android:textSize="20dip"
+                android:text="喫煙"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/mame"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/mamebutton"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="戻る"
+                android:id="@+id/next_button"
+                android:background="@drawable/design"
+                android:layout_gravity="left|center_vertical"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
