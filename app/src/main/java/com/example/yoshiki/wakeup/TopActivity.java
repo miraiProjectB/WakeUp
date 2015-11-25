@@ -45,6 +45,7 @@ public class TopActivity extends Activity implements Runnable {
     public static int yesterday;
     public static ArrayList<String[]> moveLists, sleepLists;
     public static boolean flag_s, flag_m;
+    public static boolean evalu_check = false;
     public long start1;
 
     public void onCreate(Bundle saveInstance) {
@@ -69,8 +70,14 @@ public class TopActivity extends Activity implements Runnable {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Intent intent = new Intent(this, ScatterActivity.class);
-                startActivity(intent);
+                if (!evalu_check) {
+                    Intent intent = new Intent(this, ScatterActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent_evalu =new Intent(this,EvaluationActivity.class);
+                    startActivity(intent_evalu);
+                }
+                finish();
                 break;
         }
         return true;
@@ -215,9 +222,7 @@ public class TopActivity extends Activity implements Runnable {
             waitDialog = null;
             latestDay = Process.readLatestDate();
             if(latestDay == yesterday){
-                Intent intent = new Intent(TopActivity.this, EvaluationActivity.class);
-                startActivity(intent);
-                finish();
+                evalu_check = true;
             }
         }
     }
@@ -316,7 +321,7 @@ public class TopActivity extends Activity implements Runnable {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
             nexturl = jsonMove.getJSONObject("data").getJSONObject("links").getString("next");
             for (int i = 0; i < items.length(); i++) {
-                String moveInfo[] = new String[8];
+                String moveInfo[] = new String[9];
                 JSONObject item = items.getJSONObject(i);
                 JSONObject details = item.getJSONObject("details");
                 int date = item.getInt("date");
@@ -332,6 +337,7 @@ public class TopActivity extends Activity implements Runnable {
                 moveInfo[5] = String.valueOf(details.getInt("steps"));
                 moveInfo[6] = String.valueOf(details.getInt("calories"));
                 moveInfo[7] = String.valueOf(details.getInt("bmr_day"));
+                moveInfo[8] = String.valueOf(details.getInt("bmr_day") + details.getInt("calories"));
                 moveLists.add(moveInfo);
             }
         } catch (JSONException e) {

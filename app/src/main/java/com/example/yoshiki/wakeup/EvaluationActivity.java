@@ -117,6 +117,7 @@ public class EvaluationActivity extends AppCompatActivity {
             case R.id.button1:
                 Intent intent = new Intent(this, ActionActivity.class);
                 startActivity(intent);
+
                 break;
         }
     }

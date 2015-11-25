@@ -127,25 +127,25 @@ public class Process {
     ファイル書き込み
      */
     public static void fileWrite(String result){
-        String s1 = fileAllDate().toString();
-        File file = new File(TopActivity.filePath);
-        if(!file.exists()){
-            file.getParentFile().mkdirs();
-        }
-        try {
-            OutputStreamWriter writer2 =
-                    new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8");
-            //追記する
-            StringBuilder buf = new StringBuilder();
-            buf.append(result);
-            buf.append(s1);
-            String prevData = buf.toString();
+                String s1 = fileAllDate().toString();
+                File file = new File(TopActivity.filePath);
+                if(!file.exists()){
+                    file.getParentFile().mkdirs();
+                }
+                try {
+                    OutputStreamWriter writer2 =
+                            new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8");
+                    //追記する
+                    StringBuilder buf = new StringBuilder();
+                    buf.append(result);
+                    buf.append(s1);
+                    String prevData = buf.toString();
 
-            BufferedWriter bw = new BufferedWriter(writer2);
-            bw.write(prevData);
+                    BufferedWriter bw = new BufferedWriter(writer2);
+                    bw.write(prevData);
 
-            bw.flush();
-            bw.close();
+                    bw.flush();
+                    bw.close();
 
         } catch (IOException e) {
             e.printStackTrace();

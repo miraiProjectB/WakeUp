@@ -1,5 +1,6 @@
 package com.example.yoshiki.wakeup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,16 +34,11 @@ public class CheckActivity extends AppCompatActivity {
                 act.add(common.light_count);
                 act.add(common.food_count);
                 act.add(common.smoke_count);
-                for(int i = 0; i < act.size(); i++){
-                    if(act.get(i) == 0){
-                        act.remove(i);
-                    }
-                }
-
-                Process.writeEvAct(common.smile,act);
+                Process.writeEvAct(common.smile, act);
                 //グラフ描画画面に遷移
-                //Intent intent = new Intent(this, .class);
-                //startActivity(intent);
+                Intent intent = new Intent(CheckActivity.this, ScatterActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

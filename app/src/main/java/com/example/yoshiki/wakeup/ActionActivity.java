@@ -34,6 +34,7 @@ public class ActionActivity extends AppCompatActivity {
             case R.id.next_button:
                 Intent intent = new Intent(this, CheckActivity.class);
                 startActivity(intent);
+
                 break;
 
             case R.id.cafein1:
