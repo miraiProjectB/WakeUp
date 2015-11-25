@@ -28,18 +28,9 @@
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="週"
-                    android:id="@+id/button"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:text="年"
-                    android:id="@+id/button2"
+                    android:id="@+id/year"
+                    android:onClick="onClick"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1" />
@@ -48,9 +39,21 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="月"
-                    android:id="@+id/button3"
+                    android:id="@+id/month"
+                    android:onClick="onClick"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="週"
+                    android:id="@+id/week"
+                    android:onClick="onClick"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center_horizontal"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -81,18 +84,19 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButton"
-                    android:src="@drawable/cafein"
+                    android:src="@drawable/nothing"
                     android:background="#00000000"
                     android:layout_weight="0.1"
                     android:layout_gravity="center|fill"
                     android:clickable="false"
+                    android:onClick="onClick"
                     android:scaleType="fitStart" />
 
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="カフェイン"
+                    android:text="nothing"
                     android:id="@+id/textView"
                     android:layout_weight="0.4" />
             </LinearLayout>

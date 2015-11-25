@@ -68,7 +68,7 @@ public class CheckActivity extends AppCompatActivity {
         }else if(common.smile == 3){
             ImageView imageView = (ImageView)findViewById(R.id.image_view);
             imageView.setImageResource(R.drawable.kao2);
-        }else if(common.smile == 4 || common.smile == 0){
+        }else if(common.smile == 4){
             ImageView imageView = (ImageView)findViewById(R.id.image_view);
             imageView.setImageResource(R.drawable.kao3);
         }else if(common.smile == 5){

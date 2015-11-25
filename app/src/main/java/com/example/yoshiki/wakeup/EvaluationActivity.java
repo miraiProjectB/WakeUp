@@ -19,7 +19,7 @@ public class EvaluationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluation);
         ImageView imageView = (ImageView)findViewById(R.id.image_view);
-        imageView.setImageResource(R.drawable.kao3);
+        imageView.setImageResource(R.drawable.shihyo);
 
         common = (Common) getApplication();
         common.init_kao();
