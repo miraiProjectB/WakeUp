@@ -8,8 +8,8 @@
     <string-array name="action_list">
         <item>入眠までの時間</item>
         <item>レム睡眠</item>
-        <item>ノンレム睡眠</item>
-        <item>深い眠り</item>
         <item>浅い眠り</item>
+        <item>深い眠り</item>
+        <item>レム睡眠・浅い眠り・深い眠り</item>
     </string-array>
 </resources>
