@@ -61,9 +61,7 @@ public class TopActivity extends Activity implements Runnable {
         if (mAccessToken != null) {
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
-
         syncProcess();
-
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -77,9 +75,9 @@ public class TopActivity extends Activity implements Runnable {
                     Intent intent_evalu =new Intent(this,EvaluationActivity.class);
                     startActivity(intent_evalu);
                 }
-                finish();
                 break;
         }
+        finish();
         return true;
     }
 
@@ -188,7 +186,6 @@ public class TopActivity extends Activity implements Runnable {
             );
         }else{
             flag_m=false;
-           finishCheck();
         }
     }
 
@@ -211,7 +208,6 @@ public class TopActivity extends Activity implements Runnable {
             );
         }else{
             flag_s = false;
-            finishCheck();
         }
     }
 
@@ -349,7 +345,6 @@ public class TopActivity extends Activity implements Runnable {
             nextAccessMove(nexturl);
         }
         finishCheck();
-
     }
 
     /*
