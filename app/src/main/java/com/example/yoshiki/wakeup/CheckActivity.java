@@ -25,18 +25,10 @@ public class CheckActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ArrayList<Integer> act = new ArrayList<>();
-                act.add(common.cafein1_count);
-                act.add(common.cafein2_count);
-                act.add(common.cafein3_count);
-                act.add(common.bath1_count);
-                act.add(common.bath2_count);
-                act.add(common.bath3);
-                act.add(common.beer1_count);
-                act.add(common.beer2_count);
-                act.add(common.beer3_count);
-                act.add(common.sport1_count);
-                act.add(common.sport2_count);
-                act.add(common.sport3_count);
+                act.add(common.cafein_count);
+                act.add(common.bath_count);
+                act.add(common.beer_count);
+                act.add(common.sport_count);
                 act.add(common.degital_count);
                 act.add(common.light_count);
                 act.add(common.food_count);
@@ -85,46 +77,46 @@ public class CheckActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.kao7);
         }
 
-        if(common.cafein1_count == 1){
+        if(common.cafein_count == 1){
             ImageView imageView = (ImageView)findViewById(R.id.imageView);
             imageView.setImageResource(R.drawable.cafein1);
-        }else if(common.cafein2_count == 1){
+        }else if(common.cafein_count == 2){
             ImageView imageView = (ImageView)findViewById(R.id.imageView);
             imageView.setImageResource(R.drawable.cafein2);
-        }else if(common.cafein3_count == 1){
+        }else if(common.cafein_count == 3){
             ImageView imageView = (ImageView)findViewById(R.id.imageView);
             imageView.setImageResource(R.drawable.cafein3);
         }
 
-        if(common.bath1_count == 1){
+        if(common.bath_count == 1){
             ImageView imageView = (ImageView)findViewById(R.id.imageView2);
             imageView.setImageResource(R.drawable.bath1);
-        }else if(common.bath2_count == 1){
+        }else if(common.bath_count == 2){
             ImageView imageView = (ImageView)findViewById(R.id.imageView2);
             imageView.setImageResource(R.drawable.bath2);
-        }else if(common.bath3 == 1){
+        }else if(common.bath_count == 3){
             ImageView imageView = (ImageView)findViewById(R.id.imageView2);
             imageView.setImageResource(R.drawable.bath3);
         }
 
-        if(common.beer1_count == 1){
+        if(common.beer_count == 1){
             ImageView imageView = (ImageView)findViewById(R.id.imageView3);
             imageView.setImageResource(R.drawable.beer1);
-        }else if(common.beer2_count == 1){
+        }else if(common.beer_count == 2){
             ImageView imageView = (ImageView)findViewById(R.id.imageView3);
             imageView.setImageResource(R.drawable.beer2);
-        }else if(common.beer3_count == 1){
+        }else if(common.beer_count == 3){
             ImageView imageView = (ImageView)findViewById(R.id.imageView3);
             imageView.setImageResource(R.drawable.beer3);
         }
 
-        if(common.sport1_count == 1){
+        if(common.sport_count == 1){
             ImageView imageView = (ImageView)findViewById(R.id.imageView4);
             imageView.setImageResource(R.drawable.sport1);
-        }else if(common.sport2_count == 1){
+        }else if(common.sport_count == 2){
             ImageView imageView = (ImageView)findViewById(R.id.imageView4);
             imageView.setImageResource(R.drawable.sport2);
-        }else if(common.sport3_count == 1){
+        }else if(common.sport_count == 3){
             ImageView imageView = (ImageView)findViewById(R.id.imageView4);
             imageView.setImageResource(R.drawable.sport3);
         }

@@ -37,146 +37,146 @@ public class ActionActivity extends AppCompatActivity {
                 break;
 
             case R.id.cafein1:
-                if(common.cafein1_count == 1){
+                if(common.cafein_count == 1) {
                     Button button = (Button) findViewById(R.id.cafein1);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.cafein1_count = 0;
-                }else if(common.cafein1_count == 0 && common.cafein2_count == 0 && common.cafein3_count == 0){
+                    common.cafein_count = 0;
+                }else if(common.cafein_count == 0){
                     Button button = (Button) findViewById(R.id.cafein1);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.cafein1_count = 1;
+                    common.cafein_count = 1;
                 }
                 break;
 
             case R.id.cafein2:
-                if(common.cafein2_count == 1){
+                if(common.cafein_count == 2) {
                     Button button = (Button) findViewById(R.id.cafein2);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.cafein2_count = 0;
-                }else if(common.cafein2_count == 0 && common.cafein1_count == 0 && common.cafein3_count == 0){
+                    common.cafein_count = 0;
+                }else if(common.cafein_count == 0){
                     Button button = (Button) findViewById(R.id.cafein2);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.cafein2_count = 1;
+                    common.cafein_count = 2;
                 }
                 break;
 
             case R.id.cafein3:
-                if(common.cafein3_count == 1){
+                if(common.cafein_count == 3) {
                     Button button = (Button) findViewById(R.id.cafein3);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.cafein3_count = 0;
-                }else if(common.cafein3_count == 0 && common.cafein1_count == 0 && common.cafein2_count == 0){
+                    common.cafein_count = 0;
+                }else if(common.cafein_count == 0){
                     Button button = (Button) findViewById(R.id.cafein3);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.cafein3_count = 1;
+                    common.cafein_count = 3;
                 }
                 break;
 
             case R.id.bath1:
-                if(common.bath1_count == 1){
+                if(common.bath_count == 1){
                     Button button = (Button) findViewById(R.id.bath1);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.bath1_count = 0;
-                }else if(common.bath1_count == 0 && common.bath2_count == 0 && common.bath3 == 0){
+                    common.bath_count = 0;
+                }else if(common.bath_count == 0){
                     Button button = (Button) findViewById(R.id.bath1);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.bath1_count = 1;
+                    common.bath_count = 1;
                 }
                 break;
 
             case R.id.bath2:
-                if(common.bath2_count == 1){
+                if(common.bath_count == 2){
                     Button button = (Button) findViewById(R.id.bath2);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.bath2_count = 0;
-                }else if(common.bath2_count == 0 && common.bath1_count == 0 && common.bath3 == 0){
+                    common.bath_count = 0;
+                }else if(common.bath_count == 0){
                     Button button = (Button) findViewById(R.id.bath2);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.bath2_count = 1;
+                    common.bath_count = 2;
                 }
                 break;
 
             case R.id.bath3:
-                if(common.bath3 == 1){
+                if(common.bath_count == 3){
                     Button button = (Button) findViewById(R.id.bath3);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.bath3 = 0;
-                }else if(common.bath3 == 0 && common.bath1_count == 0 && common.bath2_count == 0){
+                    common.bath_count = 0;
+                }else if(common.bath_count == 0){
                     Button button = (Button) findViewById(R.id.bath3);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.bath3 = 1;
+                    common.bath_count = 3;
                 }
                 break;
 
             case R.id.beer1:
-                if(common.beer1_count == 1){
+                if(common.beer_count == 1){
                     Button button = (Button) findViewById(R.id.beer1);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.beer1_count = 0;
-                }else if(common.beer1_count == 0 && common.beer2_count == 0 && common.beer3_count == 0){
+                    common.beer_count = 0;
+                }else if(common.beer_count == 0){
                     Button button = (Button) findViewById(R.id.beer1);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.beer1_count = 1;
+                    common.beer_count = 1;
                 }
                 break;
 
             case R.id.beer2:
-                if(common.beer2_count == 1){
+                if(common.beer_count == 2){
                     Button button = (Button) findViewById(R.id.beer2);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.beer2_count = 0;
-                }else if(common.beer2_count == 0 && common.beer1_count == 0 && common.beer3_count == 0){
+                    common.beer_count = 0;
+                }else if(common.beer_count == 0){
                     Button button = (Button) findViewById(R.id.beer2);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.beer2_count = 1;
+                    common.beer_count = 2;
                 }
                 break;
 
             case R.id.beer3:
-                if(common.beer3_count == 1){
+                if(common.beer_count == 3){
                     Button button = (Button) findViewById(R.id.beer3);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.beer3_count = 0;
-                }else if(common.beer3_count == 0 && common.beer1_count == 0 && common.beer2_count ==0){
+                    common.beer_count = 0;
+                }else if(common.beer_count == 0){
                     Button button = (Button) findViewById(R.id.beer3);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.beer3_count = 1;
+                    common.beer_count = 3;
                 }
                 break;
 
             case R.id.sport1:
-                if(common.sport1_count == 1){
+                if(common.sport_count == 1){
                     Button button = (Button) findViewById(R.id.sport1);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.sport1_count = 0;
-                }else if(common.sport1_count == 0 && common.sport2_count == 0 && common.sport3_count == 0){
+                    common.sport_count = 0;
+                }else if(common.sport_count == 0){
                     Button button = (Button) findViewById(R.id.sport1);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.sport1_count = 1;
+                    common.sport_count = 1;
                 }
                 break;
 
             case R.id.sport2:
-                if(common.sport2_count == 1){
+                if(common.sport_count == 2){
                     Button button = (Button) findViewById(R.id.sport2);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.sport2_count = 0;
-                }else if(common.sport2_count == 0 && common.sport1_count == 0 && common.sport3_count == 0){
+                    common.sport_count = 0;
+                }else if(common.sport_count == 0){
                     Button button = (Button) findViewById(R.id.sport2);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.sport2_count = 1;
+                    common.sport_count = 2;
                 }
                 break;
 
             case R.id.sport3:
-                if(common.sport3_count == 1){
+                if(common.sport_count == 3){
                     Button button = (Button) findViewById(R.id.sport3);
                     button.setBackgroundResource(R.drawable.button_design);
-                    common.sport3_count = 0;
-                }else if(common.sport3_count == 0 && common.sport1_count == 0 && common.sport2_count == 0){
+                    common.sport_count = 0;
+                }else if(common.sport_count == 0){
                     Button button = (Button) findViewById(R.id.sport3);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    common.sport3_count = 1;
+                    common.sport_count = 3;
                 }
                 break;
 
