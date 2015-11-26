@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
@@ -33,12 +32,9 @@ import retrofit.client.Response;
  * Created by yoshiki on 2015/10/25.
  */
 public class TopActivity extends Activity implements Runnable {
-
-    private static final String TAG = TopActivity.class.getSimpleName();
     private static ProgressDialog waitDialog;
     private String mClientSecret;
     private String mAccessToken;
-
 
     public static String filePath = Environment.getExternalStorageDirectory() + "/wakeup/log.csv";
     public static int latestDay;
@@ -46,7 +42,6 @@ public class TopActivity extends Activity implements Runnable {
     public static ArrayList<String[]> moveLists, sleepLists;
     public static boolean flag_s, flag_m;
     public static boolean evalu_check = false;
-    public long start1;
 
     public void onCreate(Bundle saveInstance) {
         super.onCreate(saveInstance);
@@ -83,15 +78,11 @@ public class TopActivity extends Activity implements Runnable {
 
     private void syncProcess() {
         String today_st = dateConvertToString(Calendar.getInstance());
-
-
         yesterday = Integer.parseInt(dateConvertToString(backOneday(today_st)));
         latestDay = Process.readLatestDate();
-
         /*
         ファイルに今日の分がなければ更新
         */
-
         if (latestDay < yesterday && mClientSecret == null) {
             if (GetInformation.netWorkCheck(this.getApplicationContext())) {
                 Intent intentSync = new Intent(TopActivity.this, HelloUpActivity.class);
@@ -102,7 +93,6 @@ public class TopActivity extends Activity implements Runnable {
             }
         } else if (mClientSecret != null) {
             if (GetInformation.netWorkCheck(this.getApplicationContext())) {
-                start1 = System.nanoTime();
                 flag_m = true;
                 flag_s = true;
                 moveLists = new ArrayList<>();
@@ -113,7 +103,6 @@ public class TopActivity extends Activity implements Runnable {
             }
         }
     }
-
 
     private void waitProcess() {
         // プログレスダイアログを開く処理を呼び出す。
@@ -178,7 +167,6 @@ public class TopActivity extends Activity implements Runnable {
                         public void success(Object o, Response response) {
                             getMoves(o);
                         }
-
                         @Override
                         public void failure(RetrofitError error) {
                         }
@@ -200,7 +188,6 @@ public class TopActivity extends Activity implements Runnable {
                         public void success(Object o, Response response) {
                             getSleeps(o);
                         }
-
                         @Override
                         public void failure(RetrofitError error) {
                         }
@@ -240,27 +227,20 @@ public class TopActivity extends Activity implements Runnable {
                                     @Override
                                     public void success(Object o, Response response) {
                                         getSleeps(o);
-                                        long end = System.nanoTime();
-                                        System.out.println("Time:" + (end - start1) / 1000000f + "ms");
                                     }
-
                                     @Override
                                     public void failure(RetrofitError retrofitError) {
                                         waitDialog.dismiss();
-
                                     }
                                 }
                         );
                     }
-
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         waitDialog.dismiss();
                     }
                 }
         );
-
-
     }
 
     private void dialog() {
@@ -307,11 +287,8 @@ public class TopActivity extends Activity implements Runnable {
     /*
     Get move data
      */
-
     public void getMoves(Object o) {
-
         String nexturl = new String();
-
         JSONObject jsonMove = GetInformation.jsonConvert(o);
         try {
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
@@ -339,8 +316,6 @@ public class TopActivity extends Activity implements Runnable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        Log.d(TAG,nexturl);
         if(flag_m){
             nextAccessMove(nexturl);
         }
@@ -379,7 +354,6 @@ public class TopActivity extends Activity implements Runnable {
                 sleepInfo[7] = String.valueOf(details.getInt("rem"));
                 sleepInfo[8] = String.valueOf(details.getInt("duration"));
                 sleepInfo[9] = String.valueOf(details.getInt("awake_time"));
-
                 sleepLists.add(sleepInfo);
             }
         } catch (JSONException e) {
@@ -421,8 +395,7 @@ public class TopActivity extends Activity implements Runnable {
                 }
             }
         }
-        String result = saveString.toString();
-        return result;
+        return saveString.toString();
     }
 
     /*
@@ -436,7 +409,6 @@ public class TopActivity extends Activity implements Runnable {
             for (int j = 0; j < sleepList.size(); j++) {
                 ArrayList<String[]> temp = new ArrayList<>();
                 String[] sleepInfo = sleepList.get(j);
-
                 for (int p = 0; p < sleepList.size() - j; p++) {
                     if (moveInfo[0].equals(sleepList.get(j + p)[0])) {
                         temp.add((sleepList.get(j + p)));
@@ -460,26 +432,20 @@ public class TopActivity extends Activity implements Runnable {
                 }
             }
         }
-        String result = saveString.toString();
-        return result;
+        return saveString.toString();
     }
 
 
     @Override
     protected void  onResume(){
         super.onResume();
-        Log.d(TAG, "Resume");
-
     }
     @Override
     protected  void onPause(){
         super.onPause();
-        Log.d(TAG, "Pause");
-
     }
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        Log.d(TAG, "Destroy");
     }
 }

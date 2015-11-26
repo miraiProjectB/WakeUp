@@ -20,9 +20,8 @@ public class Process {
     評価＆行動のファイル保存
      */
     public static void writeEvAct(int eva,ArrayList<Integer> act) {
-
         StringBuilder eva_act = new StringBuilder();
-        String lineBuffer = null;
+        String lineBuffer;
         eva_act.append(",").append(String.valueOf(eva)).append(",");
         for (int act_c : act) {
             eva_act.append(String.valueOf(act_c)).append(",");
@@ -30,16 +29,13 @@ public class Process {
         eva_act.deleteCharAt(eva_act.length() - 1);
         eva_act.append("\n");
         String result = eva_act.toString();
-
-        OutputStreamWriter writer2 = null;
-
+        OutputStreamWriter writer2;
         //追記する
         //全データから最初一行だけ取る
         String line;
         StringBuilder allDataNo1 = new StringBuilder();
         try {
             FileInputStream in = new FileInputStream(TopActivity.filePath);
-
             BufferedReader reader;
             reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             lineBuffer = reader.readLine();
@@ -49,22 +45,17 @@ public class Process {
                 }
             }
             in.close();
-
             StringBuilder newLineBuffer = new StringBuilder();
             //一行目作成
             newLineBuffer.append(lineBuffer).append(result);
             String newLine = newLineBuffer.toString();
             //一行目なし作成
-
             StringBuilder buf = new StringBuilder();
-
             buf.append(newLine);
             buf.append(allDataNo1);
             String Data = buf.toString();
             File file = new File(TopActivity.filePath);
             writer2 = new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8");
-
-
             BufferedWriter bw = new BufferedWriter(writer2);
             bw.write(Data);
             bw.flush();
@@ -85,13 +76,11 @@ public class Process {
         try {
             FileInputStream in = new FileInputStream(TopActivity.filePath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-
             lineBuffer = reader.readLine();
             if (lineBuffer != null) {
                 String[] splitData = lineBuffer.split(",", 0);
                 latestDay = Integer.parseInt(splitData[0]);
             }
-
             in.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,7 +99,6 @@ public class Process {
         try {
             FileInputStream in = new FileInputStream(TopActivity.filePath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-
             while ((str = reader.readLine()) != null) {
                 allDataBuilder.append(str).append("\n");
             }
@@ -119,8 +107,6 @@ public class Process {
             e.printStackTrace();
         }
         return allDataBuilder;
-        //String allData = allDataBuilder.toString();
-        //return allData;
     }
 
     /*
@@ -140,13 +126,10 @@ public class Process {
                     buf.append(result);
                     buf.append(s1);
                     String prevData = buf.toString();
-
                     BufferedWriter bw = new BufferedWriter(writer2);
                     bw.write(prevData);
-
                     bw.flush();
                     bw.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
