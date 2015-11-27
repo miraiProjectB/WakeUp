@@ -369,6 +369,7 @@
                 android:id="@+id/next_button"
                 android:background="@drawable/design"
                 android:layout_gravity="center"
+
                 android:onClick="onClick"/>
 
         </FrameLayout>
