@@ -368,7 +368,7 @@
                 android:text="完了"
                 android:id="@+id/next_button"
                 android:background="@drawable/design"
-                android:layout_gravity="left|center_vertical"
+                android:layout_gravity="center"
                 android:onClick="onClick"/>
 
         </FrameLayout>
