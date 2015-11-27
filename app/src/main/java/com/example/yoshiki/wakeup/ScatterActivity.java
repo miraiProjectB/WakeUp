@@ -35,6 +35,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import static java.lang.System.out;
+
 public class ScatterActivity extends AppCompatActivity implements OnChartValueSelectedListener, ActionBar.OnNavigationListener,
         View.OnClickListener {
     ScatterChart sChart;
@@ -43,9 +45,12 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     SpinnerAdapter mSpinnerAdapter;
     ActionBar actionBar;
     TextView sleeptv;
-    int itemPosition;
     private PopupWindow mPopupWindow;
     View popupView;
+    int itemPosition=0, duration=366,
+            sort_flg=0, //ソートするなら１
+            sort_menu=0,//ソートする項目
+            sort_lv=0;//ソートのレベル
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +118,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     @Override
     public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
         //Log.i("VAL SELECTED", "Value: " + e.getVal() + ", xIndex: " + e.getXIndex() + ", DataSet index: " + dataSetIndex);
-        sChart.setDescription("睡眠：" + (int) e.getVal() + "  \n  " + "活動量：" + e.getXIndex() + "");//グラフの説明
+        sChart.setDescription("睡眠："+(int)e.getVal()+"  \n  "+"活動量："+e.getXIndex()+"");//グラフの説明
     }
     @Override
     public void onNothingSelected() {
@@ -124,22 +129,22 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     @Override
     public boolean onNavigationItemSelected(int Position, long itemId) {
         //Log.d("TAG", "select item = " + itemPosition);
-        fileRead(itemPosition = Position, -1);
+        fileRead(itemPosition = Position, duration);
         return true;
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.year:
-                fileRead(itemPosition,366);
+                fileRead(itemPosition,duration=366);
                 Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
                 break;
             case R.id.month:
-                fileRead(itemPosition,31);
+                fileRead(itemPosition,duration=31);
                 Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
                 break;
             case R.id.week:
-                fileRead(itemPosition, 7);
+                fileRead(itemPosition, duration=7);
                 Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
                 break;
             case R.id.imageButton:
@@ -150,11 +155,117 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 mPopupWindow.setOutsideTouchable(true); // タップ時に他のViewでキャッチされないための設定
                 mPopupWindow.setFocusable(true);
                 float width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics());// 表示サイズの設定 今回は幅300dp
-                mPopupWindow.setWindowLayoutMode((int) width, WindowManager.LayoutParams.WRAP_CONTENT);
-                mPopupWindow.setWidth((int) width);
-                mPopupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+                // mPopupWindow.setWindowLayoutMode((int) width, WindowManager.LayoutParams.MATCH_PARENT);
+                mPopupWindow.setWindowLayoutMode(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                mPopupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+                mPopupWindow.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+                mPopupWindow.showAsDropDown(v, -1500, -1150);
+                break;
+            case R.id.cafein1 :
+                sort_flg=1; sort_menu=19;sort_lv=1;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.cafein2 :
+                sort_flg=1; sort_menu=19;sort_lv=2;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.cafein3 :
+                sort_flg=1; sort_menu=19;sort_lv=3;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.bath1 :
+                sort_flg=1; sort_menu=20;sort_lv=1;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.bath2 :
+                sort_flg=1; sort_menu=20;sort_lv=2;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.bath3 :
+                sort_flg=1; sort_menu=20;sort_lv=3;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.beer1 :
+                sort_flg=1; sort_menu=21;sort_lv=1;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.beer2 :
+                sort_flg=1; sort_menu=21;sort_lv=2;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.beer3 :
+                sort_flg=1; sort_menu=21;sort_lv=3;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.sport1 :
+                sort_flg=1; sort_menu=22;sort_lv=1;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.sport2 :
+                sort_flg=1; sort_menu=22;sort_lv=2;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.sport3:
+                sort_flg=1; sort_menu=22;sort_lv=3;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.degital1 :
+                sort_flg=1; sort_menu=23;sort_lv=0;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.light1 :
+                sort_flg=1; sort_menu=24;sort_lv=0;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.food1 :
+                sort_flg=1; sort_menu=25;sort_lv=0;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.smoke1 :
+                sort_flg=1; sort_menu=26;sort_lv=0;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
+                break;
+            case R.id.next_button:
+                sort_flg=0;
+                fileRead(itemPosition, duration);
+                mPopupWindow.dismiss();
                 break;
         }
+        ////
+        if( v.getId() == R.id.cafein1 ||
+                v.getId()== R.id.cafein2 ||
+                v.getId()== R.id.cafein3 ||
+                v.getId()== R.id.bath1 ||
+                v.getId()== R.id.bath2 ||
+                v.getId()== R.id.bath3 ||
+                v.getId()== R.id.beer1 ||
+                v.getId()== R.id.beer2 ||
+                v.getId()== R.id.beer3 ||
+                v.getId()== R.id.sport1 ||
+                v.getId()== R.id.sport2 ||
+                v.getId()== R.id.sport3||
+                v.getId()== R.id.degital1 ||
+                v.getId()== R.id.light1 ||
+                v.getId()== R.id.food1 ||
+                v.getId()== R.id.smoke1 ||
+                v.getId()== R.id.next_button
+                ) out.println("check");
 
     }
 
@@ -179,36 +290,40 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             while ((str = reader.readLine()) != null) {
                 String[] str_line = str.split(",", -1);
-                calories = Integer.parseInt(str_line[8]);//活動量
-                switch (itemPosition) {   //睡眠データ
-                    case 0://入眠時間
-                        sleep = (Integer.parseInt(str_line[13]) - Integer.parseInt(str_line[10])) / 60;
-                        break;
-                    case 1://レム
-                        sleep = Integer.parseInt(str_line[15]) / 60;
-                        break;
-                    case 2://深い眠り
-                        sleep = Integer.parseInt(str_line[12]) / 60;
-                        break;
-                    case 3://浅い眠り
-                        sleep = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
-                                - Integer.parseInt(str_line[14])) / 60;
-                        break;
-                    case 4://眠り合算
-                        sleep = Integer.parseInt(str_line[15]) / 60;
-                        sleep2 = Integer.parseInt(str_line[12]) / 60;
-                        sleep3 = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
-                                - Integer.parseInt(str_line[14])) / 60;
-                        yVals2.add(new Entry(sleep2, calories));
-                        yVals3.add(new Entry(sleep3, calories));
-                        break;
-                }
-                yVals1.add(new Entry(sleep, calories));
-                if (calmax < calories) calmax = calories;
-                if(count>=7)  ct++;
-                if(count==366 && ct>=366) break;
-                else if(count==31 && ct>=31) break;
-                else if(count==7 && ct>=7) break;
+                out.println(str_line[sort_menu]);
+                //if(Integer.parseInt(str_line[sort_menu])==sort_lv){}
+                if(sort_flg==0 || (sort_flg==1 && str_line[sort_menu]== String.valueOf(sort_lv))) {
+                    calories = Integer.parseInt(str_line[8]);//活動量
+                    switch (itemPosition) {   //睡眠データ
+                        case 0://入眠時間
+                            sleep = (Integer.parseInt(str_line[13]) - Integer.parseInt(str_line[10])) / 60;
+                            break;
+                        case 1://レム
+                            sleep = Integer.parseInt(str_line[15]) / 60;
+                            break;
+                        case 2://深い眠り
+                            sleep = Integer.parseInt(str_line[12]) / 60;
+                            break;
+                        case 3://浅い眠り
+                            sleep = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                    - Integer.parseInt(str_line[14])) / 60;
+                            break;
+                        case 4://眠り合算
+                            sleep = Integer.parseInt(str_line[15]) / 60;
+                            sleep2 = Integer.parseInt(str_line[12]) / 60;
+                            sleep3 = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
+                                    - Integer.parseInt(str_line[14])) / 60;
+                            yVals2.add(new Entry(sleep2, calories));
+                            yVals3.add(new Entry(sleep3, calories));
+                            break;
+                    }
+                    yVals1.add(new Entry(sleep, calories));
+                    if (calmax < calories) calmax = calories;
+                    if (count >= 7) ct++;
+                    if (count == 366 && ct >= 366) break;
+                    else if (count == 31 && ct >= 31) break;
+                    else if (count == 7 && ct >= 7) break;
+                }////////////////////////////
             }
             switch(itemPosition){
                 case 0:
