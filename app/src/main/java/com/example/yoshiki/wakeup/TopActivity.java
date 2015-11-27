@@ -424,10 +424,15 @@ public class TopActivity extends Activity implements Runnable {
                     }
                     for (int k = 1; k < sleepInfo.length; k++) {
                         if (k == sleepInfo.length - 1) {
-                            saveString.append(sleepInfo[k]).append("\n");
+                            saveString.append(sleepInfo[k]);
                         } else {
                             saveString.append(sleepInfo[k]).append(",");
                         }
+                    }
+                    if(yesterday != Integer.parseInt(moveInfo[0])){
+                        saveString.append(",,,,,,,,,\n");
+                    }else{
+                        saveString.append("\n");
                     }
                 }
             }
