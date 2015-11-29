@@ -1,0 +1,232 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:id="@+id/scrollView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:id="@+id/textview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout1"
+            >
+
+            <!-- リズム -->
+            <TextView
+                android:id="@+id/rhythm_title"
+                android:layout_margin="@dimen/title_margin" android:textColor="@color/dodgerBlue" android:textSize="20sp"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:gravity="center" android:text="@string/rhythm_title" /><!-- margin行間 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView" />
+
+            <TextView
+                android:text="@string/rhythm" android:textColor="@color/black"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="15sp" android:layout_margin="@dimen/text_margin" />
+            <TextView
+                android:id="@+id/re_rhythm_link"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/re_rhythm"
+                android:autoLink="web"
+                android:layout_margin="@dimen/text_margin"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout2">
+            <!-- レム -->
+            <TextView
+                android:id="@+id/rem_title"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/title_margin"
+                android:textColor="@color/dodgerBlue"
+                android:gravity="center"
+                android:text="@string/rem_title" /><!-- margin行間 -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin" android:text="@string/rem" />
+            <TextView
+                android:id="@+id/re_rem_link"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rem_ref"
+                android:autoLink="web"
+                android:layout_margin="@dimen/text_margin"
+                />
+        </LinearLayout>
+
+        <!-- ノンレム -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout3">
+            <TextView
+                android:id="@+id/non_rem_title"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/title_margin"
+                android:textColor="@color/dodgerBlue"
+                android:gravity="center"
+                android:text="@string/non_rem_title" /><!-- margin行間 -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin" android:text="@string/non_rem" />
+            <TextView
+                android:id="@+id/re_non_rem_link"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/re_non_rem"
+                android:autoLink="web"
+                android:layout_margin="@dimen/text_margin"
+                />
+        </LinearLayout>
+
+        <!-- UP3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout4">
+            <TextView
+                android:id="@+id/up_title"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/title_margin"
+                android:textColor="@color/dodgerBlue"
+                android:gravity="center"
+                android:text="@string/up_title" /><!-- margin行間 -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin" android:text="@string/up" />
+            <TextView
+                android:id="@+id/re_up_link"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/re_up"
+                android:autoLink="web"
+                android:layout_margin="@dimen/text_margin"
+                />
+        </LinearLayout>
+
+        <!-- 散布図 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout5">
+            <TextView
+                android:id="@+id/graph_title"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/title_margin"
+                android:textColor="@color/dodgerBlue"
+                android:gravity="center"
+                android:text="@string/graph_title" /><!-- margin行間 -->
+
+            <!-- 入眠 -->
+            <TextView android:text="@string/onseticon" android:id="@+id/onset_icon"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:drawableTop="@drawable/help_onset"
+                android:layout_margin="@dimen/icon_margin"
+                />
+            <TextView android:text="@string/onset"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin"
+                />
+            <TextView android:text="@string/onset_model"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/rem_graph" android:drawableTop="@drawable/help_onset_graph"
+                android:layout_margin="@dimen/text_margin"
+                />
+
+            <!-- レム・ノンレム -->
+            <TextView android:text="@string/remgicon" android:id="@+id/rem_icon"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:drawableTop="@drawable/help_rem"
+                android:layout_margin="@dimen/icon_margin"
+                />
+
+
+            <TextView android:text="@string/remg"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin"  />
+
+            <TextView android:text="@string/remg_model"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/remg_graph" android:drawableTop="@drawable/help_rem_graph"
+                android:layout_margin="@dimen/text_margin"
+                />
+
+            <!-- 評価 -->
+            <TextView
+                android:text="@string/value_icon" android:id="@+id/value_icon"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:drawableTop="@drawable/help_value"
+                android:layout_margin="@dimen/icon_margin"
+                />
+            <TextView android:text="@string/value"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin"
+                />
+
+            <TextView android:text="@string/value_model"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/value_graph" android:drawableTop="@drawable/help_syukan_graph"
+                android:layout_margin="@dimen/text_margin"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout6">
+
+            <!-- 行動メモ -->
+            <TextView
+                android:id="@+id/act_title"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/title_margin"
+                android:textColor="@color/dodgerBlue"
+                android:gravity="center"
+                android:text="@string/act_check_title" /><!-- margin行間 -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp"
+                android:layout_margin="@dimen/text_margin" android:text="@string/act_check" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

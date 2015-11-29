@@ -33,6 +33,7 @@
 
         <activity android:name=".ActionActivity"/>
         <activity android:name=".KnowledgeActivity"/>
+        <activity android:name=".HelpActivity"/>
         <activity android:name=".CheckActivity"/>
         <activity android:name=".EvaluationActivity"/>
         <activity

@@ -12,4 +12,73 @@
         <item>深い眠り</item>
         <item>レム睡眠・浅い眠り・深い眠り</item>
     </string-array>
+
+    <!--HelpPage-->
+    <!--リズム-->
+    <string name="rhythm_title">睡眠のリズムについて</string>
+    <string name="rhythm">
+        "　睡眠のはじめは、レム睡眠の過程を通り、一晩の眠りで最も深いノンレム睡眠になります。その後またレム睡眠に切り替わり、このときの脳は休息することなく活発に活動して記憶の整理が行われます。このようなノンレム睡眠とレム睡眠の１セットでおよそ90分になります。この90分の1セットのリズムでレム睡眠と、ノンレム睡眠が繰り返されます。そして、90分のうち、成人では、およそ、全体の睡眠時間の20～25％がレム睡眠です。残りがノンレム睡眠ということになります。脳の休息に当てられるが75％～80％、活動に充てられるのが20％～25％ということになります。"
+        </string>
+    <string name="re_rhythm">http://nandemo.ciao.jp/nemunemu-nandemo/suimin/</string>
+
+    <!--レム-->
+    <string name="rem_title">レム睡眠について</string>
+    <string name="rem">
+        "　レム睡眠とは、脳は起きているのに身体が眠っている状態。レム睡眠時に目覚めるとすっきり起きることができる。レム睡眠時に夢を見る。"
+    </string>
+    <string name="rem_ref">http://www.e-healthnet.mhlw.go.jp/information/dictionary/heart/yk-069.html</string>
+
+    <!--ノンレム-->
+    <string name="non_rem_title">ノンレム睡眠について</string>
+    <string name="non_rem">
+        "　ノンレム睡眠とは、身体は起きているのに脳が眠っている状態。睡眠直後に深いノンレム睡眠がとれると熟眠度が高くなる、深い、安らかな眠りである。ノンレム睡眠時には、身体からは熱がたくさん放出されるので体温が下がる。ノンレム睡眠の中でも浅い→深いまで4段階のステージがある。"
+    </string>
+    <string name="re_non_rem">https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%A0%E7%9D%A1%E7%9C%A0</string>
+
+    <string name="up_title">UP3について</string>
+    <string name="up">
+        "　UP3は睡眠のデータをレム睡眠、浅い眠り(ノンレム1,2段階)、深い眠り(ノンレム3,4段階)で睡眠のデータを計測している。そのため、図の要素選択ではこの３つの段階から選択することができる。"
+    </string>
+    <string name="re_up">https://jawbone.com/store/buy/up3</string>
+
+    <string name="graph_title">散布図について</string>
+
+    <!-- 入眠 -->
+    <string name="onseticon">
+         入眠までの時間
+    </string>
+    <string name="onset">
+         UP3で計測される入眠までの時間と活動量を比較する。寝床に着いてからレム睡眠に入るまでをUP3が判断し、計測している。
+    </string>
+    <string name="onset_model">
+        "　入眠までの時間と活動量を比較したモデルケースです。2000kal活動した日は入眠までの時間が短いケースが多く分布しています。1000kal以下は入眠に時間がかかっているケースが多く分布しています。このケースではあまり活動していない日は入眠に時間がかかってしまうようです。"
+    </string>
+
+    <!-- レム -->
+    <string name="remgicon">
+         レム睡眠
+    </string>
+    <string name="remg">
+        UP3で計測されるレム睡眠のデータと活動量を比較する
+    </string>
+    <string name="remg_model">
+        "　レム睡眠と活動量を比較したモデルケースです。ずらずらずら。"
+    </string>
+
+    <!-- 評価-->
+        <string name="value_icon">
+            "評価"
+        </string>
+        <string name="value">
+            "　日々入力してきた睡眠に対する評価と活動量を比較する"
+        </string>
+        <string name="value_model">
+            "　睡眠に対する評価と活動量を比較したケースです。2000kal付近までは高評価が多く分布しています。しかし、3000kal付近に近づくにつれ評価が低くなっています。このケースでは約2000kalまで活動した日はよく眠れたと感じており、3000kalに近づくにつれよく眠れなかったと感じているようです。UP3で計測したデータと活動量を比較した散布図との違いはありますでしょうか？自分は良く眠れたと思っていた日でも、データでは深く眠れていなかったり、入眠までに時間がかかっていたりするかもしれません。"
+        </string>
+
+    <!-- 行動メモ-->
+    <string name="act_check_title">行動メモ</string>
+        <string name="act_check">
+            "　行動メモに設定されている項目は睡眠に何らかの影響を及ぼすものである。項目に該当する行動を行った日のデータは、項目ごとに別の散布図として表示することができ、それぞれの行動の影響を知ることができます。各項目について詳しくは豆知識へ"
+        </string>
 </resources>

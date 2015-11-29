@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rhythm"
+        android:orderInCategory="100"
+        android:title="@string/rhythm_title"
+        />
+    <item
+        android:id="@+id/rem"
+        android:orderInCategory="100"
+        android:title="@string/rem_title" />
+    <item
+        android:id="@+id/non_rem"
+        android:orderInCategory="100"
+        android:title="@string/non_rem_title"/>
+    <item
+        android:id="@+id/up"
+        android:orderInCategory="100"
+        android:title="@string/up_title" />
+    <item
+        android:id="@+id/graph"
+        android:orderInCategory="100"
+        android:title="@string/graph_title"/>
+    <item
+        android:id="@+id/act"
+        android:orderInCategory="100"
+        android:title="@string/act_check_title"/>
+
+</menu>
