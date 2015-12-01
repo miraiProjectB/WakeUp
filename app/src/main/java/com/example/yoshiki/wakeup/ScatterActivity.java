@@ -256,7 +256,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         super.onDestroy();
     }
 
-    private void fileRead(int itemPosition, int count){
+    private void fileRead(int itemPosition, int count){//散布図を表示
         String str;
         int sleep=0,sleep2,sleep3,calories,calmax=0,i,j=0,ct=0;
         ArrayList<ScatterDataSet> dataSets = new ArrayList<ScatterDataSet>();
@@ -351,7 +351,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             set1.setScatterShapeSize(8f);
             set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
             set1.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
-            set1.setColor(Color.rgb(50, 90, 205));//blue
+            set1.setColor(Color.rgb(0, 116, 232));//blue
             dataSets.add(set1); // add the datasets
             if(itemPosition==4){
                 dataSets.add(set2);
@@ -390,7 +390,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         xs = Math.sqrt(xsd);
         ys = Math.sqrt(ysd);
         r=(xyt/n-xh*yh)/(xs*ys);
-        if( Math.abs(r) <0.2) Correlation_description="ほとんど相関なし";
+        if( Math.abs(r) <=0) Correlation_description="相関なし";
+        else if( Math.abs(r) <0.2) Correlation_description="ほとんど相関なし";
         else if( Math.abs(r) <0.4) Correlation_description="弱い相関あり";
         else if( Math.abs(r) <0.7) Correlation_description="やや相関あり";
         else Correlation_description="かなり強い相関がある";
