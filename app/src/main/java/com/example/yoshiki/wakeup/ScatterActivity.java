@@ -1,5 +1,7 @@
 package com.example.yoshiki.wakeup;
 
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,7 +27,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.Highlight;
 
 import java.io.BufferedReader;
@@ -44,27 +45,24 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     public ScatterDataSet set1,set2,set3;
     SpinnerAdapter mSpinnerAdapter;
     ActionBar actionBar;
-    TextView sleeptv;
+    TextView sleeptv,txtView;
     private PopupWindow mPopupWindow;
     View popupView;
     int itemPosition=0, duration=366,
             sort_flg=0, //ソートするなら１
             sort_menu=0,//ソートする項目
             sort_lv=0;//ソートのレベル
+    double Correlation=0;
+    String Correlation_description="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // ボタンを生成
-        //ImageButton imgbtn = new ImageButton(this);
-        //ImageButton imgbt = (ImageButton)findViewById(R.id.imageButton);
-        //imgbt.setImageResource(R.drawable.caffeine);
         //requestWindowFeature(Window.FEATURE_NO_TITLE); // タイトルを非表示にします
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); // フルスクリーン表示する
         setContentView(R.layout.activity_scatter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         sChart = (ScatterChart) findViewById(R.id.chart);
         sChart.setDescription("");//グラフの説明
         tf = Typeface.create(Typeface.SERIF, Typeface.ITALIC);
@@ -248,26 +246,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 mPopupWindow.dismiss();
                 break;
         }
-        ////
-        if( v.getId() == R.id.cafein1 ||
-                v.getId()== R.id.cafein2 ||
-                v.getId()== R.id.cafein3 ||
-                v.getId()== R.id.bath1 ||
-                v.getId()== R.id.bath2 ||
-                v.getId()== R.id.bath3 ||
-                v.getId()== R.id.beer1 ||
-                v.getId()== R.id.beer2 ||
-                v.getId()== R.id.beer3 ||
-                v.getId()== R.id.sport1 ||
-                v.getId()== R.id.sport2 ||
-                v.getId()== R.id.sport3||
-                v.getId()== R.id.degital1 ||
-                v.getId()== R.id.light1 ||
-                v.getId()== R.id.food1 ||
-                v.getId()== R.id.smoke1 ||
-                v.getId()== R.id.next_button
-                ) out.println("check");
-
     }
 
     @Override
@@ -286,13 +264,14 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
         ArrayList<Entry> yVals2 = new ArrayList<Entry>();
         ArrayList<Entry> yVals3 = new ArrayList<Entry>();
+        ArrayList<Integer> x = new ArrayList<>();
+        ArrayList<Integer> y = new ArrayList<>();
         try {
             FileInputStream in = new FileInputStream(Environment.getExternalStorageDirectory() + "/wakeup/log.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             while ((str = reader.readLine()) != null) {
                 String[] str_line = str.split(",", -1);
                 out.println(str_line[sort_menu]);
-                //if(Integer.parseInt(str_line[sort_menu])==sort_lv){}
                 if(sort_flg==0 || (sort_flg==1 && str_line[sort_menu]== String.valueOf(sort_lv))) {
                     calories = Integer.parseInt(str_line[8]);//活動量
                     switch (itemPosition) {   //睡眠データ
@@ -316,9 +295,15 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                                     - Integer.parseInt(str_line[14])) / 60;
                             yVals2.add(new Entry(sleep2, calories));
                             yVals3.add(new Entry(sleep3, calories));
+                            x.add(calories);
+                            y.add(sleep2);
+                            x.add(calories);
+                            y.add(sleep3);
                             break;
                     }
                     yVals1.add(new Entry(sleep, calories));
+                    x.add(calories);
+                    y.add(sleep);
                     if (calmax < calories) calmax = calories;
                     if (count >= 7) ct++;
                     if (count == 366 && ct >= 366) break;
@@ -347,10 +332,10 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     set1 = new ScatterDataSet(yVals1, "レム睡眠");
                     set2 = new ScatterDataSet(yVals2, "深い眠り");
                     set2.setScatterShape(ScatterChart.ScatterShape.SQUARE);
-                    set2.setColor(ColorTemplate.COLORFUL_COLORS[0]);
+                    set2.setColor(Color.rgb(255, 20, 20));//red
                     set3 = new ScatterDataSet(yVals3, "浅い眠り");
                     set3.setScatterShape(ScatterChart.ScatterShape.TRIANGLE);
-                    set3.setColor(ColorTemplate.COLORFUL_COLORS[2]);
+                    set3.setColor(Color.rgb(20, 255, 20));//green
                     set2.setScatterShapeSize(8f);
                     set3.setScatterShapeSize(8f);
                     set2.setDrawValues(!set2.isDrawValuesEnabled());//データ値の表示を消す処理
@@ -358,10 +343,15 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     sleeptv.setText("睡眠(分)");
                     break;
             }
+            if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) { //縦画面だったら
+                txtView = (TextView) findViewById(R.id.txtView);//散布図表示用TextView
+                Correlation = PearsonsCorrelation(x, y); // ピアソン相関を計算
+                txtView.setText("相関係数:" + String.format("%.2f", Correlation) + " " + Correlation_description);//相関係数表示
+            }
             set1.setScatterShapeSize(8f);
             set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
             set1.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
-            set1.setColor(ColorTemplate.COLORFUL_COLORS[1]);
+            set1.setColor(Color.rgb(50, 90, 205));//blue
             dataSets.add(set1); // add the datasets
             if(itemPosition==4){
                 dataSets.add(set2);
@@ -382,6 +372,29 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         } catch (ArrayIndexOutOfBoundsException e) {	// 配列の参照失敗の場合の例外処理
             e.printStackTrace();
         }
+    }
+
+    //ピアソン相関係数を求める
+    public double PearsonsCorrelation( ArrayList<Integer> x,  ArrayList<Integer> y ) {
+        int n=x.size(); //xとyの組数
+        double  xt=0,yt=0,x2t=0,y2t=0,xyt=0,xh=0,yh,xs,ys,xsd,ysd,r;
+        for( int  i=0; i<n; i++)  {
+            xt += x.get(i);   yt += y.get(i);
+            x2t += x.get(i) * x.get(i);    y2t += y.get(i) * y.get(i);
+            xyt += x.get(i) * y.get(i);
+        }
+        xh = xt/n;
+        yh = yt/n;
+        xsd=x2t/n-xh*xh;
+        ysd=y2t/n-yh*yh;
+        xs = Math.sqrt(xsd);
+        ys = Math.sqrt(ysd);
+        r=(xyt/n-xh*yh)/(xs*ys);
+        if( Math.abs(r) <0.2) Correlation_description="ほとんど相関なし";
+        else if( Math.abs(r) <0.4) Correlation_description="弱い相関あり";
+        else if( Math.abs(r) <0.7) Correlation_description="やや相関あり";
+        else Correlation_description="かなり強い相関がある";
+        return r;
     }
 
 }

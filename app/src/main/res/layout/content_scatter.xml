@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="活動量(カロリー)"
+                android:text="活動量(kcal)"
                 android:id="@+id/label_move"
                 android:layout_gravity="center_horizontal" />
 
@@ -99,7 +99,7 @@
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:elevation="8dp"
                     android:layout_alignParentBottom="true"
@@ -113,7 +113,7 @@
                         android:text="行動：コーヒー"
                         ></TextView>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/txtView"
                         android:text="相関係数：○○"
