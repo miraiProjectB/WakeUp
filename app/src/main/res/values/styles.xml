@@ -3,10 +3,14 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/dodgerBlue</item>
+        <item name="colorPrimaryDark">@color/dodgerBlue</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionMenuTextColor">#FFFFFF</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerItemStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemStyle</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,18 +19,48 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="android:actionDropDownStyle">@style/myActionDropDownStyle</item>
         <item name="android:actionBarStyle">@style/myActionBar</item>
-        <item name="android:actionMenuTextColor">#FFFFFF</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textSize">16sp</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--アクションバーのボタンを押して降りてくる部分-->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
     <style name="myActionDropDownStyle" parent="android:style/Widget.Holo.Light.Spinner">
-        <item name="android:background">#0000FF</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:textSize">18sp</item>
     </style>
     <style name="myActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:titleTextStyle">@style/myActionBar.titleTextStyle</item>
+        <item name="android:textSize">18sp</item>
     </style>
     <style name="myActionBar.titleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title.Inverse">
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <!-- タイトルバーの文字スタイル -->
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--スピナーのレイアウト-->
+    <style name="SpinnerItemStyle" parent="android:Widget.Holo.Light.TextView.SpinnerItem">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SpinnerDropDownItemStyle" parent="android:Widget.Holo.Light.DropDownItem">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,9 +24,10 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.Highlight;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -64,6 +64,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         setContentView(R.layout.activity_scatter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         sChart = (ScatterChart) findViewById(R.id.chart);
         sChart.setDescription("");//グラフの説明
         tf = Typeface.create(Typeface.SERIF, Typeface.ITALIC);
@@ -147,7 +148,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 fileRead(itemPosition, duration=7);
                 Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
                 break;
-            case R.id.imageButton:
+            case R.id.fab:
                 mPopupWindow = new PopupWindow(ScatterActivity.this);
                 popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
                 mPopupWindow.setContentView(popupView);
