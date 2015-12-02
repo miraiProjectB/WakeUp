@@ -142,9 +142,9 @@ public class ActionActivity extends AppCompatActivity {
                 }else if(common.beer_count == 0 || common.beer_count == 2 || common.beer_count == 3){
                     Button button = (Button) findViewById(R.id.beer1);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    Button button1 = (Button) findViewById(R.id.bath2);
+                    Button button1 = (Button) findViewById(R.id.beer2);
                     button1.setBackgroundResource(R.drawable.button_design);
-                    Button button2 = (Button) findViewById(R.id.bath3);
+                    Button button2 = (Button) findViewById(R.id.beer3);
                     button2.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 1;
                 }
@@ -158,9 +158,9 @@ public class ActionActivity extends AppCompatActivity {
                 }else if(common.beer_count == 0 || common.beer_count == 1 || common.beer_count == 3){
                     Button button = (Button) findViewById(R.id.beer2);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    Button button1 = (Button) findViewById(R.id.bath1);
+                    Button button1 = (Button) findViewById(R.id.beer1);
                     button1.setBackgroundResource(R.drawable.button_design);
-                    Button button2 = (Button) findViewById(R.id.bath3);
+                    Button button2 = (Button) findViewById(R.id.beer3);
                     button2.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 2;
                 }
@@ -174,9 +174,9 @@ public class ActionActivity extends AppCompatActivity {
                 }else if(common.beer_count == 0 || common.beer_count == 1 || common.beer_count == 2){
                     Button button = (Button) findViewById(R.id.beer3);
                     button.setBackgroundResource(R.drawable.button_design2);
-                    Button button1 = (Button) findViewById(R.id.bath1);
+                    Button button1 = (Button) findViewById(R.id.beer1);
                     button1.setBackgroundResource(R.drawable.button_design);
-                    Button button2 = (Button) findViewById(R.id.bath2);
+                    Button button2 = (Button) findViewById(R.id.beer2);
                     button2.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 3;
                 }
