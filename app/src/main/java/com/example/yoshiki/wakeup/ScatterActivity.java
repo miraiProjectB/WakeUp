@@ -287,6 +287,11 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 ChiceText.setText("行動：なし");
                 mPopupWindow.dismiss();
                 break;
+            case R.id.mame:
+                Intent intent = new Intent(this, KnowledgeActivity.class);
+                startActivity(intent);
+                mPopupWindow.dismiss();
+                break;
         }
     }
 
