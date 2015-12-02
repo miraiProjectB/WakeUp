@@ -54,7 +54,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             sort_lv=0;//ソートのレベル
     double Correlation=0;
     String Correlation_description="";
-    FloatingActionButton fab;
+    FloatingActionButton fab;//フロートアクションボタン
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
