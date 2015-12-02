@@ -221,22 +221,22 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 mPopupWindow.dismiss();
                 break;
             case R.id.degital1 :
-                sort_flg=1; sort_menu=23;sort_lv=0;
+                sort_flg=1; sort_menu=23;sort_lv=1;
                 fileRead(itemPosition, duration);
                 mPopupWindow.dismiss();
                 break;
             case R.id.light1 :
-                sort_flg=1; sort_menu=24;sort_lv=0;
+                sort_flg=1; sort_menu=24;sort_lv=1;
                 fileRead(itemPosition, duration);
                 mPopupWindow.dismiss();
                 break;
             case R.id.food1 :
-                sort_flg=1; sort_menu=25;sort_lv=0;
+                sort_flg=1; sort_menu=25;sort_lv=1;
                 fileRead(itemPosition, duration);
                 mPopupWindow.dismiss();
                 break;
             case R.id.smoke1 :
-                sort_flg=1; sort_menu=26;sort_lv=0;
+                sort_flg=1; sort_menu=26;sort_lv=1;
                 fileRead(itemPosition, duration);
                 mPopupWindow.dismiss();
                 break;
@@ -271,8 +271,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             while ((str = reader.readLine()) != null) {
                 String[] str_line = str.split(",", -1);
-                out.println(str_line[sort_menu]);
-                if(sort_flg==0 || (sort_flg==1 && str_line[sort_menu]== String.valueOf(sort_lv))) {
+                //out.println(str_line[sort_menu]);
+                if(sort_flg==0 || (sort_flg==1 && str_line[sort_menu].equals(String.valueOf(sort_lv)))) {
                     calories = Integer.parseInt(str_line[8]);//活動量
                     switch (itemPosition) {   //睡眠データ
                         case 0://入眠時間
