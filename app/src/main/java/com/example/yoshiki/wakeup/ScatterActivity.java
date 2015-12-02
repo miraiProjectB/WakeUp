@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -55,6 +56,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     double Correlation=0;
     String Correlation_description="";
     FloatingActionButton fab;
+    private Common common;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,9 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         xl.setTypeface(tf);
         xl.setDrawGridLines(false);
         sleeptv = (TextView) findViewById(R.id.label_sleep);
+
+        common = (Common) getApplication();
+        common.init_top_select();
     }
 
     @Override
@@ -143,14 +148,68 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             case R.id.year:
                 fileRead(itemPosition,duration=366);
                 Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
+                if(common.year_count == 1) {
+                    Button ybutton = (Button) findViewById(R.id.year);
+                    ybutton.setBackgroundResource(R.drawable.button_design);
+                    common.year_count = 0;
+                }else if(common.year_count == 0){
+                    Button ybutton = (Button) findViewById(R.id.year);
+                    ybutton.setBackgroundResource(R.drawable.button_design2);
+                    common.year_count = 1;
+
+                    Button mbutton = (Button) findViewById(R.id.month);
+                    mbutton.setBackgroundResource(R.drawable.button_design);
+                    common.month_count = 0;
+
+                    Button wbutton = (Button) findViewById(R.id.week);
+                    wbutton.setBackgroundResource(R.drawable.button_design);
+                    common.week_count = 0;
+
+                }
                 break;
             case R.id.month:
                 fileRead(itemPosition,duration=31);
                 Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
+                if(common.month_count == 1) {
+                    Button mbutton = (Button) findViewById(R.id.month);
+                    mbutton.setBackgroundResource(R.drawable.button_design);
+                    common.month_count = 0;
+                }else if(common.month_count == 0){
+                    Button ybutton = (Button) findViewById(R.id.year);
+                    ybutton.setBackgroundResource(R.drawable.button_design);
+                    common.year_count = 0;
+
+                    Button mbutton = (Button) findViewById(R.id.month);
+                    mbutton.setBackgroundResource(R.drawable.button_design2);
+                    common.month_count = 1;
+
+                    Button wbutton = (Button) findViewById(R.id.week);
+                    wbutton.setBackgroundResource(R.drawable.button_design);
+                    common.week_count = 0;
+
+                }
                 break;
             case R.id.week:
-                fileRead(itemPosition, duration=7);
+                fileRead(itemPosition, duration = 7);
                 Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
+                if(common.week_count == 1) {
+                    Button wbutton = (Button) findViewById(R.id.week);
+                    wbutton.setBackgroundResource(R.drawable.button_design);
+                    common.week_count = 0;
+                }else if(common.week_count == 0){
+                    Button ybutton = (Button) findViewById(R.id.year);
+                    ybutton.setBackgroundResource(R.drawable.button_design);
+                    common.year_count = 0;
+
+                    Button mbutton = (Button) findViewById(R.id.month);
+                    mbutton.setBackgroundResource(R.drawable.button_design);
+                    common.month_count = 0;
+
+                    Button wbutton = (Button) findViewById(R.id.week);
+                    wbutton.setBackgroundResource(R.drawable.button_design2);
+                    common.week_count = 1;
+
+                }
                 break;
             case R.id.fab:
                 mPopupWindow = new PopupWindow(ScatterActivity.this);
@@ -393,7 +452,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) { //縦画面だったら
                 txtView = (TextView) findViewById(R.id.txtView);//散布図表示用TextView
                 Correlation = PearsonsCorrelation(x, y); // ピアソン相関を計算
-                txtView.setText("相関係数:" + String.format("%.2f", Correlation) + " " + Correlation_description);//相関係数表示
+                txtView.setText("相関係数：" + String.format("%.2f", Correlation) + " " + Correlation_description);//相関係数表示
             }
             set1.setScatterShapeSize(8f);
             set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
