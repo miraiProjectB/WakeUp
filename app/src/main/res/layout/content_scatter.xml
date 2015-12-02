@@ -111,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/ChiceText"
-                        android:text="行動：コーヒー"
+                        android:text="行動：なし"
                         ></TextView>
                     <TextView
                         android:layout_width="match_parent"
