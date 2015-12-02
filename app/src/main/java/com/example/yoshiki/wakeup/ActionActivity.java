@@ -42,10 +42,15 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.cafein1);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.cafein_count = 0;
-                }else if(common.cafein_count == 0){
+                }else if(common.cafein_count == 0 || common.cafein_count == 2 || common.cafein_count == 3){
                     Button button = (Button) findViewById(R.id.cafein1);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.cafein2);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.cafein3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.cafein_count = 1;
+
                 }
                 break;
 
@@ -54,9 +59,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.cafein2);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.cafein_count = 0;
-                }else if(common.cafein_count == 0){
+                }else if(common.cafein_count == 0 || common.cafein_count == 1 || common.cafein_count ==3){
                     Button button = (Button) findViewById(R.id.cafein2);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.cafein1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.cafein3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.cafein_count = 2;
                 }
                 break;
@@ -66,9 +75,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.cafein3);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.cafein_count = 0;
-                }else if(common.cafein_count == 0){
+                }else if(common.cafein_count == 0 || common.cafein_count == 1 || common.cafein_count == 2){
                     Button button = (Button) findViewById(R.id.cafein3);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.cafein1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.cafein2);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.cafein_count = 3;
                 }
                 break;
@@ -78,9 +91,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.bath1);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.bath_count = 0;
-                }else if(common.bath_count == 0){
+                }else if(common.bath_count == 0 || common.bath_count == 2 || common.bath_count == 3){
                     Button button = (Button) findViewById(R.id.bath1);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.bath2);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.bath3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.bath_count = 1;
                 }
                 break;
@@ -90,9 +107,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.bath2);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.bath_count = 0;
-                }else if(common.bath_count == 0){
+                }else if(common.bath_count == 0 || common.bath_count == 1 || common.bath_count == 3){
                     Button button = (Button) findViewById(R.id.bath2);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.bath1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.bath3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.bath_count = 2;
                 }
                 break;
@@ -102,9 +123,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.bath3);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.bath_count = 0;
-                }else if(common.bath_count == 0){
+                }else if(common.bath_count == 0 || common.bath_count == 1 || common.bath_count == 2){
                     Button button = (Button) findViewById(R.id.bath3);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.bath1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.bath2);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.bath_count = 3;
                 }
                 break;
@@ -114,9 +139,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.beer1);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 0;
-                }else if(common.beer_count == 0){
+                }else if(common.beer_count == 0 || common.beer_count == 2 || common.beer_count == 3){
                     Button button = (Button) findViewById(R.id.beer1);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.bath2);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.bath3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 1;
                 }
                 break;
@@ -126,9 +155,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.beer2);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 0;
-                }else if(common.beer_count == 0){
+                }else if(common.beer_count == 0 || common.beer_count == 1 || common.beer_count == 3){
                     Button button = (Button) findViewById(R.id.beer2);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.bath1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.bath3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 2;
                 }
                 break;
@@ -138,9 +171,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.beer3);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 0;
-                }else if(common.beer_count == 0){
+                }else if(common.beer_count == 0 || common.beer_count == 1 || common.beer_count == 2){
                     Button button = (Button) findViewById(R.id.beer3);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.bath1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.bath2);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.beer_count = 3;
                 }
                 break;
@@ -150,9 +187,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.sport1);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.sport_count = 0;
-                }else if(common.sport_count == 0){
+                }else if(common.sport_count == 0 || common.sport_count == 2 || common.sport_count ==3){
                     Button button = (Button) findViewById(R.id.sport1);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.sport2);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.sport3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.sport_count = 1;
                 }
                 break;
@@ -162,9 +203,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.sport2);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.sport_count = 0;
-                }else if(common.sport_count == 0){
+                }else if(common.sport_count == 0 || common.sport_count == 1 || common.sport_count == 3){
                     Button button = (Button) findViewById(R.id.sport2);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.sport1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.sport3);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.sport_count = 2;
                 }
                 break;
@@ -174,9 +219,13 @@ public class ActionActivity extends AppCompatActivity {
                     Button button = (Button) findViewById(R.id.sport3);
                     button.setBackgroundResource(R.drawable.button_design);
                     common.sport_count = 0;
-                }else if(common.sport_count == 0){
+                }else if(common.sport_count == 0 || common.sport_count ==1 || common.sport_count == 2){
                     Button button = (Button) findViewById(R.id.sport3);
                     button.setBackgroundResource(R.drawable.button_design2);
+                    Button button1 = (Button) findViewById(R.id.sport1);
+                    button1.setBackgroundResource(R.drawable.button_design);
+                    Button button2 = (Button) findViewById(R.id.sport2);
+                    button2.setBackgroundResource(R.drawable.button_design);
                     common.sport_count = 3;
                 }
                 break;
