@@ -33,7 +33,7 @@ public class CheckActivity extends AppCompatActivity {
                 act.add(common.light_count);
                 act.add(common.food_count);
                 act.add(common.smoke_count);
-                //Process.writeEvAct(common.smile, act);
+                Process.writeEvAct(common.smile, act);
                 //グラフ描画画面に遷移
                 Intent intent = new Intent(getApplication(), ScatterActivity.class);
                 EvaluationActivity.exitFlag = true;
