@@ -37,6 +37,6 @@ public class Common extends Application {
     public void init_top_select(){
         week_count = 0;
         month_count = 0;
-        year_count = 0;
+        year_count = 1;
     }
 }
