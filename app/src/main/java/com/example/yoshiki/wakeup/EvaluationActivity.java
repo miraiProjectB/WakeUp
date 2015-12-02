@@ -117,7 +117,7 @@ public class EvaluationActivity extends AppCompatActivity {
 
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.button1:
+            case R.id.next_fab:
                 Intent intent = new Intent(this, ActionActivity.class);
                 startActivity(intent);
 

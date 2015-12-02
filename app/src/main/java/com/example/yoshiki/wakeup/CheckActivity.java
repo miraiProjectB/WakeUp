@@ -21,7 +21,7 @@ public class CheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check);
 
-        Button btn = (Button)findViewById(R.id.button);
+        Button btn = (Button)findViewById(R.id.next_fab);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

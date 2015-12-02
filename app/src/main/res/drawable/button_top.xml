@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- ボタンが押されたときの定義 -->
-    <item android:state_pressed="true"
-        android:elevation="8dp">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:right="30dp">
+        <shape
+            android:shape="rectangle" >
+            <solid
+                android:color="#fff" >
+            </solid>
+        </shape>
     </item>
-</selector>
+    <item
+        android:top="30dp">
+        <shape
+            android:shape="rectangle" >
+            <solid
+                android:color="#fff" >
+            </solid>
+        </shape>
+    </item>
+    <item>
+        <shape
+            android:shape="rectangle" >
+            <solid
+                android:color="@color/dodgerBlue" >
+            </solid>
+            <corners
+                android:radius="30dp" />
+        </shape>
+    </item>
+</layer-list>
