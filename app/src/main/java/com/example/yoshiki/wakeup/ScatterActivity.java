@@ -1,6 +1,5 @@
 package com.example.yoshiki.wakeup;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -49,7 +47,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     ActionBar actionBar;
     TextView sleeptv,txtView;
     private PopupWindow mPopupWindow;
-    private Common common;
     View popupView;
     int itemPosition=0, duration=366,
             sort_flg=0, //ソートするなら１
@@ -93,9 +90,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         xl.setTypeface(tf);
         xl.setDrawGridLines(false);
         sleeptv = (TextView) findViewById(R.id.label_sleep);
-
-        common = (Common) getApplication();
-        common.init_top_select();
     }
 
     @Override
@@ -115,11 +109,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             case R.id.Values: {
                 set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
                 sChart.invalidate();
-                break;
-            }
-            case R.id.help_call: {
-                Intent intent = new Intent(this, HelpActivity.class);
-                startActivity(intent);
                 break;
             }
         }
@@ -148,59 +137,14 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             case R.id.year:
                 fileRead(itemPosition,duration=366);
                 Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
-
-                if(common.year_count == 1) {
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design);
-                    common.year_count = 0;
-                }else if(common.year_count == 0){
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design2);
-                    common.month_count = 0;
-                    Button mbutton = (Button) findViewById(R.id.month);
-                    mbutton.setBackgroundResource(R.drawable.button_design);
-                    common.week_count = 0;
-                    Button wbutton = (Button) findViewById(R.id.week);
-                    wbutton.setBackgroundResource(R.drawable.button_design);
-                }
                 break;
             case R.id.month:
                 fileRead(itemPosition,duration=31);
                 Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
-                if(common.month_count == 1) {
-                    Button button = (Button) findViewById(R.id.month);
-                    button.setBackgroundResource(R.drawable.button_design);
-                    common.month_count = 0;
-                }else if(common.month_count == 0){
-                    Button button = (Button) findViewById(R.id.month);
-                    button.setBackgroundResource(R.drawable.button_design2);
-                    common.month_count = 1;
-                    common.year_count = 0;
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design);
-                    common.week_count = 0;
-                    Button wbutton = (Button) findViewById(R.id.week);
-                    wbutton.setBackgroundResource(R.drawable.button_design);
-                }
                 break;
             case R.id.week:
                 fileRead(itemPosition, duration=7);
                 Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
-                if(common.week_count == 1) {
-                    Button button = (Button) findViewById(R.id.week);
-                    button.setBackgroundResource(R.drawable.button_design);
-                    common.week_count = 0;
-                }else if(common.week_count == 0){
-                    Button button = (Button) findViewById(R.id.week);
-                    button.setBackgroundResource(R.drawable.button_design2);
-                    common.week_count = 1;
-                    common.year_count = 0;
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design);
-                    common.month_count = 0;
-                    Button mbutton = (Button) findViewById(R.id.month);
-                    mbutton.setBackgroundResource(R.drawable.button_design);
-                }
                 break;
             case R.id.fab:
                 mPopupWindow = new PopupWindow(ScatterActivity.this);
