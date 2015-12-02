@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class CheckActivity extends AppCompatActivity {
 
     private Common common;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
