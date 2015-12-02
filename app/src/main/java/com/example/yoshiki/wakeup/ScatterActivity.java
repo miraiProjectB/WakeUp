@@ -1,5 +1,6 @@
 package com.example.yoshiki.wakeup;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -36,8 +37,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import static java.lang.System.out;
 
 public class ScatterActivity extends AppCompatActivity implements OnChartValueSelectedListener, ActionBar.OnNavigationListener,
         View.OnClickListener {
@@ -111,6 +110,11 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             case R.id.Values: {
                 set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
                 sChart.invalidate();
+                break;
+            }
+            case R.id.help_call: {
+                Intent goHelp = new Intent(this, HelpActivity.class);
+                startActivity(goHelp);
                 break;
             }
         }

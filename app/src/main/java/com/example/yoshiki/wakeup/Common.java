@@ -17,6 +17,10 @@ public class Common extends Application {
     int food_count;
     int sport_count;
 
+    int week_count;
+    int month_count;
+    int year_count;
+
     public void init_kao() {
         smile = 0;
     }
@@ -29,5 +33,10 @@ public class Common extends Application {
         beer_count = 0;
         food_count = 0;
         sport_count = 0;
+    }
+    public void init_top_select(){
+        week_count = 0;
+        month_count = 0;
+        year_count = 0;
     }
 }

@@ -31,7 +31,7 @@ public class ActionActivity extends AppCompatActivity {
                 startActivity(goMame);
                 break;
 
-            case R.id.next_button:
+            case R.id.next_fab:
                 Intent intent = new Intent(this, CheckActivity.class);
                 startActivity(intent);
 

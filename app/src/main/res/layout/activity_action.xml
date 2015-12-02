@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent"
-            android:background="#dcdcdc"
-            style="@style/AppTheme"
-            android:transitionGroup="false"
-            android:theme="@style/AppTheme">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    style="@style/AppTheme"
+    android:transitionGroup="false"
+    android:theme="@style/AppTheme">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:tools="http://schemas.android.com/tools"
@@ -350,32 +350,38 @@
 
 
         <FrameLayout
-            android:layout_width="310dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            >
 
             <Button
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+
+                android:layout_marginBottom="16dp"
                 android:id="@+id/mame"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="bottom"
                 android:background="@drawable/mamebutton"
                 android:onClick="onClick"/>
 
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="完了"
-                android:id="@+id/next_button"
-                android:background="@drawable/design"
-                android:layout_gravity="center"
-
-                android:onClick="onClick"/>
-
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/next_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_action_done"
+                android:clickable="false"
+                android:scaleType="fitStart"
+                android:onClick="onClick"
+                app:backgroundTint="@color/dodgerBlue"/>
         </FrameLayout>
-
-
-
     </LinearLayout>
 
 </ScrollView>

@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#dcdcdc">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    style="@style/AppTheme">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="230dp"
+        android:id="@+id/frameLayout"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/frameLayout">
+        android:layout_centerHorizontal="true">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -84,14 +89,20 @@
         android:id="@+id/frameLayout3">
     </FrameLayout>
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="完了"
-        android:id="@+id/button"
-        android:background="@drawable/design"
-        android:layout_below="@+id/frameLayout3"
-        android:layout_centerHorizontal="true"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/next_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="right"
+        android:src="@drawable/ic_action_done"
+        android:clickable="false"
+        android:scaleType="fitStart"
+        android:onClick="onClick"
+        app:backgroundTint="@color/dodgerBlue"/>
 
 
 </RelativeLayout>
