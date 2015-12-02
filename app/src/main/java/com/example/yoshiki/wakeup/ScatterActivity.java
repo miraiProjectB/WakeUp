@@ -407,6 +407,11 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             x.add(calories);
                             y.add(sleep3);
                             break;
+                        case 5://主観評価
+                            if(!str_line[18].equals("")){
+                                sleep = Integer.parseInt(str_line[18]) ;
+                            }
+                            break;
                     }
                     yVals1.add(new Entry(sleep, calories));
                     x.add(calories);
@@ -448,6 +453,10 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     set2.setDrawValues(!set2.isDrawValuesEnabled());//データ値の表示を消す処理
                     set3.setDrawValues(!set3.isDrawValuesEnabled());//データ値の表示を消す処理
                     sleeptv.setText("睡眠(分)");
+                    break;
+                case 5:
+                    set1 = new ScatterDataSet(yVals1, "主観評価");
+                    sleeptv.setText("主観評価(レベル)");
                     break;
             }
             if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) { //縦画面だったら
