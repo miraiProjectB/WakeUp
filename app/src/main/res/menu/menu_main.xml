@@ -10,7 +10,7 @@
         android:orderInCategory="1" app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_call"
+        android:id="@+id/help_call"
         android:icon="@drawable/ic_action_help"
         android:orderInCategory="100"
         app:showAsAction="ifRoom"
