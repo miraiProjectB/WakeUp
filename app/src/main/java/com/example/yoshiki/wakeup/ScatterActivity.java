@@ -223,7 +223,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 mPopupWindow.setWindowLayoutMode(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 mPopupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
                 mPopupWindow.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
-                mPopupWindow.showAsDropDown(v, -1500, -1150);
+                View lv=(View)this.findViewById(R.id.Layout);
+                mPopupWindow.showAsDropDown(lv, -lv.getWidth(), -lv.getHeight());
                 fab = (FloatingActionButton) findViewById(R.id.fab);
                 ChiceText = (TextView) findViewById(R.id.ChiceText);
                 break;
