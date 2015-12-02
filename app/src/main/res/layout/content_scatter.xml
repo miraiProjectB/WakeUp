@@ -34,7 +34,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1"
-                    android:background="@drawable/button_design"/>
+                    android:background="@drawable/button_design2"/>
 
                 <Button
                     android:layout_width="0dp"
@@ -46,7 +46,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1"
-                    android:background="@drawable/button_design"/>
+                    android:background="@drawable/button_design2"/>
 
                 <Button
                     android:layout_width="0dp"
@@ -59,7 +59,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:background="@drawable/button_design"/>
+                    android:background="@drawable/button_design2"/>
             </LinearLayout>
 
             <TextView
@@ -91,7 +91,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:src="@drawable/cafein"
+                    android:src="@drawable/nothing"
                     android:clickable="false"
                     android:scaleType="fitStart"
                     android:onClick="onClick"
