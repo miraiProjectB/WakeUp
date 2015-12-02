@@ -54,7 +54,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             sort_lv=0;//ソートのレベル
     double Correlation=0;
     String Correlation_description="";
-    FloatingActionButton fab;//フロートアクションボタン
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -285,11 +285,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 fileRead(itemPosition, duration);
                 fab.setImageResource(R.drawable.nothing);
                 ChiceText.setText("行動：なし");
-                mPopupWindow.dismiss();
-                break;
-            case R.id.mame:
-                Intent intent = new Intent(this, KnowledgeActivity.class);
-                startActivity(intent);
                 mPopupWindow.dismiss();
                 break;
         }
