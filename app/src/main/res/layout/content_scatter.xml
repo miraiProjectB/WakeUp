@@ -28,38 +28,38 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="年"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:id="@+id/year"
                     android:onClick="onClick"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1"
-                    android:background="@color/dodgerBlue"/>
+                    android:background="@drawable/button_design"/>
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="月"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:id="@+id/month"
                     android:onClick="onClick"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1"
-                    android:background="@color/dodgerBlue"/>
+                    android:background="@drawable/button_design"/>
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="週"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:id="@+id/week"
                     android:onClick="onClick"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:background="@color/dodgerBlue"/>
+                    android:background="@drawable/button_design"/>
             </LinearLayout>
 
             <TextView
