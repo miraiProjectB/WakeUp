@@ -92,8 +92,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="416dp"
-                android:layout_weight="0.22"></LinearLayout>
+                android:layout_height="386dp"></LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
