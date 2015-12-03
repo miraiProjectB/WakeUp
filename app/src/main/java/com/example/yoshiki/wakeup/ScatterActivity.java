@@ -287,7 +287,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 sort_flg=1; sort_menu=23;sort_lv=1;
                 fileRead(itemPosition, duration);
                 fab.setImageResource(R.drawable.degital1);
-                ChiceText.setText("行動：メラトニン");
+                ChiceText.setText("行動：スマホ・TV等");
                 mPopupWindow.dismiss();
                 break;
             case R.id.light1 :

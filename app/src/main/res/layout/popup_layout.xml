@@ -346,6 +346,20 @@
 
         </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="310dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center">
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+            android:textSize="20dip"
+            android:text="該当なし"
+            android:id="@+id/next_button"
+            android:background="@drawable/button_design"
+            android:layout_gravity="right|center_vertical"
+            android:onClick="onClick"/>
+        </FrameLayout>
 
         <FrameLayout
             android:layout_width="310dp"
@@ -356,18 +370,11 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/mame"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="left|center_vertical"
                 android:background="@drawable/mamebutton"
                 android:onClick="onClick"/>
 
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="戻る"
-                android:id="@+id/next_button"
-                android:background="@drawable/design"
-                android:layout_gravity="left|center_vertical"
-                android:onClick="onClick"/>
+
 
         </FrameLayout>
 
