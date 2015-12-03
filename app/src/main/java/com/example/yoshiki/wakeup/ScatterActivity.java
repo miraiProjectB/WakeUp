@@ -395,15 +395,17 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             y.add(sleep3);
                             break;
                         case 5://主観評価
-                            if(!str_line[18].equals(""))     sleep = Float.parseFloat(str_line[18]) ;
-                            y.add(sleep);
+                            if(!str_line[18].equals("")) {
+                                sleep = Float.parseFloat(str_line[18]);
+                                y.add(sleep);
+                            }
                             break;
                     }
                     if(itemPosition!=5 || !str_line[18].equals("")){
                         yVals1.add(new Entry((int)sleep, calories));
                         x.add((float)calories);
+                        if (calmax < calories) calmax = calories;
                     }
-                    if (calmax < calories) calmax = calories;
                     if (count >= 7) ct++;
                     if (count == 366 && ct >= 366) break;
                     else if (count == 31 && ct >= 31) break;
