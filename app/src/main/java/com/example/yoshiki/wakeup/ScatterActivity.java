@@ -362,22 +362,31 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     switch (itemPosition) {   //睡眠データ
                         case 0://入眠時間
                             sleep = (Integer.parseInt(str_line[13]) - Integer.parseInt(str_line[10])) / 60;
+                            y.add(sleep);
                             break;
                         case 1://レム
-                            sleep = ((float)Integer.parseInt(str_line[15]) / Integer.parseInt(str_line[16]))*100;
+                            sleep = (Float.parseFloat(str_line[15]) / Integer.parseInt(str_line[16]))*100;
+                            y.add(Float.parseFloat(str_line[15]));
                             break;
                         case 2://深い眠り
-                            sleep = ((float)Integer.parseInt(str_line[12]) / Integer.parseInt(str_line[16]))*100;
+                            sleep = (Float.parseFloat(str_line[12]) / Integer.parseInt(str_line[16]))*100;
+                            y.add(Float.parseFloat(str_line[12]));
                             break;
                         case 3://浅い眠り
-                            sleep = ((float)(Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
-                                    - Integer.parseInt(str_line[14])) / Integer.parseInt(str_line[16]))*100;
+                            sleep = ((Float.parseFloat(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                    - Integer.parseInt(str_line[14])) / Float.parseFloat(str_line[16]))*100;
+                            y.add((Float.parseFloat(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                    - Integer.parseInt(str_line[14])) / Float.parseFloat(str_line[16]));
                             break;
                         case 4://眠り合算
-                            sleep = ((float)Integer.parseInt(str_line[15]) / Integer.parseInt(str_line[16]))*100;
-                            sleep2 = ((float)Integer.parseInt(str_line[12]) / Integer.parseInt(str_line[16]))*100;
-                            sleep3 = ((float)(Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
-                                    - Integer.parseInt(str_line[14])) / Integer.parseInt(str_line[16]))*100;
+                            sleep = (Float.parseFloat(str_line[15]) / Integer.parseInt(str_line[16]))*100;
+                            sleep2 = (Float.parseFloat(str_line[12]) / Integer.parseInt(str_line[16]))*100;
+                            sleep3 = ((Float.parseFloat(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                    - Integer.parseInt(str_line[14])) / Float.parseFloat(str_line[16]))*100;
+                            y.add(Float.parseFloat(str_line[15]));
+                            y.add(Float.parseFloat(str_line[12]));
+                            y.add((Float.parseFloat(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                    - Integer.parseInt(str_line[14])) / Float.parseFloat(str_line[16]));
                             yVals2.add(new Entry((int)sleep2, calories));
                             yVals3.add(new Entry((int)sleep3, calories));
                             x.add((float)calories);
@@ -386,14 +395,14 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             y.add(sleep3);
                             break;
                         case 5://主観評価
-                            if(!str_line[18].equals("")){
-                                sleep = Integer.parseInt(str_line[18]) ;
-                            }
+                            if(!str_line[18].equals(""))     sleep = Float.parseFloat(str_line[18]) ;
+                            y.add(sleep);
                             break;
                     }
-                    yVals1.add(new Entry((int)sleep, calories));
-                    x.add((float)calories);
-                    y.add(sleep);
+                    if(itemPosition!=5 || !str_line[18].equals("")){
+                        yVals1.add(new Entry((int)sleep, calories));
+                        x.add((float)calories);
+                    }
                     if (calmax < calories) calmax = calories;
                     if (count >= 7) ct++;
                     if (count == 366 && ct >= 366) break;
