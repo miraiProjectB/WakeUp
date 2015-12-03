@@ -9,7 +9,7 @@
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-        style="@style/AppTheme">
+                  style="@style/AppTheme">
 
 
         <FrameLayout
@@ -17,29 +17,21 @@
             android:layout_height="20dp"></FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="150dp"
+            android:layout_width="320dp"
+            android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dip"
-                android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru5"
-                android:layout_gravity="left|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前のカフェイン飲料"
+                android:textSize="20dip"
+                android:textColor="#0074e8"
+                android:text="就寝前のカフェイン飲料"
                 android:id="@+id/textView19"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,36 +47,28 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site5"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text="http://blue-light.biz/about_bluelight/?p=14"
                 android:layout_gravity="left|bottom"/>
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="190dp"
+            android:layout_width="320dp"
+            android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout1"
             android:layout_below="@id/frameLayout"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dip"
-                android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru4"
-                android:layout_gravity="left|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前の入浴"
+                android:textSize="20dip"
+                android:textColor="#0084ef"
+                android:text="就寝前の入浴"
                 android:id="@+id/textView17"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,37 +84,29 @@
                 android:layout_height="50dp"
                 android:id="@+id/web_site4"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text="http://www.e-healthnet.mhlw.go.jp/information/heart/k-01-004.html"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="200dp"
+            android:layout_width="320dp"
+            android:layout_height="220dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout2"
             android:layout_below="@id/frameLayout1"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dip"
-                android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru"
-                android:layout_gravity="left|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前の飲酒"
+                android:textSize="20dip"
+                android:textColor="#0074e8"
+                android:text="就寝前の飲酒"
                 android:id="@+id/beer"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/web_site1"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:autoLink="web"
                 android:text=" http://www.kaimin-life.jp/column/15.html"
                 android:layout_gravity="left|bottom"/>
@@ -153,8 +129,8 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="275dp"
+            android:layout_width="320dp"
+            android:layout_height="300dp"
             android:layout_gravity="center_horizontal"
             android:layout_below="@id/frameLayout2"
             android:id="@+id/frameLayout3"
@@ -163,20 +139,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dip"
+                android:textSize="20dip"
                 android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru3"
-                android:layout_gravity="left|top" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前の運動"
+                android:text="就寝前の運動"
                 android:id="@+id/textView15"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -192,37 +159,29 @@
                 android:layout_height="50dp"
                 android:id="@+id/web_site3"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text="http://www.e-healthnet.mhlw.go.jp/information/heart/k-01-004.html"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="220dp"
+            android:layout_width="320dp"
+            android:layout_height="240dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout4"
             android:layout_below="@id/frameLayout3"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dip"
-                android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru6"
-                android:layout_gravity="left|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前のPC・スマートフォン等の閲覧"
+                android:textSize="20dip"
+                android:textColor="#0074e8"
+                android:text="就寝前のスマホ・TV等の閲覧"
                 android:id="@+id/textView21"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -238,37 +197,29 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site6"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text="http://blue-light.biz/about_bluelight/?p=14"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="240dp"
+            android:layout_width="320dp"
+            android:layout_height="260dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout5"
             android:layout_below="@id/frameLayout4"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dip"
-                android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru7"
-                android:layout_gravity="left|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝中の明るさ"
+                android:textSize="20dip"
+                android:textColor="#0074e8"
+                android:text="就寝中の明るさ"
                 android:id="@+id/textView23"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -284,14 +235,14 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site7"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text="http://nemuri-lab.jp/story/point/659/"
                 android:layout_gravity="left|bottom"/>
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="360dp"
-            android:layout_height="200dp"
+            android:layout_width="320dp"
+            android:layout_height="220dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout6"
             android:layout_below="@id/frameLayout5"
@@ -300,20 +251,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dip"
+                android:textSize="20dip"
                 android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru2"
-                android:layout_gravity="left|top" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前の食事"
+                android:text="就寝前の食事"
                 android:id="@+id/textView13"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -329,7 +271,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site2"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text=" http://www.human-sb.com/mechanism/sleep-and-meal.html"
                 android:layout_gravity="left|bottom"/>
 
@@ -337,30 +279,22 @@
 
 
         <FrameLayout
-            android:layout_width="360dp"
+            android:layout_width="320dp"
             android:layout_height="190dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/frameLayout7"
             android:layout_below="@id/frameLayout6"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#0074e8"
-                android:text="●"
-                android:id="@+id/maru8"
-                android:layout_gravity="left|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dip"
-                android:textColor="#000000"
-                android:text="　就寝前の喫煙"
+                android:textSize="20dip"
+                android:textColor="#0074e8"
+                android:text="就寝前の喫煙"
                 android:id="@+id/textView25"
-                android:layout_gravity="left|top" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -376,11 +310,12 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site8"
                 android:autoLink="web"
-                android:textColorLink="#0074e8"
+                android:textColorLink="#003a75"
                 android:text="http://www.no-tabaco.com/effect/sleep.html"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
+
 
 
     </LinearLayout>

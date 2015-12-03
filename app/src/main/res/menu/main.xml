@@ -4,42 +4,34 @@
     <item
         android:id="@+id/cafein"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="カフェイン"/>
+        android:title="就寝前のカフェイン飲料"/>
     <item
         android:id="@+id/bath"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="入浴" />
+        android:title="就寝前の入浴" />
     <item
         android:id="@+id/beer"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="飲酒"/>
+        android:title="就寝前の飲酒"/>
     <item
         android:id="@+id/sport"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="運動" />
+        android:title="就寝前の運動" />
     <item
         android:id="@+id/degital"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="スマホ・TV等"/>
+        android:title="就寝前のスマホ・TV等の閲覧"/>
     <item
         android:id="@+id/light"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="明るい環境"/>
+        android:title="就寝中の明るさ"/>
     <item
         android:id="@+id/food"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="食事"/>
+        android:title="就寝前の食事"/>
     <item
         android:id="@+id/smoke"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="喫煙"/>
+        android:title="就寝前の喫煙"/>
 
 </menu>
