@@ -2,8 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".ScatterActivity">
 
-    <item android:id="@+id/action" android:title="@string/action"
-        android:orderInCategory="100" app:showAsAction="never" />
 
     <item android:id="@+id/Values"
         android:title="@string/Values"

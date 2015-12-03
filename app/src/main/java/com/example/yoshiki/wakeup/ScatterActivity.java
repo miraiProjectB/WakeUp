@@ -96,43 +96,44 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
         common = (Common) getApplication();
         common.init_top_select();
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {//縦画面だったら
+            TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
+            mTabLayout.addTab(mTabLayout.newTab().setText("年"));
+            mTabLayout.addTab(mTabLayout.newTab().setText("月"));
+            mTabLayout.addTab(mTabLayout.newTab().setText("週"));
 
-        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mTabLayout.addTab(mTabLayout.newTab().setText("年"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("月"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("週"));
-
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        fileRead(itemPosition, duration = 366);
-                        Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
-                        break;
-                    case 1:
-                        fileRead(itemPosition, duration = 31);
-                        Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
-                        break;
-                    case 2:
-                        fileRead(itemPosition, duration = 7);
-                        Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
-                        break;
-                    default:
-                        break;
+            mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    switch (tab.getPosition()) {
+                        case 0:
+                            fileRead(itemPosition, duration = 366);
+                            Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
+                            break;
+                        case 1:
+                            fileRead(itemPosition, duration = 31);
+                            Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
+                            break;
+                        case 2:
+                            fileRead(itemPosition, duration = 7);
+                            Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+                }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     @Override
@@ -151,6 +152,10 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         switch (id) {
             case R.id.Values: {
                 set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
+                if(itemPosition==4){
+                    set2.setDrawValues(!set2.isDrawValuesEnabled());//データ値の表示を消す処理
+                    set3.setDrawValues(!set3.isDrawValuesEnabled());//データ値の表示を消す処理
+                }
                 sChart.invalidate();
                 break;
             }
@@ -165,7 +170,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     @Override
     public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
         //Log.i("VAL SELECTED", "Value: " + e.getVal() + ", xIndex: " + e.getXIndex() + ", DataSet index: " + dataSetIndex);
-        sChart.setDescription("睡眠："+(int)e.getVal()+"  \n  "+"活動量："+e.getXIndex()+"");//グラフの説明
+        if(itemPosition==5) sChart.setDescription("主観評価："+(int)e.getVal()+"  \n  "+"活動量："+e.getXIndex()+"");//グラフの説明
+        else sChart.setDescription("睡眠："+(int)e.getVal()+"  \n  "+"活動量："+e.getXIndex()+"");//グラフの説明
     }
     @Override
     public void onNothingSelected() {
@@ -336,14 +342,15 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
     private void fileRead(int itemPosition, int count){//散布図を表示
         String str;
-        int sleep=0,sleep2,sleep3,calories,calmax=0,i,j=0,ct=0;
+        int calories,calmax=0,i,j=0,ct=0;
+        float sleep=0,sleep2,sleep3;
         ArrayList<ScatterDataSet> dataSets = new ArrayList<ScatterDataSet>();
         set1=null;set2=null;set3=null;//yVals1=null;yVals2=null;yVals3=null;
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
         ArrayList<Entry> yVals2 = new ArrayList<Entry>();
         ArrayList<Entry> yVals3 = new ArrayList<Entry>();
-        ArrayList<Integer> x = new ArrayList<>();
-        ArrayList<Integer> y = new ArrayList<>();
+        ArrayList<Float> x = new ArrayList<>();
+        ArrayList<Float> y = new ArrayList<>();
         try {
             FileInputStream in = new FileInputStream(Environment.getExternalStorageDirectory() + "/wakeup/log.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
@@ -357,25 +364,25 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             sleep = (Integer.parseInt(str_line[13]) - Integer.parseInt(str_line[10])) / 60;
                             break;
                         case 1://レム
-                            sleep = Integer.parseInt(str_line[15]) / 60;
+                            sleep = ((float)Integer.parseInt(str_line[15]) / Integer.parseInt(str_line[16]))*100;
                             break;
                         case 2://深い眠り
-                            sleep = Integer.parseInt(str_line[12]) / 60;
+                            sleep = ((float)Integer.parseInt(str_line[12]) / Integer.parseInt(str_line[16]))*100;
                             break;
                         case 3://浅い眠り
-                            sleep = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
-                                    - Integer.parseInt(str_line[14])) / 60;
+                            sleep = ((float)(Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
+                                    - Integer.parseInt(str_line[14])) / Integer.parseInt(str_line[16]))*100;
                             break;
                         case 4://眠り合算
-                            sleep = Integer.parseInt(str_line[15]) / 60;
-                            sleep2 = Integer.parseInt(str_line[12]) / 60;
-                            sleep3 = (Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
-                                    - Integer.parseInt(str_line[14])) / 60;
-                            yVals2.add(new Entry(sleep2, calories));
-                            yVals3.add(new Entry(sleep3, calories));
-                            x.add(calories);
+                            sleep = ((float)Integer.parseInt(str_line[15]) / Integer.parseInt(str_line[16]))*100;
+                            sleep2 = ((float)Integer.parseInt(str_line[12]) / Integer.parseInt(str_line[16]))*100;
+                            sleep3 = ((float)(Integer.parseInt(str_line[16]) - Integer.parseInt(str_line[11]) - Integer.parseInt(str_line[14])
+                                    - Integer.parseInt(str_line[14])) / Integer.parseInt(str_line[16]))*100;
+                            yVals2.add(new Entry((int)sleep2, calories));
+                            yVals3.add(new Entry((int)sleep3, calories));
+                            x.add((float)calories);
                             y.add(sleep2);
-                            x.add(calories);
+                            x.add((float)calories);
                             y.add(sleep3);
                             break;
                         case 5://主観評価
@@ -384,8 +391,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             }
                             break;
                     }
-                    yVals1.add(new Entry(sleep, calories));
-                    x.add(calories);
+                    yVals1.add(new Entry((int)sleep, calories));
+                    x.add((float)calories);
                     y.add(sleep);
                     if (calmax < calories) calmax = calories;
                     if (count >= 7) ct++;
@@ -401,15 +408,15 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     break;
                 case 1:
                     set1 = new ScatterDataSet(yVals1, "レム睡眠");
-                    sleeptv.setText("レム睡眠(分)");
+                    sleeptv.setText("レム睡眠(%)");
                     break;
                 case 2:
                     set1 = new ScatterDataSet(yVals1, "深い眠り");
-                    sleeptv.setText("深い眠り(分)");
+                    sleeptv.setText("深い眠り(%)");
                     break;
                 case 3:
                     set1 = new ScatterDataSet(yVals1, "浅い眠り");
-                    sleeptv.setText("浅い眠り(分)");
+                    sleeptv.setText("浅い眠り(%)");
                     break;
                 case 4:
                     set1 = new ScatterDataSet(yVals1, "レム睡眠");
@@ -423,7 +430,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     set3.setScatterShapeSize(8f);
                     set2.setDrawValues(!set2.isDrawValuesEnabled());//データ値の表示を消す処理
                     set3.setDrawValues(!set3.isDrawValuesEnabled());//データ値の表示を消す処理
-                    sleeptv.setText("睡眠(分)");
+                    sleeptv.setText("睡眠(%)");
                     break;
                 case 5:
                     set1 = new ScatterDataSet(yVals1, "主観評価");
@@ -462,7 +469,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     }
 
     //ピアソン相関係数を求める
-    public double PearsonsCorrelation( ArrayList<Integer> x,  ArrayList<Integer> y ) {
+    public double PearsonsCorrelation( ArrayList<Float> x,  ArrayList<Float> y ) {
         int n=x.size(); //xとyの組数
         double  xt=0,yt=0,x2t=0,y2t=0,xyt=0,xh=0,yh,xs,ys,xsd,ysd,r;
         for( int  i=0; i<n; i++)  {
