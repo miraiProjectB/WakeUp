@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -96,6 +96,43 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
         common = (Common) getApplication();
         common.init_top_select();
+
+        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout.addTab(mTabLayout.newTab().setText("年"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("月"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("週"));
+
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 0:
+                        fileRead(itemPosition, duration = 366);
+                        Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
+                        break;
+                    case 1:
+                        fileRead(itemPosition, duration = 31);
+                        Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
+                        break;
+                    case 2:
+                        fileRead(itemPosition, duration = 7);
+                        Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
@@ -145,72 +182,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.year:
-                fileRead(itemPosition,duration=366);
-                Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
-                if(common.year_count == 1) {
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design);
-                    common.year_count = 0;
-                }else if(common.year_count == 0){
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design2);
-                    common.year_count = 1;
-
-                    Button mbutton = (Button) findViewById(R.id.month);
-                    mbutton.setBackgroundResource(R.drawable.button_design);
-                    common.month_count = 0;
-
-                    Button wbutton = (Button) findViewById(R.id.week);
-                    wbutton.setBackgroundResource(R.drawable.button_design);
-                    common.week_count = 0;
-
-                }
-                break;
-            case R.id.month:
-                fileRead(itemPosition,duration=31);
-                Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
-                if(common.month_count == 1) {
-                    Button mbutton = (Button) findViewById(R.id.month);
-                    mbutton.setBackgroundResource(R.drawable.button_design);
-                    common.month_count = 0;
-                }else if(common.month_count == 0){
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design);
-                    common.year_count = 0;
-
-                    Button mbutton = (Button) findViewById(R.id.month);
-                    mbutton.setBackgroundResource(R.drawable.button_design2);
-                    common.month_count = 1;
-
-                    Button wbutton = (Button) findViewById(R.id.week);
-                    wbutton.setBackgroundResource(R.drawable.button_design);
-                    common.week_count = 0;
-
-                }
-                break;
-            case R.id.week:
-                fileRead(itemPosition, duration = 7);
-                Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
-                if(common.week_count == 1) {
-                    Button wbutton = (Button) findViewById(R.id.week);
-                    wbutton.setBackgroundResource(R.drawable.button_design);
-                    common.week_count = 0;
-                }else if(common.week_count == 0){
-                    Button ybutton = (Button) findViewById(R.id.year);
-                    ybutton.setBackgroundResource(R.drawable.button_design);
-                    common.year_count = 0;
-
-                    Button mbutton = (Button) findViewById(R.id.month);
-                    mbutton.setBackgroundResource(R.drawable.button_design);
-                    common.month_count = 0;
-
-                    Button wbutton = (Button) findViewById(R.id.week);
-                    wbutton.setBackgroundResource(R.drawable.button_design2);
-                    common.week_count = 1;
-
-                }
-                break;
             case R.id.fab:
                 mPopupWindow = new PopupWindow(ScatterActivity.this);
                 popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
