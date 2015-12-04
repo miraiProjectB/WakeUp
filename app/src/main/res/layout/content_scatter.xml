@@ -84,7 +84,7 @@
                 android:clickable="false"
                 android:scaleType="fitStart"
                 android:onClick="onClick"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="60dp"
                 app:backgroundTint="@color/dodgerBlue"/>
         </RelativeLayout>
 

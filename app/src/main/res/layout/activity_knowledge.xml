@@ -47,7 +47,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site5"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text="http://blue-light.biz/about_bluelight/?p=14"
                 android:layout_gravity="left|bottom"/>
         </FrameLayout>
