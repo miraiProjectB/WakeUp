@@ -11,7 +11,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/Layout">
+        android:id="@+id/Layout"
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -33,25 +34,24 @@
                 android:id="@+id/chart"
                 android:layout_width="wrap_content"
                 android:layout_height="400dp"
-                android:elevation="8dp"
+                android:elevation="16dp"
                 android:background="@drawable/chart_design"
                 />
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:weightSum="1">
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="267dp"
-                    android:layout_height="50dp"
-                    android:elevation="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="4dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="16dp"
-                    android:layout_weight="0.98">
+                    android:layout_weight="0.02">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,19 +70,18 @@
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:src="@drawable/nothing"
+                    android:src="@drawable/w_nothing"
                     android:clickable="false"
                     android:scaleType="fitStart"
                     android:onClick="onClick"
-                    app:backgroundTint="@color/white"/>
+                    app:backgroundTint="@color/dodgerBlue"
+                    android:layout_weight="0.74" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
