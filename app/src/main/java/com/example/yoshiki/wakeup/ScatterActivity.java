@@ -401,6 +401,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             }
                             break;
                     }
+                    if(str!=null) yVals1.add(new Entry( -100, 0));// 縦軸の少数表示を消す処理（仮）
                     if(itemPosition!=5 || !str_line[18].equals("")){
                         yVals1.add(new Entry((int)sleep, calories));
                         x.add((float)calories);
