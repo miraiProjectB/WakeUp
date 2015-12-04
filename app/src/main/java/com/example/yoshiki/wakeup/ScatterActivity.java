@@ -83,7 +83,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
         Legend l = sChart.getLegend();
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_RIGHT);
+        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_INSIDE);
         l.setTypeface(tf);
         YAxis yl = sChart.getAxisLeft();
         yl.setTypeface(tf);
