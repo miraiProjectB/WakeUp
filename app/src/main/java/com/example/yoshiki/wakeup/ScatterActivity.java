@@ -452,7 +452,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) { //縦画面だったら
                 txtView = (TextView) findViewById(R.id.txtView);//散布図表示用TextView
                 Correlation = PearsonsCorrelation(x, y); // ピアソン相関を計算
-                txtView.setText("相関係数：" + String.format("%.2f", Correlation) + " " + Correlation_description);//相関係数表示
+                txtView.setText("相関：" + String.format("%.1f", Correlation) + " " + Correlation_description);//相関係数表示
             }
             set1.setScatterShapeSize(8f);
             set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
