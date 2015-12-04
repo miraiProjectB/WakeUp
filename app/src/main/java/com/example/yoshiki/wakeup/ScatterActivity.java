@@ -464,8 +464,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 dataSets.add(set3);
             }
             ArrayList<String> xVals = new ArrayList<String>();
-            for(i=0;i<=calmax;i+=1000) ;
-            for(;j<i;j++) xVals.add((j)+"");
+            for(i=0;i<=calmax;i+=1000) ; //横軸のインデックスを設定
+            for(;j<=i;j++) xVals.add((j)+"");
             ScatterData data = new ScatterData(xVals, dataSets);
             data.setValueTypeface(tf);
             sChart.setData(data);
