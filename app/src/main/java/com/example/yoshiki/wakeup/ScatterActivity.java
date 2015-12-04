@@ -208,35 +208,35 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             case R.id.cafein1 :
                 sort_flg=1; sort_menu=19;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.cafein1);
+                fab.setImageResource(R.drawable.w_cafein);
                 ChiceText.setText("行動：カフェイン（コーヒー）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.cafein2 :
                 sort_flg=1; sort_menu=19;sort_lv=2;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.cafein2);
+                fab.setImageResource(R.drawable.w_cafein);
                 ChiceText.setText("行動：カフェイン（清涼飲料水）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.cafein3 :
                 sort_flg=1; sort_menu=19;sort_lv=3;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.cafein3);
+                fab.setImageResource(R.drawable.w_cafein);
                 ChiceText.setText("行動：カフェイン（エナジードリンク）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.bath1 :
                 sort_flg=1; sort_menu=20;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.bath1);
+                fab.setImageResource(R.drawable.w_bath);
                 ChiceText.setText("行動：入浴（シャワー）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.bath2 :
                 sort_flg=1; sort_menu=20;sort_lv=2;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.bath2);
+                fab.setImageResource(R.drawable.w_bath);
                 ChiceText.setText("行動：入浴（熱めの湯船）");
                 mPopupWindow.dismiss();
                 break;
@@ -244,83 +244,83 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 sort_flg=1; sort_menu=20;sort_lv=3;
                 fileRead(itemPosition, duration);
                 mPopupWindow.dismiss();
-                fab.setImageResource(R.drawable.bath3);
+                fab.setImageResource(R.drawable.w_bath);
                 ChiceText.setText("行動：入浴（ぬるめの湯船）");
                 break;
             case R.id.beer1 :
                 sort_flg=1; sort_menu=21;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.beer1);
+                fab.setImageResource(R.drawable.w_beer);
                 ChiceText.setText("行動：飲酒（多め）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.beer2 :
                 sort_flg=1; sort_menu=21;sort_lv=2;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.beer2);
+                fab.setImageResource(R.drawable.w_beer);
                 ChiceText.setText("行動：飲酒（ほどほど）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.beer3 :
                 sort_flg=1; sort_menu=21;sort_lv=3;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.beer3);
+                fab.setImageResource(R.drawable.w_beer);
                 ChiceText.setText("行動：飲酒（少なめ）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.sport1 :
                 sort_flg=1; sort_menu=22;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.sport1);
+                fab.setImageResource(R.drawable.w_sport);
                 ChiceText.setText("行動：運動（激しめ）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.sport2 :
                 sort_flg=1; sort_menu=22;sort_lv=2;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.sport1);
+                fab.setImageResource(R.drawable.w_sport);
                 ChiceText.setText("行動：運動（まあまあ）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.sport3:
                 sort_flg=1; sort_menu=22;sort_lv=3;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.sport1);
+                fab.setImageResource(R.drawable.w_sport);
                 ChiceText.setText("行動：運動（軽め）");
                 mPopupWindow.dismiss();
                 break;
             case R.id.degital1 :
                 sort_flg=1; sort_menu=23;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.degital1);
+                fab.setImageResource(R.drawable.w_degital);
                 ChiceText.setText("行動：スマホ・TV等");
                 mPopupWindow.dismiss();
                 break;
             case R.id.light1 :
                 sort_flg=1; sort_menu=24;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.light1);
+                fab.setImageResource(R.drawable.w_light);
                 ChiceText.setText("行動：明るい環境");
                 mPopupWindow.dismiss();
                 break;
             case R.id.food1 :
                 sort_flg=1; sort_menu=25;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.food1);
+                fab.setImageResource(R.drawable.w_food);
                 ChiceText.setText("行動：夜食");
                 mPopupWindow.dismiss();
                 break;
             case R.id.smoke1 :
                 sort_flg=1; sort_menu=26;sort_lv=1;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.smoke1);
+                fab.setImageResource(R.drawable.w_smoke);
                 ChiceText.setText("行動：喫煙");
                 mPopupWindow.dismiss();
                 break;
             case R.id.next_button:
                 sort_flg=0;
                 fileRead(itemPosition, duration);
-                fab.setImageResource(R.drawable.nothing);
+                fab.setImageResource(R.drawable.w_nothing);
                 ChiceText.setText("行動：なし");
                 mPopupWindow.dismiss();
                 break;
