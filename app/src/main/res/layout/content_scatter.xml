@@ -32,37 +32,25 @@
             <com.github.mikephil.charting.charts.ScatterChart
                 android:id="@+id/chart"
                 android:layout_width="wrap_content"
-                android:layout_height="386dp"
+                android:layout_height="400dp"
                 android:elevation="8dp"
                 android:background="@drawable/chart_design"
                 />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/nothing"
-                    android:clickable="false"
-                    android:scaleType="fitStart"
-                    android:onClick="onClick"
-                    app:backgroundTint="@color/white"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:weightSum="1">
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="match_parent"
+                    android:layout_width="267dp"
                     android:layout_height="50dp"
                     android:elevation="8dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="16dp"
-                    >
+                    android:layout_weight="0.98">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -78,7 +66,22 @@
                         ></TextView>
 
                 </LinearLayout>
-            </RelativeLayout>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/nothing"
+                    android:clickable="false"
+                    android:scaleType="fitStart"
+                    android:onClick="onClick"
+                    app:backgroundTint="@color/white"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
