@@ -14,6 +14,7 @@
         android:id="@+id/Layout"
         android:layout_alignParentBottom="true">
 
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -43,14 +44,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
-                android:weightSum="1">
+                >
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:elevation="4dp"
-                    android:layout_alignParentBottom="true"
                     android:layout_weight="0.02">
 
                     <TextView
@@ -67,24 +67,26 @@
                         ></TextView>
 
                 </LinearLayout>
-
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/w_nothing"
-                    android:clickable="false"
-                    android:scaleType="fitStart"
-                    android:onClick="onClick"
-                    app:backgroundTint="@color/dodgerBlue"
-                    android:layout_weight="0.74" />
-
             </RelativeLayout>
-
-
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/next_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="right"
+                android:src="@drawable/w_nothing"
+                android:clickable="false"
+                android:scaleType="fitStart"
+                android:onClick="onClick"
+                android:layout_marginBottom="100dp"
+                app:backgroundTint="@color/dodgerBlue"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:orientation="vertical"
