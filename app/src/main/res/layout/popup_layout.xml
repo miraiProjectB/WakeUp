@@ -374,6 +374,14 @@
                 android:background="@drawable/mamebutton"
                 android:onClick="onClick"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nothing"
+                android:id="@+id/Nothing"
+                android:background="@drawable/button_design"
+                android:layout_gravity="center"
+                android:onClick="onClick"/>
 
 
         </FrameLayout>
