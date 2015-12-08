@@ -70,41 +70,18 @@ public class TopActivity extends Activity implements Runnable {
                     startActivity(intent_evalu);
                     evalu_check=false;
                 }
-
+/*
                 //デモ用。常に評価画面に遷移
                 Intent intent_evalu =new Intent(TopActivity.this,EvaluationActivity.class);
                 startActivity(intent_evalu);
                 evalu_check=false;
+                */
             }
+
         });
         syncProcess();
     }
 
-/*    public boolean onTouchEvent(MotionEvent event) {
-
-        switch (event.getAction()) {
-           case MotionEvent.ACTION_DOWN:
-                if (!evalu_check) {
-                    Intent intent = new Intent(this, ScatterActivity.class);
-                    startActivity(intent);
-                }else{
-                    Intent intent_evalu =new Intent(this,EvaluationActivity.class);
-                    startActivity(intent_evalu);
-                    evalu_check=false;
-                }
-
-
-                //デモ用。常に評価画面に遷移
-                Intent intent_evalu =new Intent(this,EvaluationActivity.class);
-                startActivity(intent_evalu);
-                evalu_check=false;
-                break;
-
-        }
-        finish();
-        return true;
-    }
-*/
     private void syncProcess() {
         String today_st = dateConvertToString(Calendar.getInstance());
         yesterday = Integer.parseInt(dateConvertToString(backOneday(today_st)));
