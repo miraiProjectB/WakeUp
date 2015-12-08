@@ -84,7 +84,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/web_site4"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text="http://www.e-healthnet.mhlw.go.jp/information/heart/k-01-004.html"
                 android:layout_gravity="left|bottom"/>
 
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/web_site1"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:autoLink="web"
                 android:text=" http://www.kaimin-life.jp/column/15.html"
                 android:layout_gravity="left|bottom"/>
@@ -159,7 +159,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/web_site3"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text="http://www.e-healthnet.mhlw.go.jp/information/heart/k-01-004.html"
                 android:layout_gravity="left|bottom"/>
 
@@ -197,7 +197,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site6"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text="http://blue-light.biz/about_bluelight/?p=14"
                 android:layout_gravity="left|bottom"/>
 
@@ -235,7 +235,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site7"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text="http://nemuri-lab.jp/story/point/659/"
                 android:layout_gravity="left|bottom"/>
         </FrameLayout>
@@ -271,7 +271,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site2"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text=" http://www.human-sb.com/mechanism/sleep-and-meal.html"
                 android:layout_gravity="left|bottom"/>
 
@@ -310,7 +310,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/web_site8"
                 android:autoLink="web"
-                android:textColorLink="#003a75"
+                android:textColorLink="@color/colorAccent"
                 android:text="http://www.no-tabaco.com/effect/sleep.html"
                 android:layout_gravity="left|bottom"/>
 
