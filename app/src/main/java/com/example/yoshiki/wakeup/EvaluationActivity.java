@@ -120,7 +120,6 @@ public class EvaluationActivity extends AppCompatActivity {
             case R.id.next_fab:
                 Intent intent = new Intent(this, ActionActivity.class);
                 startActivity(intent);
-
                 break;
         }
     }

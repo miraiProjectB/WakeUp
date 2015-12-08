@@ -2,7 +2,6 @@ package com.example.yoshiki.wakeup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +19,8 @@ public class CheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check);
 
-        FloatingActionButton btn = (FloatingActionButton)findViewById(R.id.next_fab);
+/*        FloatingActionButton btn = (FloatingActionButton)findViewById(R.id.next_fab);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +42,9 @@ public class CheckActivity extends AppCompatActivity {
                 finish();
             }
 
+
         });
+        */
 
 
         setTitle("これでよろしいですか？");
@@ -140,6 +142,28 @@ public class CheckActivity extends AppCompatActivity {
         }
     }
 
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.fab:
+                ArrayList<Integer> act = new ArrayList<>();
+                act.add(common.cafein_count);
+                act.add(common.bath_count);
+                act.add(common.beer_count);
+                act.add(common.sport_count);
+                act.add(common.degital_count);
+                act.add(common.light_count);
+                act.add(common.food_count);
+                act.add(common.smoke_count);
+                Process.writeEvAct(common.smile, act);
+                //グラフ描画画面に遷移
+                Intent intent = new Intent(getApplication(), ScatterActivity.class);
+                EvaluationActivity.exitFlag = true;
+                ActionActivity.exitFlag = true;
+                startActivity(intent);
+                finish();
+                break;
+        }
+    }
 
     @Override
     protected void  onResume(){
