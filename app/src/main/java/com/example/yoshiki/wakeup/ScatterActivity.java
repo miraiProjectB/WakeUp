@@ -377,7 +377,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                                     - Integer.parseInt(str_line[14])) / Float.parseFloat(str_line[16]))*100;
                             y.add((Float.parseFloat(str_line[16]) - Integer.parseInt(str_line[12]) - Integer.parseInt(str_line[15])
                                     - Integer.parseInt(str_line[14])) / Float.parseFloat(str_line[16]));
-                            break;
+                        break;
                         case 4://眠り合算
                             sleep = (Float.parseFloat(str_line[15]) / Integer.parseInt(str_line[16]))*100;
                             sleep2 = (Float.parseFloat(str_line[12]) / Integer.parseInt(str_line[16]))*100;

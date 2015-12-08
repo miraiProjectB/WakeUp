@@ -37,8 +37,8 @@
                 android:layout_height="400dp"
                 android:elevation="16dp"
                 android:background="@drawable/chart_design"
-                />
 
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -96,7 +96,8 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="386dp"></LinearLayout>
+                android:layout_height="385dp"
+                android:layout_weight="0.08"></LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

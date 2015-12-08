@@ -28,17 +28,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0074e8"
-                android:text="就寝前のカフェイン飲料"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/cafein_title"
                 android:id="@+id/textView19"
                 android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　カフェインは眠気を防止するわけですから、眠りたいときの眠りも妨げます。問題はカフェインの覚醒効果は８時間～１４時間も持続することです。覚醒効果のピークは飲んでから４０分後ぐらいです。"
+                android:text="@string/cafein"
                 android:id="@+id/textView20"
                 android:layout_gravity="center" />
 
@@ -48,7 +48,7 @@
                 android:id="@+id/web_site5"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text="http://blue-light.biz/about_bluelight/?p=14"
+                android:text="@string/cafein_re"
                 android:layout_gravity="left|bottom"/>
         </FrameLayout>
 
@@ -65,17 +65,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0084ef"
-                android:text="就寝前の入浴"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/bath_title"
                 android:id="@+id/textView17"
                 android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　夕方あるいは夜の入浴が効果的です。深い睡眠をとるには就寝直前の入浴が良いとされていますが、寝付きを悪くしてしまう心配があります。寝付きを優先させると、就寝の2～3時間前の入浴が理想です。"
+                android:text="@string/bath"
                 android:id="@+id/textView18"
                 android:layout_gravity="center" />
 
@@ -85,7 +85,7 @@
                 android:id="@+id/web_site4"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text="http://www.e-healthnet.mhlw.go.jp/information/heart/k-01-004.html"
+                android:text="@string/bath_re"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
@@ -103,8 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0074e8"
-                android:text="就寝前の飲酒"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/bath_title"
                 android:id="@+id/beer"
                 android:layout_gravity="center|top" />
 
@@ -112,8 +112,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#000000"
-                android:text="　お酒を飲んで寝るとしばらくは、アルコールの分解時に発生するアセトアルデヒドの影響で、レム睡眠（体は休んでいても、脳が活発に動いている状態）が抑えられます。しかし、その反動で睡眠の後半にはレム睡眠が増加するため、浅い眠りが続き、中途覚醒を招くというわけです。"
+                android:textColor="@color/black"
+                android:text="@string/beer"
                 android:layout_weight="0.13"
                 android:layout_gravity="center" />
 
@@ -123,7 +123,7 @@
                 android:id="@+id/web_site1"
                 android:textColorLink="@color/colorAccent"
                 android:autoLink="web"
-                android:text=" http://www.kaimin-life.jp/column/15.html"
+                android:text="@string/beer_re"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
@@ -140,17 +140,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0074e8"
-                android:text="就寝前の運動"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/sport_title"
                 android:id="@+id/textView15"
                 android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　効果的なのは夕方から夜（就寝の3時間くらい前）の運動だと言われています。就寝の数時間前に運動によって脳の温度を一過性に上げてやることがポイントです。そうすると床にはいるときの脳温の低下量が運動をしないときに比べて大きくなります。睡眠は脳の温度が低下するときに出現しやすくなるので、結果として快眠が得られやすくなる訳です。ただし就寝直前の運動は体を興奮させてしまうので禁物です。"
+                android:text="@string/sport"
                 android:id="@+id/textView16"
                 android:layout_gravity="center" />
 
@@ -160,7 +160,7 @@
                 android:id="@+id/web_site3"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text="http://www.e-healthnet.mhlw.go.jp/information/heart/k-01-004.html"
+                android:text="@string/sport_re"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
@@ -178,17 +178,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0074e8"
-                android:text="就寝前のスマホ・TV等の閲覧"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/degital_title"
                 android:id="@+id/textView21"
                 android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　夜も明るい環境や、夜遅くまでパソコンなどのLEDディスプレイでブルーライトを浴びる生活は、サーカディアンリズムを乱れさせ、自律神経系や内分泌系、免疫系にも悪影響を及ぼします。寝付きが悪い、眠りが浅いといった「睡眠の質を低下」も、そのひとつです。"
+                android:text="@string/degital"
                 android:id="@+id/textView22"
                 android:layout_gravity="center" />
 
@@ -198,7 +198,7 @@
                 android:id="@+id/web_site6"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text="http://blue-light.biz/about_bluelight/?p=14"
+                android:text="@string/degital_re"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
@@ -216,17 +216,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0074e8"
-                android:text="就寝中の明るさ"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/light_title"
                 android:id="@+id/textView23"
                 android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　夜、明るい環境にいると、メラトニンの分泌が抑えられてしまいます。夜は暗い環境で過ごすことがよい眠りへつながります。メラトニンとは血圧や脈拍を下げ、睡眠を安定させる作用とサーカディアンリズムを調整する働きがあるホルモン。日中に分泌が抑制され、眠りに就く1～2時間前から増加し、最低体温の1時間後くらいにピークを迎えその後減少します。 "
+                android:text="@string/light"
                 android:id="@+id/textView24"
                 android:layout_gravity="center" />
 
@@ -236,7 +236,7 @@
                 android:id="@+id/web_site7"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text="http://nemuri-lab.jp/story/point/659/"
+                android:text="@string/light_re"
                 android:layout_gravity="left|bottom"/>
         </FrameLayout>
 
@@ -253,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
                 android:textColor="#0074e8"
-                android:text="就寝前の食事"
+                android:text="@string/food_title"
                 android:id="@+id/textView13"
                 android:layout_gravity="center|top" />
 
@@ -262,7 +262,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　胃に食べ物が入ったまま眠ると、睡眠中は脈拍や血圧が下がって、血流が抑制されるので胃腸の動きは鈍くなるため、どうしても消化や吸収の効率が下がります。  すると、消化不良を起こして下痢や便秘になりやすいほか、「逆流性食道炎」の原因にもなります。"
+                android:text="@string/food"
                 android:id="@+id/textView14"
                 android:layout_gravity="center" />
 
@@ -272,7 +272,7 @@
                 android:id="@+id/web_site2"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text=" http://www.human-sb.com/mechanism/sleep-and-meal.html"
+                android:text="@string/food_re"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
@@ -291,17 +291,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dip"
-                android:textColor="#0074e8"
-                android:text="就寝前の喫煙"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/smoke_title"
                 android:id="@+id/textView25"
                 android:layout_gravity="center|top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="　タバコを吸えば血管の収縮がおき、血圧が上昇、鼓動が早くなり、身体は飛び起きます。血圧と心拍数が上昇するということは、身体が激しい運動をした状態と同じになっていることを意味します。"
+                android:text="@string/smoke"
                 android:id="@+id/textView26"
                 android:layout_gravity="center" />
 
@@ -311,7 +311,7 @@
                 android:id="@+id/web_site8"
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
-                android:text="http://www.no-tabaco.com/effect/sleep.html"
+                android:text="@string/smoke_re"
                 android:layout_gravity="left|bottom"/>
 
         </FrameLayout>
