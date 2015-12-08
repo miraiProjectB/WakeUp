@@ -57,6 +57,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     String Correlation_description="";
     FloatingActionButton fab;
     private Common common;
+    static int ANIME=500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +88,8 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         l.setTypeface(tf);
         YAxis yl = sChart.getAxisLeft();
         yl.setTypeface(tf);
+        sChart.animateX(ANIME);//指定時間のアニメーションで描画
         sChart.getAxisRight().setEnabled(false);
-        sChart.animateX(1000);//指定時間のアニメーションで描画
         XAxis xl = sChart.getXAxis();
         xl.setTypeface(tf);
         xl.setDrawGridLines(false);
@@ -401,7 +402,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             }
                             break;
                     }
-                    if(str!=null) yVals1.add(new Entry( -100, 0));// 縦軸の少数表示を消す処理（仮）
                     if(itemPosition!=5 || !str_line[18].equals("")){
                         yVals1.add(new Entry((int)sleep, calories));
                         x.add((float)calories);
@@ -412,6 +412,11 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     else if (count == 31 && ct >= 31) break;
                     else if (count == 7 && ct >= 7) break;
                 }////////////////////////////
+            }
+            if(x.size()!=0) yVals1.add(new Entry( -100, 0));// 縦軸の少数表示を消す処理（仮）
+            else{ //表示するデータがなかった時の処理
+                yVals1.clear();
+                yVals1.add(new Entry(-100, 0));
             }
             switch(itemPosition){
                 case 0:
@@ -467,8 +472,16 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             for(i=0;i<=calmax;i+=1000) ; //横軸のインデックスを設定
             for(;j<=i;j++) xVals.add((j)+"");
             ScatterData data = new ScatterData(xVals, dataSets);
+            if(x.size()==0){ //表示する値が無かったら
+                set1.setScatterShapeSize(0);
+                xVals.clear();
+                xVals.add(0+"");
+                data = new ScatterData(xVals, dataSets);
+            }
             data.setValueTypeface(tf);
             sChart.setData(data);
+            sChart.setDescription("");
+            sChart.animateX(ANIME);//指定時間のアニメーションで描画
             sChart.invalidate();/*グラフ再描画*/
             in.close();
         } catch (FileNotFoundException e ) {	// 読み込むファイルが見つからない場合の例外処理
