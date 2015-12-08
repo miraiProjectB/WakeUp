@@ -84,7 +84,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
         Legend l = sChart.getLegend();
-        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_INSIDE);
+        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_INSIDE);//凡例をグラフの中の右に表示
         l.setTypeface(tf);
         YAxis yl = sChart.getAxisLeft();
         yl.setTypeface(tf);
@@ -126,12 +126,10 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
                 @Override
                 public void onTabUnselected(TabLayout.Tab tab) {
-
                 }
 
                 @Override
                 public void onTabReselected(TabLayout.Tab tab) {
-
                 }
             });
         }
@@ -170,7 +168,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
     }
     @Override
     public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
-        //Log.i("VAL SELECTED", "Value: " + e.getVal() + ", xIndex: " + e.getXIndex() + ", DataSet index: " + dataSetIndex);
+        //System.out.println( "Value: " + e.getVal() + ", xIndex: " + e.getXIndex() + ", DataSet index: " + dataSetIndex);
         if(itemPosition==5) sChart.setDescription("主観評価："+(int)e.getVal()+"  \n  "+"活動量："+e.getXIndex()+"");//グラフの説明
         else sChart.setDescription("睡眠："+(int)e.getVal()+"  \n  "+"活動量："+e.getXIndex()+"");//グラフの説明
     }
@@ -182,7 +180,6 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
     @Override
     public boolean onNavigationItemSelected(int Position, long itemId) {
-        //Log.d("TAG", "select item = " + itemPosition);
         fileRead(itemPosition = Position, duration);
         return true;
     }
@@ -335,15 +332,13 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
 
     @Override
     protected void onDestroy() {
-        if (mPopupWindow != null && mPopupWindow.isShowing()) {
-            mPopupWindow.dismiss();
-        }
+        if (mPopupWindow != null && mPopupWindow.isShowing())   mPopupWindow.dismiss();
         super.onDestroy();
     }
 
     private void fileRead(int itemPosition, int count){//散布図を表示
         String str;
-        int calories,calmax=0,i,j=0,ct=0;
+        int calories,calmax=0,i,j,ct=0;
         float sleep=0,sleep2,sleep3;
         ArrayList<ScatterDataSet> dataSets = new ArrayList<ScatterDataSet>();
         set1=null;set2=null;set3=null;//yVals1=null;yVals2=null;yVals3=null;
@@ -352,6 +347,9 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         ArrayList<Entry> yVals3 = new ArrayList<Entry>();
         ArrayList<Float> x = new ArrayList<>();
         ArrayList<Float> y = new ArrayList<>();
+        /*ArrayList<Entry> iVals1 = new ArrayList<Entry>();//重複インデックス格納用
+        ArrayList<Entry> iVals2 = new ArrayList<Entry>();
+        ArrayList<Entry> iVals3 = new ArrayList<Entry>();*/
         try {
             FileInputStream in = new FileInputStream(Environment.getExternalStorageDirectory() + "/wakeup/log.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
@@ -403,15 +401,14 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                             break;
                     }
                     if(itemPosition!=5 || !str_line[18].equals("")){
-                        yVals1.add(new Entry((int)sleep, calories));
+                        //if(CheckIndex(calories,x)) iVals1.add(new Entry((int)sleep, calories));//重複したら別のarrayに退避 else
+                        yVals1.add(new Entry((int)sleep, calories));//重複しなかったら
                         x.add((float)calories);
                         if (calmax < calories) calmax = calories;
                     }
                     if (count >= 7) ct++;
-                    if (count == 366 && ct >= 366) break;
-                    else if (count == 31 && ct >= 31) break;
-                    else if (count == 7 && ct >= 7) break;
-                }////////////////////////////
+                    if ((count == 366 && ct >= 366) || (count == 31 && ct >= 31) || (count == 7 && ct >= 7)) break;
+                }
             }
             if(x.size()!=0) yVals1.add(new Entry( -100, 0));// 縦軸の少数表示を消す処理（仮）
             else{ //表示するデータがなかった時の処理
@@ -463,6 +460,16 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             set1.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
             set1.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
             set1.setColor(Color.rgb(0, 116, 232));//blue
+            /*if(!iVals1.isEmpty()){ //インデックスが重複したら
+                for(i=0;i<iVals1.size();i++){
+                    ScatterDataSet iset=new ScatterDataSet(iVals1,"");
+                    iset.setScatterShapeSize(8f);
+                    iset.setDrawValues(!set1.isDrawValuesEnabled());//データ値の表示を消す処理
+                    iset.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
+                    iset.setColor(Color.rgb(0, 116, 232));//blue
+                    dataSets.add(iset); // add the datasets
+                }
+            }*/
             dataSets.add(set1); // add the datasets
             if(itemPosition==4){
                 dataSets.add(set2);
@@ -470,7 +477,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             }
             ArrayList<String> xVals = new ArrayList<String>();
             for(i=0;i<=calmax;i+=1000) ; //横軸のインデックスを設定
-            for(;j<=i;j++) xVals.add((j)+"");
+            for(j=0;j<=i;j++) xVals.add((j)+"");
             ScatterData data = new ScatterData(xVals, dataSets);
             if(x.size()==0){ //表示する値が無かったら
                 set1.setScatterShapeSize(0);
@@ -516,6 +523,13 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
         else if( Math.abs(r) <=1) Correlation_description="かなり強い相関がある";
         else Correlation_description="相関を計算できません";
         return r;
+    }
+
+    private boolean CheckIndex(float index, ArrayList<Float> x){//インデックスに重複がないか調べる
+        for(int i=0;i<x.size();i++){
+            if(x.get(i)==index) return true;
+        }
+        return false;
     }
 
 }
