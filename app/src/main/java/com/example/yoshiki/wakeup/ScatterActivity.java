@@ -317,7 +317,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 ChiceText.setText("行動：喫煙");
                 mPopupWindow.dismiss();
                 break;
-            case R.id.Nothing:
+            case R.id.next_button:
                 sort_flg=0;
                 fileRead(itemPosition, duration);
                 fab.setImageResource(R.drawable.w_nothing);
