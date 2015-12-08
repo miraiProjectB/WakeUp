@@ -222,9 +222,20 @@
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/act_check_title" /><!-- margin行間 -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:textColor="@color/black" android:textSize="15sp"
                 android:layout_margin="@dimen/text_margin" android:text="@string/act_check" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/mame_link"
+                android:text="@string/mame_link"
+                android:clickable="true"
+                android:textColor="@color/colorAccent"
+                android:gravity="right"
+                android:layout_marginRight="20dp"
+                android:onClick="onClick"/>
 
         </LinearLayout>
 

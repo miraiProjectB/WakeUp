@@ -1,8 +1,10 @@
 package com.example.yoshiki.wakeup;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
@@ -19,6 +21,16 @@ public class HelpActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.help_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void onClick(View view){
+        switch (view.getId()) {
+            case R.id.mame_link:
+                Intent goMame = new Intent(this, KnowledgeActivity.class);
+                startActivity(goMame);
+                break;
+        }
+
     }
 
     @Override
