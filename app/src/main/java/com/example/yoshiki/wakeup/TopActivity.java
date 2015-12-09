@@ -11,8 +11,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.view.View;
-import android.widget.Button;
+import android.view.MotionEvent;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
@@ -57,30 +56,36 @@ public class TopActivity extends Activity implements Runnable {
         if (mAccessToken != null) {
             ApiManager.getRequestInterceptor().setAccessToken(mAccessToken);
         }
-
-        Button btn = (Button)findViewById(R.id.logo);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                if (!evalu_check) {
-                    Intent intent = new Intent(TopActivity.this, ScatterActivity.class);
-                    startActivity(intent);
-                }else{
-                    Intent intent_evalu =new Intent(TopActivity.this,EvaluationActivity.class);
-                    startActivity(intent_evalu);
-                    evalu_check=false;
-                }
-/*
-                //デモ用。常に評価画面に遷移
-                Intent intent_evalu =new Intent(TopActivity.this,EvaluationActivity.class);
-                startActivity(intent_evalu);
-                evalu_check=false;
-                */
-            }
-
-        });
         syncProcess();
     }
+
+
+   public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()) {
+           case MotionEvent.ACTION_DOWN:
+               if (!evalu_check) {
+                    Intent intent = new Intent(this, ScatterActivity.class);
+                   startActivity(intent);
+                }else{
+                    Intent intent_evalu =new Intent(this,EvaluationActivity.class);
+                   startActivity(intent_evalu);
+                    evalu_check=false;
+                }
+
+
+ /*               //デモ用。常に評価画面に遷移
+                Intent intent_evalu =new Intent(this,EvaluationActivity.class);
+                startActivity(intent_evalu);
+                evalu_check=false;
+                break;
+*/
+        }
+
+        finish();
+        return true;
+    }
+
 
     private void syncProcess() {
         String today_st = dateConvertToString(Calendar.getInstance());
