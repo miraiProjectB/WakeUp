@@ -11,10 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView android:id="@+id/textview"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,18 +22,18 @@
             <!-- リズム -->
             <TextView
                 android:id="@+id/rhythm_title"
-                android:layout_margin="@dimen/title_margin" android:textColor="@color/dodgerBlue" android:textSize="@dimen/title_size"
+                android:layout_margin="@dimen/title_margin" android:textColor="@color/dodgerBlue" android:textSize="@dimen/title_size_tab"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
                 android:gravity="center" android:text="@string/rhythm_title" /><!-- margin行間 -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_tab"
                 android:id="@+id/textView" />
 
             <TextView
                 android:text="@string/rhythm" android:textColor="@color/black"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textSize="15sp" android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" android:layout_margin="@dimen/text_margin" />
             <TextView
                 android:id="@+id/re_rhythm_link"
                 android:layout_width="fill_parent"
@@ -45,7 +41,7 @@
                 android:text="@string/re_rhythm"
                 android:autoLink="web"
                 android:layout_margin="@dimen/text_margin"
-                />
+                android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,13 +53,13 @@
             <TextView
                 android:id="@+id/rem_title"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textSize="@dimen/title_size"
+                android:textSize="@dimen/title_size_tab"
                 android:layout_margin="@dimen/title_margin"
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/rem_title" /><!-- margin行間 -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin" android:text="@string/rem" />
             <TextView
                 android:id="@+id/re_rem_link"
@@ -72,7 +68,7 @@
                 android:text="@string/rem_ref"
                 android:autoLink="web"
                 android:layout_margin="@dimen/text_margin"
-                />
+                android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
         <!-- ノンレム -->
@@ -85,13 +81,13 @@
             <TextView
                 android:id="@+id/non_rem_title"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textSize="@dimen/title_size"
+                android:textSize="@dimen/title_size_tab"
                 android:layout_margin="@dimen/title_margin"
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/non_rem_title" /><!-- margin行間 -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin" android:text="@string/non_rem" />
             <TextView
                 android:id="@+id/re_non_rem_link"
@@ -100,7 +96,7 @@
                 android:text="@string/re_non_rem"
                 android:autoLink="web"
                 android:layout_margin="@dimen/text_margin"
-                />
+                android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
         <!-- UP3 -->
@@ -112,13 +108,13 @@
             <TextView
                 android:id="@+id/up_title"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textSize="@dimen/title_size"
+                android:textSize="@dimen/title_size_tab"
                 android:layout_margin="@dimen/title_margin"
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/up_title" /><!-- margin行間 -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin" android:text="@string/up" />
             <TextView
                 android:id="@+id/re_up_link"
@@ -127,7 +123,7 @@
                 android:text="@string/re_up"
                 android:autoLink="web"
                 android:layout_margin="@dimen/text_margin"
-                />
+                android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
         <!-- 散布図 -->
@@ -135,72 +131,92 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/LinearLayout5">
+            android:id="@+id/LinearLayout5"
+            android:weightSum="1">
             <TextView
                 android:id="@+id/graph_title"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textSize="@dimen/title_size"
+                android:textSize="@dimen/title_size_tab"
                 android:layout_margin="@dimen/title_margin"
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/graph_title" /><!-- margin行間 -->
 
             <!-- 入眠 -->
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:id="@+id/help_onset"
+                android:src="@drawable/help_onset"
+                android:layout_gravity="center_horizontal" />
+
             <TextView android:text="@string/onseticon" android:id="@+id/onset_icon"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:drawableTop="@drawable/help_onset"
                 android:layout_margin="@dimen/icon_margin"
-                />
+                android:layout_marginTop="10dp" />
             <TextView android:text="@string/onset"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin"
                 />
             <TextView android:text="@string/onset_model"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:id="@+id/rem_graph" android:drawableTop="@drawable/help_onset_graph"
                 android:layout_margin="@dimen/text_margin"
                 />
 
             <!-- レム・ノンレム -->
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:id="@+id/help_rem"
+                android:src="@drawable/help_rem"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp" />
+
             <TextView android:text="@string/remgicon" android:id="@+id/rem_icon"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:drawableTop="@drawable/help_rem"
                 android:layout_margin="@dimen/icon_margin"
                 />
 
 
             <TextView android:text="@string/remg"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin"  />
 
             <TextView android:text="@string/remg_model"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:id="@+id/remg_graph" android:drawableTop="@drawable/help_rem_graph"
                 android:layout_margin="@dimen/text_margin"
                 />
 
             <!-- 評価 -->
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:id="@+id/help_value"
+                android:src="@drawable/help_value"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp" />
             <TextView
                 android:text="@string/value_icon" android:id="@+id/value_icon"
-                android:textColor="@color/black" android:textSize="15sp"
-                android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:drawableTop="@drawable/help_value"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
+                android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
                 android:layout_margin="@dimen/icon_margin"
-                />
+                android:layout_weight="0.17" />
             <TextView android:text="@string/value"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin"
                 />
 
             <TextView android:text="@string/value_model"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:id="@+id/value_graph" android:drawableTop="@drawable/help_syukan_graph"
                 android:layout_margin="@dimen/text_margin"
@@ -217,14 +233,14 @@
             <TextView
                 android:id="@+id/act_title"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textSize="@dimen/title_size"
+                android:textSize="@dimen/title_size_tab"
                 android:layout_margin="@dimen/title_margin"
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/act_check_title" /><!-- margin行間 -->
             <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="@color/black" android:textSize="15sp"
+                android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin" android:text="@string/act_check" />
             <TextView
                 android:layout_width="match_parent"
@@ -234,8 +250,11 @@
                 android:clickable="true"
                 android:textColor="@color/colorAccent"
                 android:gravity="right"
-                android:layout_marginRight="20dp"
-                android:onClick="onClick"/>
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
+                android:onClick="onClick"
+                android:textSize="@dimen/text_size_tab" />
 
         </LinearLayout>
 

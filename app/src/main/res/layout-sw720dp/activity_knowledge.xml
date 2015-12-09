@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
-    android:id="@+id/scrollView">
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:id="@+id/scrollView">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/AppTheme">
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  style="@style/AppTheme">
 
 
         <LinearLayout
@@ -22,12 +22,12 @@
 
             <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/cafein_title"
                 android:id="@+id/textView19"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -36,8 +36,8 @@
                 android:text="@string/cafein"
                 android:id="@+id/textView20"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -45,27 +45,26 @@
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/cafein_re"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/LinearLayout2"
-            android:weightSum="1">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/LinearLayout2"
+        android:weightSum="1">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/bath_title"
                 android:id="@+id/textView17"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,8 +74,8 @@
                 android:text="@string/bath"
                 android:id="@+id/textView18"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,28 +85,27 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/bath_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/LinearLayout3"
-            android:weightSum="1">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/LinearLayout3"
+        android:weightSum="1">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/bath_title"
                 android:id="@+id/beer"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -117,8 +115,8 @@
                 android:text="@string/beer"
                 android:layout_weight="0.13"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -128,8 +126,7 @@
                 android:autoLink="web"
                 android:text="@string/beer_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" />
 
         </LinearLayout>
 
@@ -143,12 +140,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/sport_title"
                 android:id="@+id/textView15"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -158,8 +155,8 @@
                 android:text="@string/sport"
                 android:id="@+id/textView16"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -169,8 +166,7 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/sport_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" />
 
         </LinearLayout>
 
@@ -185,12 +181,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/degital_title"
                 android:id="@+id/textView21"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -200,8 +196,8 @@
                 android:text="@string/degital"
                 android:id="@+id/textView22"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -211,6 +207,7 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/degital_re"
                 android:layout_gravity="left|bottom"
+                android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/title_margin" />
 
         </LinearLayout>
@@ -226,12 +223,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/light_title"
                 android:id="@+id/textView23"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -241,8 +238,8 @@
                 android:text="@string/light"
                 android:id="@+id/textView24"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -252,9 +249,7 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/light_re"
                 android:layout_gravity="left|bottom"
-                android:textIsSelectable="false"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
         <LinearLayout
@@ -267,12 +262,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="#0074e8"
                 android:text="@string/food_title"
                 android:id="@+id/textView13"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -282,8 +277,8 @@
                 android:text="@string/food"
                 android:id="@+id/textView14"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -293,8 +288,7 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/food_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab" />
 
         </LinearLayout>
 
@@ -310,12 +304,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size_tab"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/smoke_title"
                 android:id="@+id/textView25"
                 android:layout_gravity="center|top"
-                android:layout_margin="@dimen/title_margin"
-                android:textSize="@dimen/title_size" />
+                android:layout_margin="@dimen/title_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -325,8 +319,8 @@
                 android:text="@string/smoke"
                 android:id="@+id/textView26"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/text_margin"
-                android:textSize="@dimen/text_size" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/text_margin" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -336,9 +330,8 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/smoke_re"
                 android:layout_gravity="left|bottom"
-                android:textIsSelectable="false"
-                android:textSize="@dimen/text_size"
-                android:layout_margin="@dimen/text_margin" />
+                android:textSize="@dimen/text_size_tab"
+                android:textIsSelectable="false" />
 
         </LinearLayout>
 
