@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 /**
@@ -30,29 +30,29 @@ public class KnowledgeActivity extends AppCompatActivity{
         int itemId = item.getItemId();
         ScrollView sv = (ScrollView)findViewById(R.id.scrollView);
 
-        FrameLayout frameLayout = (FrameLayout)findViewById(R.id.frameLayout);
-        int cafein_y = (int) frameLayout.getY();
+        LinearLayout linearLayout1 = (LinearLayout)findViewById(R.id.LinearLayout1);
+        int cafein_y = (int) linearLayout1.getY();
 
-        FrameLayout frameLayout1 = (FrameLayout)findViewById(R.id.frameLayout1);
-        int bath_y = (int) frameLayout1.getY();
+        LinearLayout linearLayout2 = (LinearLayout)findViewById(R.id.LinearLayout2);
+        int bath_y = (int) linearLayout2.getY();
 
-        FrameLayout frameLayout2 = (FrameLayout)findViewById(R.id.frameLayout2);
-        int beer_y = (int) frameLayout2.getY();
+        LinearLayout linearLayout3 = (LinearLayout)findViewById(R.id.LinearLayout3);
+        int beer_y = (int) linearLayout3.getY();
 
-        FrameLayout frameLayout3 = (FrameLayout)findViewById(R.id.frameLayout3);
-        int sport_y = (int) frameLayout3.getY();
+        LinearLayout linearLayout4 = (LinearLayout)findViewById(R.id.LinearLayout4);
+        int sport_y = (int) linearLayout4.getY();
 
-        FrameLayout frameLayout4 = (FrameLayout)findViewById(R.id.frameLayout4);
-        int degital_y = (int) frameLayout4.getY();
+        LinearLayout linearLayout5 = (LinearLayout)findViewById(R.id.LinearLayout5);
+        int degital_y = (int) linearLayout5.getY();
 
-        FrameLayout frameLayout5 = (FrameLayout)findViewById(R.id.frameLayout5);
-        int light_y = (int) frameLayout5.getY();
+        LinearLayout linearLayout6 = (LinearLayout)findViewById(R.id.LinearLayout6);
+        int light_y = (int) linearLayout6.getY();
 
-        FrameLayout frameLayout6 = (FrameLayout)findViewById(R.id.frameLayout6);
-        int food_y = (int) frameLayout6.getY();
+        LinearLayout linearLayout7 = (LinearLayout)findViewById(R.id.LinearLayout7);
+        int food_y = (int) linearLayout7.getY();
 
-        FrameLayout frameLayout7 = (FrameLayout)findViewById(R.id.frameLayout7);
-        int smoke_y = (int) frameLayout7.getY();
+        LinearLayout linearLayout8 = (LinearLayout)findViewById(R.id.LinearLayout8);
+        int smoke_y = (int) linearLayout8.getY();
 
         if (itemId == R.id.cafein) {
             sv.smoothScrollTo(0, cafein_y);
