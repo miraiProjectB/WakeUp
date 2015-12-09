@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="30dip"
+            android:text="※ 昨日、就寝前に行った行動を選択してください。"
+            android:id="@+id/textView"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/cafein"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/cafein"/>
+
+        <FrameLayout
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right|center_vertical">
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="コーヒー"
+                android:id="@+id/cafein1"
+                android:layout_gravity="left|center_vertical"
+                android:onClick="onClick"
+                android:background="@drawable/button_design"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="清涼飲料水"
+                android:id="@+id/cafein2"
+                android:layout_gravity="center"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="27dip"
+                android:text="エナジードリンク"
+                android:id="@+id/cafein3"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/bath"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/bath"/>
+
+        <FrameLayout
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right|center_vertical">
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="シャワー"
+                android:id="@+id/bath1"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="熱めの湯船"
+                android:id="@+id/bath2"
+                android:layout_gravity="center"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="26dip"
+                android:text="ぬるめの湯船"
+                android:id="@+id/bath3"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/beer"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/beer"/>
+
+        <FrameLayout
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right|center_vertical">
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="多め"
+                android:id="@+id/beer1"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="ほどほど"
+                android:id="@+id/beer2"
+                android:layout_gravity="center"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="少なめ"
+                android:id="@+id/beer3"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/sport"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/sport"/>
+
+        <FrameLayout
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right|center_vertical">
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="激しめ"
+                android:id="@+id/sport1"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="まあまあ"
+                android:id="@+id/sport2"
+                android:layout_gravity="center"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:textSize="30dip"
+                android:text="軽め"
+                android:id="@+id/sport3"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/button_design"
+                android:onClick="onClick"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/degital"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/degital"/>
+
+        <Button
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:id="@+id/degital1"
+            android:textSize="40dip"
+            android:text="スマホ・TV等"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/button_design"
+            android:onClick="onClick"/>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/light"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/light"/>
+
+        <Button
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:id="@+id/light1"
+            android:textSize="40dip"
+            android:text="明るい環境"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/button_design"
+            android:onClick="onClick"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/food"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/food"/>
+
+        <Button
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:id="@+id/food1"
+            android:textSize="50dip"
+            android:text="夜食"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/button_design"
+            android:onClick="onClick"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/smoke"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/smoke"/>
+
+        <Button
+            android:layout_width="580dp"
+            android:layout_height="80dp"
+            android:id="@+id/smoke1"
+            android:textSize="50dip"
+            android:text="喫煙"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/button_design"
+            android:onClick="onClick"/>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="32dp"
+            android:id="@+id/mame"
+            android:layout_gravity="left"
+            android:background="@drawable/mamebutton"
+            android:onClick="onClick"
+            android:layout_marginStart="31dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/next_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:src="@drawable/ic_action_done"
+            android:clickable="false"
+            android:onClick="onClick"
+            app:backgroundTint="@color/dodgerBlue"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="31dp" />
+    </RelativeLayout>
+</LinearLayout>
