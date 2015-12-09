@@ -103,6 +103,9 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
             mTabLayout.addTab(mTabLayout.newTab().setText("月"));
             mTabLayout.addTab(mTabLayout.newTab().setText("週"));
 
+            mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+            mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
             mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
