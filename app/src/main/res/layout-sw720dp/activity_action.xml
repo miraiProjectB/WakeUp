@@ -330,12 +330,10 @@
     </FrameLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        >
+        android:layout_marginTop="30dp">
 
         <Button
             android:layout_width="60dp"
@@ -351,8 +349,8 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/next_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_marginRight="32dp"
             android:src="@drawable/ic_action_done"
             android:clickable="false"

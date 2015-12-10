@@ -41,46 +41,16 @@
 
                 />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                >
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:elevation="4dp"
-                    android:layout_weight="0.02"
-                    android:layout_marginTop="50dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/ChiceText"
-                        android:text="行動：なし"
-                        android:textSize="50dp"></TextView>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtView"
-                        android:text="相関係数：○○"
-                        android:textSize="50dp"></TextView>
-
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <RelativeLayout
+            <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
                 app:borderWidth="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_width="150dp"
+                android:layout_height="fill_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="right"
                 android:src="@drawable/w_nothing"
@@ -89,7 +59,43 @@
                 android:onClick="onClick"
                 app:backgroundTint="@color/dodgerBlue"
                 android:layout_marginBottom="50dp"
-                android:layout_marginRight="50dp" />
+                android:layout_marginRight="50dp"
+                android:layout_below="@+id/txtView"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="50dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="527dp"
+                android:layout_height="1000dp"
+                android:layout_marginTop="4dp"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ChiceText"
+                    android:layout_above="@+id/txtView"
+                    android:text="行動：なし"
+                    android:textSize="45dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtView"
+                    android:text="相関係数：○○"
+                    android:textSize="45dp"
+                    android:layout_alignParentBottom="true"></TextView>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -97,7 +103,7 @@
                 android:layout_height="match_parent"
                 android:weightSum="1"
                 android:layout_alignParentTop="true"
-                android:layout_alignEnd="@+id/fab">
+                android:layout_centerHorizontal="true">
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -117,6 +123,7 @@
 
             </LinearLayout>
         </RelativeLayout>
+
 
     </FrameLayout>
 
