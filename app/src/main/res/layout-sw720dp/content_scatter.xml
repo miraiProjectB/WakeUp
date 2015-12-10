@@ -28,7 +28,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="活動量(kcal)"
                 android:id="@+id/label_move"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp" />
 
             <!--elevation=影-->
             <com.github.mikephil.charting.charts.ScatterChart
@@ -51,20 +52,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:elevation="4dp"
-                    android:layout_weight="0.02">
+                    android:layout_weight="0.02"
+                    android:layout_marginTop="50dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/ChiceText"
                         android:text="行動：なし"
-                        ></TextView>
+                        android:textSize="50dp"></TextView>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/txtView"
                         android:text="相関係数：○○"
-                        ></TextView>
+                        android:textSize="50dp"></TextView>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -75,6 +77,7 @@
             android:layout_height="match_parent">
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
+                app:borderWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -84,31 +87,36 @@
                 android:clickable="false"
                 android:scaleType="fitStart"
                 android:onClick="onClick"
-                app:backgroundTint="@color/dodgerBlue"/>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="1">
+                app:backgroundTint="@color/dodgerBlue"
+                android:layout_marginBottom="50dp"
+                android:layout_marginRight="50dp" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="385dp"
-                android:layout_weight="0.08"></LinearLayout>
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_alignParentTop="true"
+                android:layout_alignEnd="@+id/fab">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="入眠までの時間(分)"
-                android:id="@+id/label_sleep"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="750dp"
+                    android:layout_weight="0.08"></LinearLayout>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="入眠までの時間(分)"
+                    android:id="@+id/label_sleep"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
 
     </FrameLayout>
 
