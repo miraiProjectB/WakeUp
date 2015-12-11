@@ -452,7 +452,7 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                 case 5:
                     set1 = new ScatterDataSet(yVals1, "主観評価");
                     sleeptv.setText("主観評価(レベル)");
-                    break;//コメント
+                    break;
             }
             if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) { //縦画面だったら
                 txtView = (TextView) findViewById(R.id.txtView);//散布図表示用TextView
