@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-
 /**
  * Created by 1013067 on 2015/11/20.
  */
@@ -145,7 +143,7 @@ public class CheckActivity extends AppCompatActivity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.fab:
-                ArrayList<Integer> act = new ArrayList<>();
+             /*   ArrayList<Integer> act = new ArrayList<>();
                 act.add(common.cafein_count);
                 act.add(common.bath_count);
                 act.add(common.beer_count);
@@ -155,6 +153,7 @@ public class CheckActivity extends AppCompatActivity {
                 act.add(common.food_count);
                 act.add(common.smoke_count);
                 Process.writeEvAct(common.smile, act);
+                */
                 //グラフ描画画面に遷移
                 Intent intent = new Intent(getApplication(), ScatterActivity.class);
                 EvaluationActivity.exitFlag = true;
