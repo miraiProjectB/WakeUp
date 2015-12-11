@@ -136,6 +136,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/LinearLayout5">
+
             <TextView
                 android:id="@+id/graph_title"
                 android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -157,10 +158,17 @@
                 android:textColor="@color/black" android:textSize="15sp"
                 android:layout_margin="@dimen/text_margin"
                 />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/imageView9"
+                android:src="@drawable/help_onset_graph" />
+
             <TextView android:text="@string/onset_model"
                 android:textColor="@color/black" android:textSize="15sp"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:id="@+id/rem_graph" android:drawableTop="@drawable/help_onset_graph"
+                android:id="@+id/rem_graph"
                 android:layout_margin="@dimen/text_margin"
                 />
 
@@ -168,7 +176,6 @@
             <TextView android:text="@string/remgicon" android:id="@+id/rem_icon"
                 android:textColor="@color/black" android:textSize="15sp"
                 android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:drawableTop="@drawable/help_rem"
                 android:layout_margin="@dimen/icon_margin"
                 />
 
@@ -178,10 +185,17 @@
                 android:textColor="@color/black" android:textSize="15sp"
                 android:layout_margin="@dimen/text_margin"  />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/imageView10"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/help_rem_graph" />
+
             <TextView android:text="@string/remg_model"
                 android:textColor="@color/black" android:textSize="15sp"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:id="@+id/remg_graph" android:drawableTop="@drawable/help_rem_graph"
+                android:id="@+id/remg_graph"
                 android:layout_margin="@dimen/text_margin"
                 />
 
@@ -199,10 +213,17 @@
                 android:layout_margin="@dimen/text_margin"
                 />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/imageView11"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/help_syukan_graph" />
+
             <TextView android:text="@string/value_model"
                 android:textColor="@color/black" android:textSize="15sp"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:id="@+id/value_graph" android:drawableTop="@drawable/help_syukan_graph"
+                android:id="@+id/value_graph"
                 android:layout_margin="@dimen/text_margin"
                 />
         </LinearLayout>
