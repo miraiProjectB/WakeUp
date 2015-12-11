@@ -41,6 +41,7 @@
                 android:text="@string/re_rhythm"
                 android:autoLink="web"
                 android:layout_margin="@dimen/text_margin"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
 
@@ -58,6 +59,7 @@
                 android:textColor="@color/dodgerBlue"
                 android:gravity="center"
                 android:text="@string/rem_title" /><!-- margin行間 -->
+
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:textColor="@color/black" android:textSize="@dimen/text_size_tab"
                 android:layout_margin="@dimen/text_margin" android:text="@string/rem" />
@@ -66,6 +68,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/rem_ref"
+                android:textColor="@color/colorAccent"
                 android:autoLink="web"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="@dimen/text_size_tab" />
@@ -95,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/re_non_rem"
                 android:autoLink="web"
+                android:textColor="@color/colorAccent"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="@dimen/text_size_tab" />
         </LinearLayout>
@@ -122,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/re_up"
                 android:autoLink="web"
+                android:textColor="@color/colorAccent"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="@dimen/text_size_tab" />
         </LinearLayout>

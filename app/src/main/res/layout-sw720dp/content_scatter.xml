@@ -48,7 +48,6 @@
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
-                app:borderWidth="0dp"
                 android:layout_width="150dp"
                 android:layout_height="fill_parent"
                 android:layout_alignParentBottom="true"
@@ -73,7 +72,7 @@
 
             <RelativeLayout
                 android:layout_width="527dp"
-                android:layout_height="1000dp"
+                android:layout_height="1030dp"
                 android:layout_marginTop="4dp"
                 android:layout_alignParentEnd="false"
                 android:layout_alignParentStart="true">
@@ -84,7 +83,7 @@
                     android:id="@+id/ChiceText"
                     android:layout_above="@+id/txtView"
                     android:text="行動：なし"
-                    android:textSize="45dp"
+                    android:textSize="30dp"
                     ></TextView>
 
                 <TextView
@@ -92,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txtView"
                     android:text="相関係数：○○"
-                    android:textSize="45dp"
+                    android:textSize="30dp"
                     android:layout_alignParentBottom="true"></TextView>
 
             </RelativeLayout>

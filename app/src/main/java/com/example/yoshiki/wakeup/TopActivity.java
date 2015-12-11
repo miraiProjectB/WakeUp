@@ -64,7 +64,7 @@ public class TopActivity extends Activity implements Runnable {
 
         switch (event.getAction()) {
            case MotionEvent.ACTION_DOWN:
-               if (!evalu_check) {
+/*               if (!evalu_check) {
                     Intent intent = new Intent(this, ScatterActivity.class);
                    startActivity(intent);
                 }else{
@@ -73,13 +73,13 @@ public class TopActivity extends Activity implements Runnable {
                     evalu_check=false;
                 }
 
-
- /*               //デモ用。常に評価画面に遷移
+*/
+               //デモ用。常に評価画面に遷移
                 Intent intent_evalu =new Intent(this,EvaluationActivity.class);
                 startActivity(intent_evalu);
                 evalu_check=false;
                 break;
-*/
+
         }
 
         finish();
