@@ -45,7 +45,8 @@
                 android:autoLink="web"
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/cafein_re"
-                android:textSize="@dimen/text_size_tab" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/title_margin"/>
         </LinearLayout>
 
         <LinearLayout
@@ -85,7 +86,8 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/bath_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size_tab" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/title_margin"/>
 
         </LinearLayout>
 
@@ -126,7 +128,8 @@
                 android:autoLink="web"
                 android:text="@string/beer_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size_tab" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/title_margin"/>
 
         </LinearLayout>
 
@@ -166,7 +169,8 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/sport_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size_tab" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/title_margin"/>
 
         </LinearLayout>
 
@@ -249,7 +253,8 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/light_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size_tab" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/title_margin"/>
         </LinearLayout>
 
         <LinearLayout
@@ -288,7 +293,8 @@
                 android:textColorLink="@color/colorAccent"
                 android:text="@string/food_re"
                 android:layout_gravity="left|bottom"
-                android:textSize="@dimen/text_size_tab" />
+                android:textSize="@dimen/text_size_tab"
+                android:layout_margin="@dimen/title_margin"/>
 
         </LinearLayout>
 
@@ -331,7 +337,8 @@
                 android:text="@string/smoke_re"
                 android:layout_gravity="left|bottom"
                 android:textSize="@dimen/text_size_tab"
-                android:textIsSelectable="false" />
+                android:textIsSelectable="false"
+                android:layout_margin="@dimen/title_margin"/>
 
         </LinearLayout>
 
