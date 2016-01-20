@@ -5,10 +5,10 @@ Overview
 WAKE UP accumulate relationship between amount of activity and sleep state, and to visualize these relationship. 
 
 ## Description
-Please Try on!
+Please try on!
 
 ## VS. 
-UP by Jawbone™
+UP by Jawbone™ [https://play.google.com/store/apps/details?id=com.jawbone.upopen&hl=ja]
 
 ## Requirement
 Over Android Version 4.3
