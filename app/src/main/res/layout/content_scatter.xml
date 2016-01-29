@@ -50,6 +50,7 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
                     android:elevation="4dp"
                     android:layout_weight="0.02">
 
@@ -73,23 +74,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="546dp">
-            <ImageButton
-                android:id="@+id/fillter"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="bottom|right"
-                android:background="@null"
-                android:src="@drawable/en_nothing"
-                android:clickable="false"
-                android:scaleType="fitStart"
-                android:onClick="onClick"
-                android:layout_marginRight="40dp"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="40dp" />
-                />
-            <!--<android.support.design.widget.FloatingActionButton
+            <!--<![CDATA[-->
+            <!--/>-->
+            <!--]]>&lt;!&ndash;<android.support.design.widget.FloatingActionButton-->
                 android:id="@+id/fillter"
                 app:borderWidth="0dp"
                 android:layout_width="wrap_content"
@@ -103,6 +90,22 @@
                 android:onClick="onClick"
                 app:backgroundTint="@color/dodgerBlue"/>-->
 
+            <ImageButton
+                android:id="@+id/fillter"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:src="@drawable/en_nothing"
+                android:clickable="false"
+                android:scaleType="fitStart"
+                android:onClick="onClick"
+                android:layout_marginBottom="70dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                />
+
+
         </RelativeLayout>
 
         <LinearLayout
@@ -115,7 +118,10 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="385dp"
-                android:layout_weight="0.08"></LinearLayout>
+                android:layout_weight="0.08">
+
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,6 +129,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="入眠までの時間(分)"
                 android:id="@+id/label_sleep"
+                android:layout_marginTop="30dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true" />
 
