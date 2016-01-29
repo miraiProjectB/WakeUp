@@ -89,19 +89,28 @@
         android:id="@+id/frameLayout3">
     </FrameLayout>
 
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--app:borderWidth="0dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:src="@drawable/ic_action_done"-->
+        <!--android:clickable="false"-->
+        <!--android:scaleType="fitStart"-->
+        <!--android:onClick="onClick"-->
+        <!--app:backgroundTint="@color/dodgerBlue"/>-->
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/fab"
-        app:borderWidth="0dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="right"
-        android:src="@drawable/ic_action_done"
-        android:clickable="false"
-        android:scaleType="fitStart"
+        android:background="@drawable/en_done"
         android:onClick="onClick"
-        app:backgroundTint="@color/dodgerBlue"/>
+        android:layout_below="@+id/frameLayout2"
+        android:layout_toEndOf="@+id/frameLayout2"/>
 
 
 </RelativeLayout>
