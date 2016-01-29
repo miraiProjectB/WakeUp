@@ -38,15 +38,27 @@
                 android:layout_height="800dp"
                 android:elevation="16dp"
                 android:background="@drawable/chart_design"
-
                 />
 
             <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/fillter"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="right"
+                    android:background="@null"
+                    android:src="@drawable/en_nothing"
+                    android:clickable="false"
+                    android:scaleType="fitStart"
+                    android:layout_below="@+id/txtView"
+                    android:onClick="onClick"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="60dp" />
 
-            <android.support.design.widget.FloatingActionButton
+            <!--<android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="150dp"
                 android:layout_height="fill_parent"
@@ -61,7 +73,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_below="@+id/txtView"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="50dp" />
+                android:layout_marginTop="50dp" />-->
 
             </LinearLayout>
         </LinearLayout>
