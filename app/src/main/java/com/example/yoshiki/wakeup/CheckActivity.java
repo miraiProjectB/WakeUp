@@ -76,13 +76,13 @@ public class CheckActivity extends AppCompatActivity {
         }
 
         if(common.cafein_count == 1){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+            ImageView imageView = (ImageView)findViewById(R.id.imageView1);
             imageView.setImageResource(R.drawable.cafein1);
         }else if(common.cafein_count == 2){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+            ImageView imageView = (ImageView)findViewById(R.id.imageView1);
             imageView.setImageResource(R.drawable.cafein2);
         }else if(common.cafein_count == 3){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+            ImageView imageView = (ImageView)findViewById(R.id.imageView1);
             imageView.setImageResource(R.drawable.cafein3);
         }
 

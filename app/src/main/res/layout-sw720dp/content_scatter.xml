@@ -107,7 +107,7 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="750dp"
+                    android:layout_height="820dp"
                     android:layout_weight="0.08"></LinearLayout>
 
                 <TextView
