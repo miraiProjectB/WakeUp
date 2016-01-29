@@ -351,6 +351,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/next_fab"
+            android:onClick="onClick"
             android:background="@drawable/en_done"
             android:layout_alignBottom="@+id/mame"
             android:layout_alignParentEnd="true"

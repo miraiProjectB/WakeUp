@@ -14,7 +14,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="580dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/frameLayout">
@@ -82,36 +82,46 @@
             android:layout_gravity="center_horizontal|bottom"/>
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/frameLayout2"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/frameLayout3">
-    </FrameLayout>
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"-->
+        <!--android:layout_below="@+id/frameLayout2"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:id="@+id/frameLayout3">-->
+    <!--</FrameLayout>-->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_width="700dp"
+        android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true">
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        app:borderWidth="0dp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="right"
-        android:src="@drawable/ic_action_done"
-        android:clickable="false"
-        android:scaleType="fitStart"
-        android:onClick="onClick"
-        app:backgroundTint="@color/dodgerBlue"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_below="@+id/frameLayout2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout2">
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--app:borderWidth="0dp"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:src="@drawable/ic_action_done"-->
+        <!--android:clickable="false"-->
+        <!--android:scaleType="fitStart"-->
+        <!--android:onClick="onClick"-->
+        <!--app:backgroundTint="@color/dodgerBlue"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:layout_marginRight="20dp" />-->
     </RelativeLayout>
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/fab"
+        android:background="@drawable/en_done"
+        android:onClick="onClick"
+        android:layout_below="@+id/frameLayout2"
+        android:layout_toEndOf="@+id/frameLayout2"/>
 
 
 </RelativeLayout>
