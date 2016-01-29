@@ -112,15 +112,15 @@ public class ScatterActivity extends AppCompatActivity implements OnChartValueSe
                     switch (tab.getPosition()) {
                         case 0:
                             fileRead(itemPosition, duration = 366);
-                            Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ScatterActivity.this, "年表示", Toast.LENGTH_SHORT).show();
                             break;
                         case 1:
                             fileRead(itemPosition, duration = 31);
-                            Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ScatterActivity.this, "月表示", Toast.LENGTH_SHORT).show();
                             break;
                         case 2:
                             fileRead(itemPosition, duration = 7);
-                            Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ScatterActivity.this, "週表示", Toast.LENGTH_SHORT).show();
                             break;
                         default:
                             break;
