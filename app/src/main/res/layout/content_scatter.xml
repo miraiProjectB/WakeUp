@@ -72,9 +72,25 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab"
+            android:layout_height="546dp">
+            <ImageButton
+                android:id="@+id/fillter"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|right"
+                android:background="@null"
+                android:src="@drawable/en_nothing"
+                android:clickable="false"
+                android:scaleType="fitStart"
+                android:onClick="onClick"
+                android:layout_marginRight="40dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40dp" />
+                />
+            <!--<android.support.design.widget.FloatingActionButton
+                android:id="@+id/fillter"
                 app:borderWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +101,8 @@
                 android:clickable="false"
                 android:scaleType="fitStart"
                 android:onClick="onClick"
-                app:backgroundTint="@color/dodgerBlue"/>
+                app:backgroundTint="@color/dodgerBlue"/>-->
+
         </RelativeLayout>
 
         <LinearLayout
